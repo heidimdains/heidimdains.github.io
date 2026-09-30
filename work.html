@@ -119,7 +119,7 @@ img.hd-zoom{cursor:pointer}
     <div style="position: relative; padding-top: 240px;">
       <p style="margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;">Every brand needs</p>
       <p style="position: relative; z-index: 2; margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
-      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 112px; width: 104px; height: 104px; margin-left: -52px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
+      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 292px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
@@ -553,7 +553,7 @@ img.hd-zoom{cursor:pointer}
     <div onClick="{{closeContact}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
     <div style="position: relative; width: 1000px; max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); overflow: auto; box-sizing: border-box; padding: 72px 76px 76px; border-radius: 32px; background: {{panel}}; color: #F3F1EC; box-shadow: 0 50px 120px rgba(0,0,0,0.35); animation: hdPop .5s cubic-bezier(.2,.75,.1,1) both;">
       <button type="button" onClick="{{closeContact}}" aria-label="Close" style="position: absolute; top: 28px; right: 28px; width: 52px; height: 52px; border: none; border-radius: 14px; background: rgba(255,255,255,0.07); color: #F3F1EC; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
-      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Have a big idea? Let’s <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">pull it off.</span></h2>
+      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Let’s build <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">what’s next.</span></h2>
       <div style="margin-top: 56px; display: flex; gap: 56px;">
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
@@ -566,9 +566,9 @@ img.hd-zoom{cursor:pointer}
             <label for="hd-c-email" style="font-size: 17px;">Your email</label>
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
-            <textarea id="hd-c-msg" rows="5" placeholder="Tell me what you’re dreaming up" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
+            <textarea id="hd-c-msg" rows="5" placeholder="What’s on your mind?" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
             <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
-            <span style="margin-top: 14px; text-align: center; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted2}};">I reply faster than your current agency.</span>
+            <span style="margin-top: 14px; text-align: center; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted2}};">I reply fast. Usually same day.</span>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
