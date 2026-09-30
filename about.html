@@ -9,6 +9,7 @@
 <meta property="og:description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
 html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
 body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}a:hover{opacity:.8}
@@ -23,6 +24,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 @keyframes hdTools{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .hd-tools{animation:hdTools 80s linear infinite}
 @media (prefers-reduced-motion: reduce){.hd-tools{animation:none}}
+@keyframes hdOp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hd-chip{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid #C9C3BA;font-size:16px;letter-spacing:-0.01em;color:#17181B;background:rgba(255,255,255,0.35);transition:background .3s ease,border-color .3s ease}
+.hd-chip:hover{background:#FFFFFF;border-color:#FFFFFF}
 @keyframes hdFade{from{opacity:0}to{opacity:1}}
 @keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
 </style>
@@ -44,7 +48,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
   </div>
   <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="position: fixed; right: 0; top: 320px; z-index: 60; writing-mode: vertical-rl; transform: rotate(180deg); padding: 18px 12px; border-radius: 0 12px 12px 0; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.10); font-size: 13px; color: #17181B;">Résumé (the boring version) ↗</a>
 
-  <div style="position: relative; z-index: 2;">
+  <div id="hd-layer" style="position: relative; z-index: 2;">
   <div style="border-radius: 0 0 44px 44px; overflow: clip; box-shadow: 0 30px 60px rgba(0,0,0,0.18);">
 
     <!-- HERO -->
@@ -91,136 +95,149 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     <!-- INTRO -->
     <section style="position: relative; height: 960px; background: {{ground}};">
       <p style="position: absolute; left: 40px; top: 90px; width: 820px; margin: 0; font-size: 42px; line-height: 1.1; font-weight: 400; letter-spacing: -0.04em;">My work: brands, live experiences and partnerships for companies that would rather be <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">remembered</span> than noticed.</p>
-      <p style="position: absolute; left: 960px; top: 330px; width: 400px; margin: 0; font-size: 17px; line-height: 1.55; color: #3A3A3A;">I lead marketing end to end across five brands, from strategy and brand to web, events, MarTech and AI, and I’ve built and led the team behind it. I bring the <span style="color: {{hiSmall}};">creative vision</span> and the <span style="color: {{hiSmall}};">follow-through</span>, and I care whether it actually worked.</p>
+      <p style="position: absolute; left: 960px; top: 330px; width: 400px; margin: 0; font-size: 17px; line-height: 1.55; color: #3A3A3A;">I currently lead marketing end to end across six brands, from strategy and brand to web, events, MarTech and AI, and I’ve built and led the team behind it. I bring the <span style="color: {{hiSmall}};">creative vision</span> and the <span style="color: {{hiSmall}};">follow-through</span>, and I care whether it actually worked.</p>
       <img src="assets/head-3-f8c985.jpg" alt="Heidi Dains smiling, chin resting on her hand" style="position: absolute; left: 40px; top: 330px; width: 420px; height: 560px; border-radius: 16px; object-fit: cover; object-position: 50% 30%;">
     </section>
 
-    <!-- HOW I OPERATE -->
-    <div style="background: {{ground}}; padding: 0 12px;">
-    <section style="position: relative; min-height: 0; box-sizing: border-box; padding: 120px 108px 140px; border-radius: 40px; background: {{panel}}; color: #F3F1EC; overflow: hidden;">
-      <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">How I operate</span>
-      <h2 style="margin: 16px 0 56px; font-size: 64px; line-height: 1; font-weight: 400; letter-spacing: -0.045em;">Six ways I show up. <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Usually all at once.</span></h2>
-      <div style="display: flex; flex-direction: column; border-bottom: 1px solid rgba(243,241,236,0.16);">
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp1}}" aria-expanded="{{op1}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">01</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Strategize</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon1}}</span>
-          </button>
-          <sc-if value="{{op1}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">From an ambiguous ask to a plan.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Turned MaximoWorld into an integrated program: 10.8× the booth leads</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Brand strategy across five brands at SMS</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp2}}" aria-expanded="{{op2}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">02</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Build</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon2}}</span>
-          </button>
-          <sc-if value="{{op2}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">Websites, built with my own hands.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>The SMS site in HubSpot CMS, HubDB and HTML/CSS</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>RSA’s site, designed and launched on Squarespace</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp3}}" aria-expanded="{{op3}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">03</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Create</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon3}}</span>
-          </button>
-          <sc-if value="{{op3}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">Creative direction, start to finish.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Brand identities, booths, video and collateral</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Coterra, my own brand, from the name up</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp4}}" aria-expanded="{{op4}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">04</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Operate</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon4}}</span>
-          </button>
-          <sc-if value="{{op4}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">The systems underneath the work.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Attribution, reporting and a company-wide resource center</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Built and led a marketing team</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp5}}" aria-expanded="{{op5}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">05</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Amplify</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon5}}</span>
-          </button>
-          <sc-if value="{{op5}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">Events, partners and channels.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>MaximoWorld, IMC, MUWG and IBM TechXchange</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>IBM co-marketing, paid and organic social</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="border-top: 1px solid rgba(243,241,236,0.16);">
-          <button type="button" onClick="{{toggleOp6}}" aria-expanded="{{op6}}" style="width: 100%; display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; align-items: center; min-height: 96px; padding: 0; border: none; background: transparent; color: #F3F1EC; text-align: left; cursor: pointer; font-family: 'Host Grotesk', sans-serif;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: {{panelMuted2}};">06</span>
-            <span style="font-size: 44px; letter-spacing: -0.04em;">Future-proof</span>
-            <span></span>
-            <span aria-hidden="true" style="justify-self: end; font-size: 26px; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">{{opIcon6}}</span>
-          </button>
-          <sc-if value="{{op6}}" hint-placeholder-val="{{ false }}">
-            <div style="display: grid; grid-template-columns: 70px 360px minmax(0, 1fr) 40px; padding: 0 0 30px; animation: hdFade .4s ease both;">
-              <span></span><span></span>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <span style="font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: {{panelMuted}}; margin-bottom: 6px;">Making sure the robots quote us before they replace us.</span>
-                <span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>Implementing AEO/GEO at SMS, built for AI answers</span><span style="display: flex; gap: 12px; font-size: 17px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true" style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span>AI in my daily work, from research to code</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
+    <!-- APPROACH: full-bleed photo band -->
+    <section id="hd-mx" style="position: relative; height: 720px; overflow: hidden; background: #1A1513;">
+      <img src="assets/moto-gate-4e19ea.jpg" alt="Riders lined up at the starting gate of a Supercross race in a stadium" style="position: absolute; left: 0; top: -80px; width: 100%; height: 880px; object-fit: cover; object-position: 50% 45%; transform: translateY({{mxY}}px); will-change: transform;">
+      <span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,16,14,0.86) 0%, rgba(20,16,14,0.62) 42%, rgba(20,16,14,0.12) 100%);"></span>
+      <div style="position: absolute; left: 120px; top: 50%; width: 640px; transform: translateY(-50%); color: #F3F1EC;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Approach</span>
+        <p style="margin: 22px 0 0; font-size: 48px; line-height: 1.1; font-weight: 400; letter-spacing: -0.04em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Big ideas, obsessive details,</span> and the follow-through to make them real. Even at the dang 6 a.m. load-in.</p>
       </div>
-      <div aria-label="Tools I work in" style="position: absolute; left: 0; right: 0; bottom: 44px; overflow: hidden; white-space: nowrap;">
-        <div class="hd-tools" style="display: inline-block; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">HubSpot CMS · Marketing Hub · HubDB · HTML/CSS · Salesforce · GA4 · LinkedIn Campaign Manager · Google Ads · Meta Ads · Cvent · Captello · Jifflenow · Monday.com · SharePoint · Adobe Creative Cloud · Figma · Canva · AI, every day · HubSpot CMS · Marketing Hub · HubDB · HTML/CSS · Salesforce · GA4 · LinkedIn Campaign Manager · Google Ads · Meta Ads · Cvent · Captello · Jifflenow · Monday.com · SharePoint · Adobe Creative Cloud · Figma · Canva · AI, every day · HubSpot CMS · Marketing Hub · HubDB · HTML/CSS · Salesforce · GA4 · LinkedIn Campaign Manager · Google Ads · Meta Ads · Cvent · Captello · Jifflenow · Monday.com · SharePoint · Adobe Creative Cloud · Figma · Canva · AI, every day · HubSpot CMS · Marketing Hub · HubDB · HTML/CSS · Salesforce · GA4 · LinkedIn Campaign Manager · Google Ads · Meta Ads · Cvent · Captello · Jifflenow · Monday.com · SharePoint · Adobe Creative Cloud · Figma · Canva · AI, every day · </div>
+      <span style="position: absolute; right: 40px; bottom: 32px; font-size: 14px; color: rgba(243,241,236,0.78);">The kind of 6 a.m. load-in I’m talking about.</span>
+    </section>
+
+    <!-- HOW I OPERATE: pinned scroll list -->
+    <section id="hd-ops" style="position: relative; height: 2300px; background: {{ground}};">
+      <div style="position: sticky; top: 0; height: 900px; overflow: hidden;">
+        <span style="position: absolute; left: 120px; top: 120px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">How I operate</span>
+        <h2 style="position: absolute; left: 120px; top: 148px; margin: 0; font-size: 50px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Six ways I show up. <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Usually all at once.</span></h2>
+        <div style="position: absolute; left: 120px; top: 300px; display: flex; flex-direction: column;">
+          <button type="button" onClick="{{toggleOp1}}" aria-current="{{op1}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol1}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">01</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Strategize</span>
+          </button>
+          <button type="button" onClick="{{toggleOp2}}" aria-current="{{op2}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol2}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">02</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Build</span>
+          </button>
+          <button type="button" onClick="{{toggleOp3}}" aria-current="{{op3}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol3}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">03</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Create</span>
+          </button>
+          <button type="button" onClick="{{toggleOp4}}" aria-current="{{op4}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol4}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">04</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Operate</span>
+          </button>
+          <button type="button" onClick="{{toggleOp5}}" aria-current="{{op5}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol5}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">05</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Amplify</span>
+          </button>
+          <button type="button" onClick="{{toggleOp6}}" aria-current="{{op6}}" style="display: flex; align-items: baseline; gap: 20px; height: 74px; padding: 0; border: none; background: none; cursor: pointer; font-family: 'Host Grotesk', sans-serif; text-align: left; color: {{opCol6}}; transition: color .35s ease;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; width: 26px;">06</span>
+            <span style="font-size: 62px; line-height: 1; letter-spacing: -0.05em;">Future-proof</span>
+          </button>
+        </div>
+        <div style="position: absolute; left: 150px; top: 760px; width: 380px; height: 2px; border-radius: 2px; background: #D5D0C8; overflow: hidden;"><span style="display: block; width: 100%; height: 100%; background: {{sandBg}}; transform-origin: 0 50%; transform: scaleX({{opProg}}); transition: transform .2s linear;"></span></div>
+        <div style="position: absolute; left: 760px; top: 318px; width: 560px; height: 420px;">
+        <sc-if value="{{op1}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">01 / 06 · STRATEGIZE</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">From an ambiguous ask to a plan.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Turned MaximoWorld into an integrated program: 10.8× the booth leads</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Brand strategy across six brands at SMS</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{op2}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">02 / 06 · BUILD</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">Websites, built with my own hands.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>The SMS site in HubSpot CMS, HubDB and HTML/CSS</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>RSA’s site, designed and launched on Squarespace</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{op3}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">03 / 06 · CREATE</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">Creative direction, start to finish.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Brand identities, booths, video and collateral</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Coterra, my own brand, from the name up</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{op4}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">04 / 06 · OPERATE</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">The systems underneath the work.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Attribution, reporting and a company-wide resource center</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Built and led a marketing team</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{op5}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">05 / 06 · AMPLIFY</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">Events, partners and channels.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>MaximoWorld, IMC, MUWG and IBM TechXchange</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>IBM co-marketing, paid and organic social</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{op6}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; animation: hdOp .55s cubic-bezier(.2,.75,.1,1) both;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hiSmall}};">06 / 06 · FUTURE-PROOF</span>
+            <p style="margin: 18px 0 30px; font-size: 38px; line-height: 1.12; letter-spacing: -0.035em;">Making sure the robots quote us before they replace us.</p>
+            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #D5D0C8;">
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>Implementing AEO/GEO at SMS, built for AI answers</span>
+              <span style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid #D5D0C8; font-size: 18px; line-height: 1.45; color: #2A2A2A;"><span aria-hidden="true" style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span>AI in my daily work, from research to code</span>
+            </div>
+          </div>
+        </sc-if>
+        </div>
       </div>
     </section>
-    </div>
 
-    <!-- APPROACH & VALUES -->
-    <section style="position: relative; height: 960px; background: {{ground}};">
-      <div style="position: absolute; left: 120px; top: 160px; width: 600px; display: flex; flex-direction: column;">
-        <span style="padding-bottom: 14px; border-bottom: 1px solid #C9C6C0; font-size: 15px; color: {{hiSmall}};">Approach</span>
-        <p style="margin: 24px 0 0; font-size: 44px; line-height: 1.12; font-weight: 400; letter-spacing: -0.035em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Big ideas,</span> <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">obsessive details,</span> and the follow-through to make them real. Even at the dang 6 a.m. load-in.</p>
-        <p style="margin: 64px 0 0; padding-top: 24px; border-top: 1px solid #C9C6C0; font-size: 32px; line-height: 1.12; letter-spacing: -0.035em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Pittsburgh</span> built me. <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Charleston</span> keeps me.</p>
+    <!-- TOOLKIT -->
+    <section style="position: relative; box-sizing: border-box; padding: 40px 120px 170px; background: {{ground}};">
+      <div style="display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 40px; padding-top: 70px; border-top: 1px solid #C9C6C0;">
+        <div>
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The toolkit</span>
+          <h2 style="margin: 16px 0 0; font-size: 50px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">What I build <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">with.</span></h2>
+          <p style="margin: 18px 0 0; max-width: 340px; font-size: 17px; line-height: 1.5; color: #4A4A48;">The platforms I work in every week, not a keyword list.</p>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D5D0C8;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">Web & build</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span class="hd-chip">HubSpot CMS</span><span class="hd-chip">HubDB</span><span class="hd-chip">HTML/CSS</span><span class="hd-chip">Squarespace</span><span class="hd-chip">Figma</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D5D0C8;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">CRM & ops</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span class="hd-chip">HubSpot Marketing Hub</span><span class="hd-chip">Salesforce</span><span class="hd-chip">Monday.com</span><span class="hd-chip">SharePoint</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D5D0C8;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">Paid & analytics</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span class="hd-chip">GA4</span><span class="hd-chip">LinkedIn Campaign Manager</span><span class="hd-chip">Google Ads</span><span class="hd-chip">Meta Ads</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D5D0C8;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">Events</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span class="hd-chip">Cvent</span><span class="hd-chip">Captello</span><span class="hd-chip">Jifflenow</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D5D0C8;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">Create & AI</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span class="hd-chip">Adobe Creative Cloud</span><span class="hd-chip">Canva</span><span class="hd-chip">AI, every day</span></div>
+          </div>
+        </div>
       </div>
-      <figure style="position: absolute; left: 860px; top: 180px; width: 460px; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-        <img src="assets/moto-gate-4e19ea.jpg" alt="Riders lined up at the starting gate of a Supercross race in a stadium" style="display: block; width: 460px; height: 560px; border-radius: 16px; object-fit: cover;">
-        <figcaption style="font-size: 14px; color: #6D6A66;">The kind of 6 a.m. load-in I’m talking about.</figcaption>
-      </figure>
     </section>
   </div>
 
@@ -235,11 +252,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Drop me a note:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
-      <span style="font-size: 26px; letter-spacing: -0.02em;">heidimdains@gmail.com</span>
+      <a href="mailto:heidimdains@gmail.com" style="font-size: 26px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
       <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="height: 38px; padding: 0 14px; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">{{copyLabel}}</button>
     </div>
     <div style="display: flex; justify-content: center; gap: 26px; margin-top: 18px; font-size: 15px;">
-      <a href="https://www.linkedin.com/in/heididains/" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">Résumé ↗</a>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
@@ -281,7 +298,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Elsewhere</span>
-            <a href="https://www.linkedin.com/in/heididains/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
             <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">Résumé ↗</a>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -300,21 +317,50 @@ class Component extends DCLogic {
   componentDidMount() {
     this._hdKey = (e) => { if (e.key === 'Escape' && this.state && this.state.contactOpen) this.setState({ contactOpen: false }); };
     window.addEventListener('keydown', this._hdKey);
-    this._tick = () => this.measure();
+    this._raf = 0;
+    this._tick = () => { if (this._raf) return; this._raf = requestAnimationFrame(() => { this._raf = 0; this.measure(); }); };
     window.addEventListener('resize', this._tick);
+    window.addEventListener('scroll', this._tick, { passive: true });
     this.measure();
     setTimeout(() => this.measure(), 400);
   }
   componentWillUnmount() {
     window.removeEventListener('keydown', this._hdKey);
     window.removeEventListener('resize', this._tick);
+    window.removeEventListener('scroll', this._tick);
   }
   measure() {
     const z = Math.min(1.3, Math.max(0.3, window.innerWidth / 1440));
     if (Math.abs(z - ((this.state && this.state.zoom) || 1)) > 0.001) this.setState({ zoom: z });
+    const vh = window.innerHeight, st = this.state || {}, patch = {};
+    const ops = document.getElementById('hd-ops');
+    if (ops) {
+      const r = ops.getBoundingClientRect();
+      const total = Math.max(1, r.height - vh);
+      const p = Math.min(1, Math.max(0, -r.top / total));
+      const idx = Math.min(6, Math.floor(p * 6) + 1);
+      if (idx !== st.op) patch.op = idx;
+      const prog = +(p).toFixed(3);
+      if (prog !== st.opProg) patch.opProg = prog;
+    }
+    const mxEl = document.getElementById('hd-mx');
+    if (mxEl) {
+      const r = mxEl.getBoundingClientRect();
+      const t = (r.top + r.height / 2 - vh / 2) / vh;
+      const y = Math.round(Math.max(-1, Math.min(1, t)) * -70);
+      if (y !== st.mxY) patch.mxY = y;
+    }
+    if (Object.keys(patch).length) this.setState(patch);
+  }
+  goOp(i) {
+    const ops = document.getElementById('hd-ops');
+    if (!ops) return;
+    const r = ops.getBoundingClientRect();
+    const total = Math.max(1, r.height - window.innerHeight);
+    window.scrollTo({ top: window.scrollY + r.top + ((i - 0.5) / 6) * total, behavior: 'smooth' });
   }
   renderVals() {
-    const s = Object.assign({ op: 0 }, this.state || {});
+    const s = Object.assign({ op: 1, opProg: 0, mxY: 0 }, this.state || {});
     const P = {
       'Twilight': { panel: '#2A211C', sand: '#E9A0B4', grad: 'linear-gradient(100deg, #F6A77E 0%, #E27FA0 50%, #A98BDB 100%)', hi: '#8A4A86', ground: '#ECE7DF', panelMuted: '#DDD3C6', panelMuted2: '#BFB3A3' },
       'Plum Dusk': { panel: '#2A211C', sand: '#E28AAE', grad: 'linear-gradient(100deg, #F4B79C 0%, #E28AAE 33%, #B395E0 67%, #7A56B0 100%)', hi: '#74428A', ground: '#ECE7DF', panelMuted: '#DDD3C6', panelMuted2: '#BFB3A3' },
@@ -335,12 +381,12 @@ class Component extends DCLogic {
     const pal = { ...pal0, hiSmall: pal0.hiSmall || pal0.hi, hiGrad: pal0.hiGrad || 'none', hiFill: pal0.hiGrad ? 'transparent' : 'currentColor', sandBg: pal0.grad || pal0.sand, sandGrad: pal0.grad || 'none', sandFill: pal0.grad ? 'transparent' : 'currentColor' };
     return {
       ...pal,
-      op1: s.op === 1, opIcon1: s.op === 1 ? '−' : '+', toggleOp1: () => this.setState({ op: (this.state && this.state.op === 1) ? 0 : 1 }),
-      op2: s.op === 2, opIcon2: s.op === 2 ? '−' : '+', toggleOp2: () => this.setState({ op: (this.state && this.state.op === 2) ? 0 : 2 }),
-      op3: s.op === 3, opIcon3: s.op === 3 ? '−' : '+', toggleOp3: () => this.setState({ op: (this.state && this.state.op === 3) ? 0 : 3 }),
-      op4: s.op === 4, opIcon4: s.op === 4 ? '−' : '+', toggleOp4: () => this.setState({ op: (this.state && this.state.op === 4) ? 0 : 4 }),
-      op5: s.op === 5, opIcon5: s.op === 5 ? '−' : '+', toggleOp5: () => this.setState({ op: (this.state && this.state.op === 5) ? 0 : 5 }),
-      op6: s.op === 6, opIcon6: s.op === 6 ? '−' : '+', toggleOp6: () => this.setState({ op: (this.state && this.state.op === 6) ? 0 : 6 }),
+      op1: s.op === 1, opCol1: s.op === 1 ? '#17181B' : '#C4BDB3', toggleOp1: () => this.goOp(1),
+      op2: s.op === 2, opCol2: s.op === 2 ? '#17181B' : '#C4BDB3', toggleOp2: () => this.goOp(2),
+      op3: s.op === 3, opCol3: s.op === 3 ? '#17181B' : '#C4BDB3', toggleOp3: () => this.goOp(3),
+      op4: s.op === 4, opCol4: s.op === 4 ? '#17181B' : '#C4BDB3', toggleOp4: () => this.goOp(4),
+      op5: s.op === 5, opCol5: s.op === 5 ? '#17181B' : '#C4BDB3', toggleOp5: () => this.goOp(5),
+      op6: s.op === 6, opCol6: s.op === 6 ? '#17181B' : '#C4BDB3', toggleOp6: () => this.goOp(6),
       contactOpen: !!s.contactOpen,
       contactSent: !!s.contactSent,
       contactForm: !s.contactSent,
@@ -355,6 +401,8 @@ class Component extends DCLogic {
         this.setState({ contactSent: true });
       },
       zoom: s.zoom ?? 1,
+      opProg: s.opProg,
+      mxY: s.mxY,
       copyLabel: s.copied ? 'Copied' : 'Copy',
       copyEmail: () => {
         const done = () => this.setState({ copied: true });

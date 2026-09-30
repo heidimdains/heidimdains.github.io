@@ -9,6 +9,7 @@
 <meta property="og:description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
 html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
 body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}a:hover{opacity:.8}
@@ -53,7 +54,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
   </div>
   <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="position: fixed; right: 0; top: 320px; z-index: 60; writing-mode: vertical-rl; transform: rotate(180deg); padding: 18px 12px; border-radius: 0 12px 12px 0; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.10); font-size: 13px; color: #17181B;">Résumé (the boring version) ↗</a>
 
-  <div style="position: relative; z-index: 2;">
+  <div id="hd-layer" style="position: relative; z-index: 2;">
     <div style="position: relative; height: 4170px; background: {{ground}};">
 
       <section style="position: sticky; top: 0; height: 900px; z-index: 0;">
@@ -118,11 +119,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Drop me a note:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
-      <span style="font-size: 26px; letter-spacing: -0.02em;">heidimdains@gmail.com</span>
+      <a href="mailto:heidimdains@gmail.com" style="font-size: 26px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
       <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="height: 38px; padding: 0 14px; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">{{copyLabel}}</button>
     </div>
     <div style="display: flex; justify-content: center; gap: 26px; margin-top: 18px; font-size: 15px;">
-      <a href="https://www.linkedin.com/in/heididains/" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">Résumé ↗</a>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
@@ -145,7 +146,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The problem</span>
-            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">SMS had outgrown a single-brand, Wix-era presence as its portfolio grew to five brands.</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">SMS had outgrown a single-brand, Wix-era presence as its portfolio grew to six brands.</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The approach</span>
@@ -153,7 +154,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Result</span>
-            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">5</span> brands, one marketing function<br><span style="font-size: 17px; color: #4A4A48;">IBM Platinum Partner</span></span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">6</span> brands, one marketing function<br><span style="font-size: 17px; color: #4A4A48;">IBM Platinum Partner</span></span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
@@ -611,7 +612,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Elsewhere</span>
-            <a href="https://www.linkedin.com/in/heididains/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
             <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">Résumé ↗</a>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">

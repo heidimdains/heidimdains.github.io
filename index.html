@@ -9,6 +9,7 @@
 <meta property="og:description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
 html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
 body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}a:hover{opacity:.72}
@@ -57,7 +58,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
   <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="position: fixed; right: 0; top: 320px; z-index: 60; writing-mode: vertical-rl; transform: rotate(180deg); padding: 18px 12px; border-radius: 0 12px 12px 0; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.10); font-size: 13px; color: #17181B;">Résumé (the boring version) ↗</a>
 
   <!-- Content layer (sits above the revealed footer) -->
-  <div style="position: relative; z-index: 2;">
+  <div id="hd-layer" style="position: relative; z-index: 2;">
   <div style="border-radius: 0 0 44px 44px; overflow: clip; box-shadow: 0 30px 60px rgba(0,0,0,0.18);">
 
     <!-- HERO + PANEL -->
@@ -114,7 +115,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <div id="hd-track" style="position: absolute; top: 270px; left: 0; z-index: 2; display: flex; align-items: flex-start; gap: 44px; transform: translateX({{trackX}}px) scale(0.72); transform-origin: 0 0; will-change: transform;">
           <a href="work.html" class="bob3" style="position: relative; z-index: 2; flex-shrink: 0; margin: 60px 0 0 0; width: 280px; height: 400px; box-sizing: border-box; padding: 28px; border-radius: 16px; background: {{panel}}; color: #F3F1EC; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 24px 50px rgba(23,24,27,0.16);">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted}};">01 · Client work</span>
-            <span style="display: flex; flex-direction: column; gap: 12px;"><img src="assets/sms-logo-white-511a9e.png" alt="Strategic Maintenance Solutions" style="display: block; width: 224px; height: auto;"><span style="font-size: 16px; line-height: 1.4; color: {{panelMuted}};">Five brands, one marketing function.</span></span>
+            <span style="display: flex; flex-direction: column; gap: 12px;"><img src="assets/sms-logo-white-511a9e.png" alt="Strategic Maintenance Solutions" style="display: block; width: 224px; height: auto;"><span style="font-size: 16px; line-height: 1.4; color: {{panelMuted}};">Six brands, one marketing function.</span></span>
             <span style="font-size: 14px; color: #F3F1EC;">See the case study →</span>
           </a>
           <figure class="bob1" style="position: relative; z-index: 1; flex-shrink: 0; margin: 0 0 0 -40px; display: flex; flex-direction: column; gap: 12px;">
@@ -179,7 +180,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     <!-- ABOUT -->
     <section id="hd-about" style="position: relative; height: 1020px; box-sizing: border-box; padding: 150px 6% 0; background: {{ground}};">
       <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">About</span>
-      <p style="margin: 28px 0 0; max-width: 1200px; font-size: 62px; line-height: 1.1; font-weight: 400; letter-spacing: -0.042em;">Raised in Pittsburgh around motocross <img src="assets/moto-finish-wide-bw-949d5a.jpg" alt="Heidi with arms raised on a Supercross track, under the finish line at Gillette Stadium" style="display: inline-block; width: 150px; height: 84px; border-radius: 999px; object-fit: cover; object-position: 50% 60%; vertical-align: -12px;">, so playing it safe <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">never quite took.</span> Now I run marketing from Charleston for a five-brand portfolio.</p>
+      <p style="margin: 28px 0 0; max-width: 1200px; font-size: 62px; line-height: 1.1; font-weight: 400; letter-spacing: -0.042em;">Raised in Pittsburgh around motocross <img src="assets/moto-finish-wide-bw-949d5a.jpg" alt="Heidi with arms raised on a Supercross track, under the finish line at Gillette Stadium" style="display: inline-block; width: 150px; height: 84px; border-radius: 999px; object-fit: cover; object-position: 50% 60%; vertical-align: -12px;">, so playing it safe <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">never quite took.</span> Now I run marketing from Charleston for a six-brand portfolio.</p>
       <div style="position: absolute; left: 6%; right: 6%; top: 640px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; padding-top: 22px; border-top: 1px solid #C9C6C0;">
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: {{hiSmall}};">2024 — now</span>
@@ -188,8 +189,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #6D6A66;">2022 — 2024</span>
-          <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.01em;">Ansys</span>
-          <span style="font-size: 16px; line-height: 1.5; color: #4A4A48;">Channel marketing with global partners, from CES to executive programs in APAC.</span>
+          <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.01em;">Ansys (now Synopsys)</span>
+          <span style="font-size: 16px; line-height: 1.5; color: #4A4A48;">Channel marketing with global partners, from CES to international partner summits and executive programs in APAC. Promoted from coordinator along the way.</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #6D6A66;">2019 — 2022</span>
@@ -213,11 +214,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Drop me a note:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
-      <span style="font-size: 26px; letter-spacing: -0.02em;">heidimdains@gmail.com</span>
+      <a href="mailto:heidimdains@gmail.com" style="font-size: 26px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
       <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="height: 38px; padding: 0 14px; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">{{copyLabel}}</button>
     </div>
     <div style="display: flex; justify-content: center; gap: 26px; margin-top: 18px; font-size: 15px;">
-      <a href="https://www.linkedin.com/in/heididains/" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">Résumé ↗</a>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
@@ -259,7 +260,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Elsewhere</span>
-            <a href="https://www.linkedin.com/in/heididains/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
             <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">Résumé ↗</a>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
