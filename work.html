@@ -31,10 +31,10 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 @keyframes hdSlide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
 .hd-card .hd-media{transition:transform 1.2s cubic-bezier(.2,.75,.1,1)}
 .hd-card:hover .hd-media{transform:scale(1.05)}
-img.hd-zoom{cursor:zoom-in}
+img.hd-zoom{cursor:pointer}
 @keyframes hdZoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
-.hd-lightbox{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(23,24,27,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:zoom-out;animation:hdFade .25s ease both}
-.hd-lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.4);animation:hdZoomIn .35s cubic-bezier(.2,.75,.1,1) both}
+.hd-lightbox{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(23,24,27,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer;animation:hdFade .25s ease both}
+.hd-lightbox img{max-width:min(64vw,1000px);max-height:70vh;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.4);animation:hdZoomIn .35s cubic-bezier(.2,.75,.1,1) both}
 .hd-card:focus-visible{outline:2px solid #17181B;outline-offset:6px;border-radius:18px}
 @keyframes hdSheet{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
 @keyframes hdFade{from{opacity:0}to{opacity:1}}
@@ -603,9 +603,25 @@ class Component extends DCLogic {
       lb.appendChild(big);
       lb.addEventListener('click', this._zoomClose);
       document.body.appendChild(lb);
+      const pill = document.getElementById('hd-view'); if (pill) { pill.style.opacity = '0'; pill.style.zIndex = ''; } this._zoomPill = false;
     };
     this._zoomKey = (e) => { if (e.key === 'Escape' && document.querySelector('.hd-lightbox')) { e.stopImmediatePropagation(); this._zoomClose(); } };
     document.addEventListener('click', this._zoomClick, true);
+    this._zoomMove = (e) => {
+      const pill = document.getElementById('hd-view');
+      if (!pill) return;
+      const img = e.target.closest && e.target.closest('img.hd-zoom');
+      if (img && !document.querySelector('.hd-lightbox')) {
+        const z = (this.state && this.state.zoom) || 1;
+        pill.style.zIndex = '300';
+        pill.style.transform = 'translate(' + (e.clientX / z + 22) + 'px,' + (e.clientY / z - 23) + 'px)';
+        pill.style.opacity = '1';
+        this._zoomPill = true;
+      } else if (this._zoomPill) {
+        pill.style.opacity = '0'; pill.style.zIndex = ''; this._zoomPill = false;
+      }
+    };
+    document.addEventListener('mousemove', this._zoomMove, true);
     window.addEventListener('keydown', this._zoomKey, true);
     this._hdKey = (e) => { if (e.key === 'Escape' && this.state && (this.state.contactOpen || this.state.open)) { document.documentElement.style.overflow = ''; this.setState({ contactOpen: false, open: null }); } };
     window.addEventListener('keydown', this._hdKey);
@@ -622,6 +638,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     document.removeEventListener('click', this._zoomClick, true);
+    document.removeEventListener('mousemove', this._zoomMove, true);
     window.removeEventListener('keydown', this._zoomKey, true);
     window.removeEventListener('keydown', this._hdKey);
     window.removeEventListener('scroll', this._tick);
