@@ -103,7 +103,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </section>
 
     <!-- SELECTED WORK -->
-    <div id="hd-work" style="position: relative; height: 2500px; background: {{ground}};">
+    <div id="hd-work" style="position: relative; height: 2800px; background: {{ground}};">
       <section style="position: sticky; top: 0; height: 900px; overflow: hidden;">
         <div style="position: absolute; left: 0; right: 0; top: 380px; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px;">
           <h2 style="margin: 0; font-size: 84px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Selected work</h2>
@@ -326,7 +326,7 @@ class Component extends DCLogic {
     const k = 0.72;
     const start = vw * 0.9;
     const end = vw * 0.99 - tw * k;
-    this._tTarget = start + (end - start) * p;
+    this._tTarget = start + (end - start) * Math.min(1, p / 0.8);
     if (this._tCur == null) this._tCur = this._tTarget;
     if (!this._tRaf) {
       const step = () => {
