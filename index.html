@@ -85,7 +85,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <span style="position: absolute; right: 40px; bottom: 44px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Charleston, SC</span>
       </section>
 
-      <section style="position: relative; z-index: 5; height: 680px; margin: 0 12px; border-radius: 40px; background: {{panel}}; color: #F3F1EC; text-align: center;">
+      <section style="position: relative; z-index: 5; height: 680px; margin: 0; border-radius: 40px 40px 0 0; background: {{stmtBg}}; transition: background-color .6s ease; color: #F3F1EC; text-align: center;">
         <p style="margin: 0; padding-top: 150px; font-size: 18px; letter-spacing: -0.01em; color: {{panelMuted}};">Strategist · Builder · Operator · <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Creative</span></p>
         <p style="margin: 22px auto 0; max-width: 1000px; font-size: 64px; line-height: 1.04; font-weight: 400; letter-spacing: -0.04em;">I build brands people <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">remember.</span><br>No templates, no autopilot.</p>
         <a id="hd-pill" href="about.html" style="position: absolute; left: 50%; top: 430px; width: 912px; height: 360px; margin-left: -456px; border-radius: 180px; overflow: hidden; z-index: 6; transition: border-radius .5s cubic-bezier(.2,.75,.1,1); display: block; background: #1A1A1A; box-shadow: 0 40px 80px rgba(23,24,27,0.22);">
@@ -97,8 +97,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </div>
 
     <!-- STATEMENT -->
-    <section id="hd-statement" style="position: relative; height: 700px; box-sizing: border-box; padding-top: 250px; background: {{stmtBg}}; color: {{stmtFg}}; transition: color .35s ease; text-align: center;">
-      <p style="margin: 0 auto; max-width: 1040px; font-size: 54px; line-height: 1.08; font-weight: 400; letter-spacing: -0.04em;">Big idea first. Then the part where everyone asks <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">how the hell we’re going to pull it off.</span></p>
+    <section id="hd-statement" style="position: relative; height: 700px; box-sizing: border-box; padding-top: 250px; background: {{stmtBg}}; color: {{stmtFg}}; transition: background-color .6s ease, color .6s ease; text-align: center;">
+      <p style="margin: 0 auto; max-width: 1040px; font-size: 54px; line-height: 1.08; font-weight: 400; letter-spacing: -0.04em;">Big idea first. Then the part where everyone asks <span style="color: {{stmtHi}}; background-image: {{stmtHiGrad}}; transition: color .6s ease; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">how the hell we’re going to pull it off.</span></p>
       <p style="margin: 26px 0 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.06em; color: {{stmtMuted}};">(That’s my favorite part.)</p>
     </section>
 
@@ -321,7 +321,7 @@ class Component extends DCLogic {
     }
     const stmt = document.getElementById('hd-statement');
     let sT = 1;
-    if (stmt) { const sr = stmt.getBoundingClientRect(); sT = Math.min(1, Math.max(0, (vh * 1.05 - sr.top) / (vh * 0.5))); }
+    if (stmt) { const sr = stmt.getBoundingClientRect(); sT = (sr.top + 250 * z) < vh * 0.5 ? 1 : 0; }
     const tw = (track ? track.scrollWidth : 4800) - 200;
     const k = 0.72;
     const start = vw * 0.9;
@@ -359,7 +359,9 @@ class Component extends DCLogic {
     const sT = s.stmtT ?? 1;
     return {
       ...pal,
-      stmtBg: mix(pal.panel, pal.ground, sT),
+      stmtBg: sT ? pal.ground : pal.panel,
+      stmtHi: sT ? pal.hi : pal.sand,
+      stmtHiGrad: sT ? pal.hiGrad : pal.sandGrad,
       stmtFg: sT < 0.45 ? '#F3F1EC' : '#17181B',
       stmtMuted: sT < 0.45 ? '#BFB3A3' : '#6D6A66',
       contactOpen: !!s.contactOpen,
