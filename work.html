@@ -31,6 +31,10 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 @keyframes hdSlide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
 .hd-card .hd-media{transition:transform 1.2s cubic-bezier(.2,.75,.1,1)}
 .hd-card:hover .hd-media{transform:scale(1.05)}
+img.hd-zoom{cursor:zoom-in}
+@keyframes hdZoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.hd-lightbox{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(23,24,27,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:zoom-out;animation:hdFade .25s ease both}
+.hd-lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.4);animation:hdZoomIn .35s cubic-bezier(.2,.75,.1,1) both}
 .hd-card:focus-visible{outline:2px solid #17181B;outline-offset:6px;border-radius:18px}
 @keyframes hdSheet{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
 @keyframes hdFade{from{opacity:0}to{opacity:1}}
@@ -170,22 +174,22 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
               <div style="aspect-ratio: 170 / 340; border-radius: 14px; overflow: hidden; background: #111111;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/sms-brands-780d80.mp4" poster="assets/sms-brands-poster-8e4f35.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The SMS website on a phone, scrolling through PDM, DIME, YouBIM and 3D asset lifecycle management"></video></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 440 / 308; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/brand-guide-62c0e8.jpg" alt="SMS brand guidelines pages"></div>
+              <div style="aspect-ratio: 440 / 308; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/brand-guide-62c0e8.jpg" alt="SMS brand guidelines pages"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 440 / 248; border-radius: 14px; overflow: hidden; background: #EEEEEE;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/sms-desktop-mockup-125b91.jpg" alt="The new SMS homepage on a desktop"></div>
+              <div style="aspect-ratio: 440 / 248; border-radius: 14px; overflow: hidden; background: #EEEEEE;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/sms-desktop-mockup-125b91.jpg" alt="The new SMS homepage on a desktop"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 420 / 236; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/collateral-suite-dc218f.jpg" alt="SMS sales collateral pages"></div>
+              <div style="aspect-ratio: 420 / 236; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/collateral-suite-dc218f.jpg" alt="SMS sales collateral pages"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 300 / 225; border-radius: 14px; overflow: hidden; background: #F7F4EF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/social-suite-clean-bad1af.jpg" alt="A grid of SMS social posts"></div>
+              <div style="aspect-ratio: 300 / 225; border-radius: 14px; overflow: hidden; background: #F7F4EF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/social-suite-clean-bad1af.jpg" alt="A grid of SMS social posts"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 480 / 270; border-radius: 14px; overflow: hidden; background: #DDDDDD;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/sms-phone-mockup-ad9923.jpg" alt="The SMS website on a phone, in hand"></div>
+              <div style="aspect-ratio: 480 / 270; border-radius: 14px; overflow: hidden; background: #DDDDDD;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/sms-phone-mockup-ad9923.jpg" alt="The SMS website on a phone, in hand"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 16 / 8.4; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/sms-maximo-mobile-6ac2ad.jpg" alt="A Maximo Mobile ad from SMS with phone and tablet screens" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+              <div style="aspect-ratio: 16 / 8.4; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA hd-zoom" src="assets/sms-maximo-mobile-6ac2ad.jpg" alt="A Maximo Mobile ad from SMS with phone and tablet screens" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 16 / 8.9; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/sms-matterport-building-e24313.jpg" alt="A 3D digital twin of a building from a Matterport scan" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
@@ -585,6 +589,24 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 <script>
 class Component extends DCLogic {
   componentDidMount() {
+    this._zoomClose = () => { const lb = document.querySelector('.hd-lightbox'); if (lb) lb.remove(); };
+    this._zoomClick = (e) => {
+      const img = e.target.closest && e.target.closest('img.hd-zoom');
+      if (!img) return;
+      e.stopPropagation();
+      const lb = document.createElement('div');
+      lb.className = 'hd-lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-label', img.alt || 'Image');
+      const big = document.createElement('img');
+      big.src = img.currentSrc || img.src; big.alt = img.alt || '';
+      lb.appendChild(big);
+      lb.addEventListener('click', this._zoomClose);
+      document.body.appendChild(lb);
+    };
+    this._zoomKey = (e) => { if (e.key === 'Escape' && document.querySelector('.hd-lightbox')) { e.stopImmediatePropagation(); this._zoomClose(); } };
+    document.addEventListener('click', this._zoomClick, true);
+    window.addEventListener('keydown', this._zoomKey, true);
     this._hdKey = (e) => { if (e.key === 'Escape' && this.state && (this.state.contactOpen || this.state.open)) { document.documentElement.style.overflow = ''; this.setState({ contactOpen: false, open: null }); } };
     window.addEventListener('keydown', this._hdKey);
     this._raf = 0;
@@ -599,6 +621,8 @@ class Component extends DCLogic {
     document.querySelectorAll('video').forEach(v => { v.muted = true; const p = v.play && v.play(); if (p && p.catch) p.catch(() => {}); });
   }
   componentWillUnmount() {
+    document.removeEventListener('click', this._zoomClick, true);
+    window.removeEventListener('keydown', this._zoomKey, true);
     window.removeEventListener('keydown', this._hdKey);
     window.removeEventListener('scroll', this._tick);
     window.removeEventListener('resize', this._tick);
