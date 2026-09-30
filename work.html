@@ -142,7 +142,7 @@ img.hd-zoom{cursor:pointer}
     <button type="button" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
     <div style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
       <div style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
-        <div style="position: sticky; top: 0; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="position: relative; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">SMS · 2024 – now</span>
             <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Strategic Maintenance Solutions</h2>
@@ -158,7 +158,12 @@ img.hd-zoom{cursor:pointer}
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Result</span>
-            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">6</span> brands, one marketing function<br><span style="font-size: 17px; color: #4A4A48;">IBM Platinum Partner</span></span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">6</span> brands, one marketing function</span>
+          </div>
+          <div style="position: relative; overflow: hidden; box-sizing: border-box; padding: 22px 24px 24px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+            <span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: {{sandBg}};"></span>
+            <span style="display: flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{sand}};"><span style="background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">IBM Platinum Partner</span><span style="color: {{panelMuted2}};">· IBM’s top partner tier</span></span>
+            <p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: {{panelMuted}};">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence at MaximoWorld and IBM TechXchange.</p>
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
