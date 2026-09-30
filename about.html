@@ -9,6 +9,7 @@
 <meta property="og:description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
 #hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
 html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
 body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
@@ -253,11 +254,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
       <a href="mailto:heidimdains@gmail.com" style="font-size: 26px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
-      <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="height: 38px; padding: 0 14px; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">{{copyLabel}}</button>
+      <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button>
     </div>
-    <div style="display: flex; justify-content: center; gap: 26px; margin-top: 18px; font-size: 15px;">
-      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">LinkedIn ↗</a>
-      <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="display: flex; align-items: center; min-height: 44px; color: #F3F1EC;">Résumé ↗</a>
+    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 22px; font-size: 15px;">
+      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+      <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
       <span>© 2026 Heidi Dains</span>
@@ -293,12 +294,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Contact details</span>
             <div style="display: flex; align-items: center; gap: 12px;"><a href="mailto:heidimdains@gmail.com" style="font-size: 18px; color: #F3F1EC;">heidimdains@gmail.com</a>
-            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="height: 40px; padding: 0 14px; border: none; border-radius: 12px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer;">{{copyLabel}}</button></div>
+            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button></div>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
-            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Elsewhere</span>
-            <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">LinkedIn ↗</a>
-            <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="font-size: 18px; color: #F3F1EC;">Résumé ↗</a>
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Socials</span>
+            <div style="display: flex; gap: 10px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:heidimdains@gmail.com" target="_blank" rel="noopener" aria-label="Email" title="Email" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Based in</span>
@@ -403,8 +403,10 @@ class Component extends DCLogic {
       opProg: s.opProg,
       mxY: s.mxY,
       copyLabel: s.copied ? 'Copied' : 'Copy',
+      copied: !!s.copied,
+      notCopied: !s.copied,
       copyEmail: () => {
-        const done = () => this.setState({ copied: true });
+        const done = () => { this.setState({ copied: true }); clearTimeout(this._cpT); this._cpT = setTimeout(() => this.setState({ copied: false }), 1800); };
         try {
           const w = navigator.clipboard && navigator.clipboard.writeText('heidimdains@gmail.com');
           if (w && w.then) w.then(done).catch(() => {}); else done();
