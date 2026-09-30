@@ -5,7 +5,7 @@
   if (window.matchMedia('(pointer: coarse)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const EASE = 0.075;   // lower = slower, floatier glide
+  const EASE = 0.09;   // lower = slower, floatier glide
   const SPEED = 0.9;    // wheel distance multiplier
   let target = window.scrollY, cur = window.scrollY, raf = 0;
   const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
