@@ -12,6 +12,7 @@
 html,body{margin:0;background:#EBE9E5;overflow-x:clip}
 body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}a:hover{opacity:.72}
+#hd-pill:hover{opacity:1;transform:scale(1.035)}
 a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
 @keyframes hdRise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
 @keyframes hdUp{from{transform:translateY(120px);opacity:0}to{transform:none;opacity:1}}
@@ -87,7 +88,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
       <section style="position: relative; z-index: 5; height: 680px; margin: 0 12px; border-radius: 40px; background: {{panel}}; color: #F3F1EC; text-align: center;">
         <p style="margin: 0; padding-top: 150px; font-size: 18px; letter-spacing: -0.01em; color: {{panelMuted}};">Strategist · Builder · Operator · <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Creative</span></p>
         <p style="margin: 22px auto 0; max-width: 1000px; font-size: 64px; line-height: 1.04; font-weight: 400; letter-spacing: -0.04em;">I build brands people <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">remember.</span><br>No templates, no autopilot.</p>
-        <a id="hd-pill" href="about.html" style="position: absolute; left: 50%; top: 430px; width: 912px; height: 360px; margin-left: -456px; border-radius: 999px; overflow: hidden; transform: scale({{pillScale}}); z-index: 6; display: block; background: #1A1A1A; box-shadow: 0 40px 80px rgba(23,24,27,0.22);">
+        <a id="hd-pill" href="about.html" style="position: absolute; left: 50%; top: 430px; width: 912px; height: 360px; margin-left: -456px; border-radius: 999px; overflow: hidden; z-index: 6; transition: transform .6s cubic-bezier(.2,.75,.1,1); display: block; background: #1A1A1A; box-shadow: 0 40px 80px rgba(23,24,27,0.22);">
           <video id="hd-video" src="assets/life-reel-5445eb.mp4" poster="assets/life-reel-poster-7566c9.jpg" aria-label="A highlight reel of Heidi’s life: climbing red rock, her dog on a boat, a supercross start at Gillette Stadium, Devil’s Bridge and back roads in Sedona, a Pitt game, a sailboat at sunset, a beach club, a snowy mountain drive, an ocean sunset, and a walk across White Sands National Park" autoplay="" muted="" loop="" playsinline="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></video>
           <span aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(20,16,14,0.42) 0%, rgba(20,16,14,0.18) 60%, rgba(20,16,14,0) 100%);"></span>
           <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 104px; font-weight: 400; letter-spacing: -0.055em; color: #FFFFFF; text-shadow: 0 2px 30px rgba(23,24,27,0.45);">Detours welcome.</span>
