@@ -7,6 +7,21 @@
 <meta name="description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
 <meta property="og:title" content="Selected work · Heidi Dains">
 <meta property="og:description" content="Heidi Dains is a full-stack B2B marketer: strategy, brand, web, events, MarTech and AI, end to end.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heidimdains.github.io/work.html">
+<meta property="og:image" content="https://heidimdains.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Heidi Dains, Off-Road Marketer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://heidimdains.github.io/og.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icon-16.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="theme-color" content="#ECE7DF">
+<style>html.hd-in,html.hd-in body{background:#3B1620!important}html.hd-in #dc-root{transform:translate3d(0,100vh,0) scale(.9);border-radius:28px;overflow:hidden;background:#ECE7DF}</style>
+<script>try{if(sessionStorage.getItem('hd-trans')){sessionStorage.removeItem('hd-trans');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('hd-in')}}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
 .hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
@@ -43,6 +58,7 @@ img.hd-zoom{cursor:pointer}
 </style>
 <script src="dc-lite.js"></script>
 <script src="smooth.js" defer></script>
+<script src="transition.js" defer></script>
 </head>
 <body>
 <div id="dc-root"></div>
@@ -163,7 +179,7 @@ img.hd-zoom{cursor:pointer}
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">IBM Platinum Partner</span>
-            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence at MaximoWorld and IBM TechXchange.</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence across IBM’s event circuit, MaximoWorld and TechXchange included.</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
@@ -443,7 +459,7 @@ img.hd-zoom{cursor:pointer}
           </div>
         </div>
         <div style="flex: 1; min-width: 0; padding: 28px 0 90px;">
-            <figure style="margin: 0 0 22px;">
+            <figure class="cot-hero" style="margin: 0 auto 22px; width: 62%;">
               <div style="aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: #E9E6E1;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/coterra-b43-792851.mp4" poster="assets/coterra-b43-poster-524dcd.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The Coterra Devil’s Bridge poster leaning against a sunlit wall as the light moves"></video></div>
             </figure>
             <div style="columns: 2; column-gap: 22px;">
@@ -528,20 +544,27 @@ img.hd-zoom{cursor:pointer}
             <figure style="margin: 0 0 22px;">
               <div style="aspect-ratio: 1024 / 444; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/ces-booth-c66f48.jpg" alt="The Ansys team gathered in front of the Ansys booth at CES" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
             </figure>
-            <div style="columns: 2; column-gap: 22px;">
-            <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 955 / 500; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/ces-car-4e46bd.jpg" alt="A car wrapped in colorful airflow simulation lines, from Ansys at CES 2024"></div>
-            </figure>
+            <div class="ces-cols" style="display: flex; gap: 22px; align-items: flex-start;">
+          <div style="flex: 1; min-width: 0;">
             <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 600 / 386; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/ansys-duo-f73440.jpg" alt="Heidi and a colleague in an Ansys Instagram post"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 955 / 500; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/ces-car-4e46bd.jpg" alt="A car wrapped in colorful airflow simulation lines, from Ansys at CES 2024"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 290 / 186; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/crowd-1b48c3.jpg" alt="A full room at an Ansys hospitality event during CES"></div>
+            </figure>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1030 / 1148; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/ces-booth-team-f49c63.jpg" alt="The Ansys team greeting a visitor at the Ansys booth at CES"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 290 / 232; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/band-2edaeb.jpg" alt="A jazz trio on stage at the Ansys event"></div>
             </figure>
-            </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
@@ -646,6 +669,9 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
 .m-cols{column-gap:10px!important}
 .m-cols figure{margin-bottom:10px!important}
 .m-sright>figure{margin-bottom:10px!important}
+.m-sright>figure.cot-hero{width:100%!important}
+.ces-cols{gap:10px!important}
+.ces-cols figure{margin-bottom:10px!important}
 .m-sright>figure:first-child>div{aspect-ratio:auto!important;height:220px!important}
 .m-grid3{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
 .m-grid3>div{height:auto!important;min-height:0!important;padding:14px 12px!important;gap:6px!important;border-radius:12px!important}
@@ -758,7 +784,7 @@ img.hd-zoom{cursor:pointer}
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">IBM Platinum Partner</span>
-            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence at MaximoWorld and IBM TechXchange.</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence across IBM’s event circuit, MaximoWorld and TechXchange included.</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
@@ -1038,7 +1064,7 @@ img.hd-zoom{cursor:pointer}
           </div>
         </div>
         <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
-            <figure style="margin: 0 0 22px;">
+            <figure class="cot-hero" style="margin: 0 auto 22px; width: 62%;">
               <div style="aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: #E9E6E1;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/coterra-b43-792851.mp4" poster="assets/coterra-b43-poster-524dcd.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The Coterra Devil’s Bridge poster leaning against a sunlit wall as the light moves"></video></div>
             </figure>
             <div class="m-cols" style="columns: 2; column-gap: 22px;">
@@ -1123,20 +1149,27 @@ img.hd-zoom{cursor:pointer}
             <figure style="margin: 0 0 22px;">
               <div style="aspect-ratio: 1024 / 444; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/ces-booth-c66f48.jpg" alt="The Ansys team gathered in front of the Ansys booth at CES" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
             </figure>
-            <div class="m-cols" style="columns: 2; column-gap: 22px;">
-            <figure style="margin: 0 0 22px; break-inside: avoid;">
-              <div style="aspect-ratio: 955 / 500; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/ces-car-4e46bd.jpg" alt="A car wrapped in colorful airflow simulation lines, from Ansys at CES 2024"></div>
-            </figure>
+            <div class="ces-cols" style="display: flex; gap: 22px; align-items: flex-start;">
+          <div style="flex: 1; min-width: 0;">
             <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 600 / 386; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/ansys-duo-f73440.jpg" alt="Heidi and a colleague in an Ansys Instagram post"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 955 / 500; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/ces-car-4e46bd.jpg" alt="A car wrapped in colorful airflow simulation lines, from Ansys at CES 2024"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 290 / 186; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/crowd-1b48c3.jpg" alt="A full room at an Ansys hospitality event during CES"></div>
+            </figure>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1030 / 1148; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/ces-booth-team-f49c63.jpg" alt="The Ansys team greeting a visitor at the Ansys booth at CES"></div>
             </figure>
             <figure style="margin: 0 0 22px; break-inside: avoid;">
               <div style="aspect-ratio: 290 / 232; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/band-2edaeb.jpg" alt="A jazz trio on stage at the Ansys event"></div>
             </figure>
-            </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
