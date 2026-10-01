@@ -86,8 +86,8 @@
     return ups;
   }
 
-  window.dcMount = function (Component, props) {
-    const tplEl = document.getElementById('dc-tpl');
+  window.dcMount = function (Component, props, tplId) {
+    const tplEl = document.getElementById(tplId || 'dc-tpl');
     const frag = tplEl.content.cloneNode(true);
     const comp = new Component(props || {});
     const scope = { vals: {} };

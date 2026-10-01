@@ -592,6 +592,599 @@ img.hd-zoom{cursor:pointer}
   </sc-if>
 </div>
 </template>
+<template id="dc-tpl-m"><style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
+html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
+body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{opacity:.8}
+a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
+@keyframes hdRise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+@keyframes kbA{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-2%,-1.5%)}}
+@keyframes kbB{from{transform:scale(1.1) translate(2%,1%)}to{transform:scale(1.02) translate(-1%,-1%)}}
+@keyframes shotScroll{0%,10%{object-position:50% 0%}90%,100%{object-position:50% 100%}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee{animation:marquee 60s linear infinite}
+.marquee-wrap:hover .marquee{animation-play-state:paused}
+.hd-rise{animation:hdRise 1.2s cubic-bezier(.2,.75,.1,1) both}
+@keyframes kbC{from{transform:scale(1.06) translate(-2%,2%)}to{transform:scale(1.14) translate(2%,-2%)}}
+.kbC{animation:kbC 12s ease-in-out infinite alternate}
+.kbA{animation:kbA 14s ease-in-out infinite alternate}
+.kbB{animation:kbB 16s ease-in-out infinite alternate}
+.shot{animation:shotScroll 10s ease-in-out infinite alternate}
+@media (prefers-reduced-motion: reduce){.marquee,.hd-rise,.kbA,.kbB,.kbC,.shot{animation:none}}
+@keyframes hdSlide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.hd-card .hd-media{transition:transform 1.2s cubic-bezier(.2,.75,.1,1)}
+.hd-card:hover .hd-media{transform:scale(1.05)}
+img.hd-zoom{cursor:pointer}
+@keyframes hdZoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.hd-lightbox{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(23,24,27,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer;animation:hdFade .25s ease both}
+.hd-lightbox img{max-width:min(64vw,1000px);max-height:70vh;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.4);animation:hdZoomIn .35s cubic-bezier(.2,.75,.1,1) both}
+.hd-card:focus-visible{outline:2px solid #17181B;outline-offset:6px;border-radius:18px}
+@keyframes hdSheet{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+@keyframes hdFade{from{opacity:0}to{opacity:1}}
+@keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+
+html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
+.m-root{width:100%;max-width:760px;margin:0 auto;overflow-x:clip}
+.m-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.m-scroll::-webkit-scrollbar{display:none}
+.m-scroll>*{scroll-snap-align:start;flex-shrink:0}
+.m-modal{width:auto!important;max-width:none!important;max-height:calc(100dvh - 24px)!important;padding:64px 22px 26px!important;border-radius:24px!important;margin:0 12px}
+.m-modal h2{font-size:36px!important}
+.m-modal-row{flex-direction:column!important;gap:28px!important;margin-top:26px!important}
+.m-modal-row>div{width:auto!important}
+.m-modal button[aria-label="Close"]{top:14px!important;right:14px!important;width:44px!important;height:44px!important}
+.hd-soc{transition:background .25s ease}
+
+.m-sheet{left:0!important;right:0!important;top:64px!important;border-radius:22px 22px 0 0!important}
+.m-sclose{top:10px!important;width:44px!important;height:44px!important;margin-left:-22px!important;border-radius:12px!important;font-size:18px!important}
+.m-srow{flex-direction:column!important;gap:0!important;padding:0 18px!important}
+.m-sleft{position:relative!important;top:auto!important;width:auto!important;padding:30px 0 8px!important;gap:20px!important}
+.m-sleft h2{font-size:36px!important}
+.m-sright{width:100%!important;padding:10px 0 110px!important}
+.m-cols{column-gap:10px!important}
+.m-cols figure{margin-bottom:10px!important}
+.m-sright>figure{margin-bottom:10px!important}
+.m-grid3{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.m-grid3>div{height:auto!important;min-height:220px;padding:18px 16px!important}
+.hd-lightbox img{max-width:94vw!important;max-height:80vh!important}
+img.hd-zoom{cursor:pointer}
+</style>
+<div class="m-root">
+  <div style="position: fixed; left: 0; right: 0; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60; display: flex; justify-content: center; pointer-events: none;">
+    <nav aria-label="Main" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 5px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.16); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;"><a href="index.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Home</a><a href="work.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B; background: {{sandBg}};">Work</a><a href="about.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">About</a></nav>
+  </div>
+  
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0;">
+      <a href="index.html" style="font-size: 19px; letter-spacing: -0.02em;">Heidi Dains</a>
+      <button type="button" onClick="{{openContact}}" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 8px 0 16px; border-radius: 999px; background: {{sandBg}}; font-family: inherit; font-size: 14px; font-weight: 500; color: #17181B; border: none;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 13px;">→</span></button>
+    </header>
+  <section style="padding: 52px 20px 0;">
+    <h1 class="hd-rise" style="margin: 0; font-size: 58px; line-height: 0.95; font-weight: 400; letter-spacing: -0.055em; color: #17181B;">Selected work<span style="margin-bottom: 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 15px; letter-spacing: 0; color: #6D6A66;">[05]</span></h1>
+    <p class="hd-rise" style="margin: 16px 0 0; font-size: 18px; line-height: 1.35; letter-spacing: -0.02em; color: #3A3A3A;">My favorite projects usually start with, “<span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">This might be a little crazy.</span>”</p>
+  </section>
+  <section style="padding: 40px 20px 100px; display: flex; flex-direction: column; gap: 40px;">
+      <div role="button" tabIndex="0" onClick="{{openSMSSheet}}" aria-label="View Strategic Maintenance Solutions" style="cursor: pointer;">
+        <div style="position: relative; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: #141A2B;"><video style="display: block; width: 100%; height: 100%; object-fit: contain;" src="assets/sms-globe-6c70b8.mp4" poster="assets/sms-globe-poster-69ca08.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The interactive globe on the SMS website"></video>
+          <span style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 13px;">View</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px;">
+          <span style="font-size: 20px; letter-spacing: -0.02em; color: #17181B;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66; margin-right: 8px;">01</span>SMS</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #6D6A66;">Brand strategy · Web · Content &amp; social · Marketing operations</span>
+        </div>
+      </div>
+      <div role="button" tabIndex="0" onClick="{{openMWSheet}}" aria-label="View MaximoWorld 2026, Nashville" style="cursor: pointer;">
+        <div style="position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/mw-booth-crowd-4484d4.jpg" alt="A crowd at the SMS booth, booth #424">
+          <span style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 13px;">View</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px;">
+          <span style="font-size: 20px; letter-spacing: -0.02em; color: #17181B;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66; margin-right: 8px;">02</span>MaximoWorld 2026</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #6D6A66;">Events · Sponsorship · Brand · Demand gen</span>
+        </div>
+      </div>
+      <div role="button" tabIndex="0" onClick="{{openRSASheet}}" aria-label="View RSA" style="cursor: pointer;">
+        <div style="position: relative; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: #0D0C11;"><video style="display: block; width: 100%; height: 86%; object-fit: cover;" src="assets/rsa-site-3d50ad.mp4" poster="assets/rsa-site-poster-7b4017.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Scrolling through the RSA website"></video>
+          <span style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 13px;">View</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px;">
+          <span style="font-size: 20px; letter-spacing: -0.02em; color: #17181B;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66; margin-right: 8px;">03</span>RSA</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #6D6A66;">Positioning · Identity · Web · Sales enablement</span>
+        </div>
+      </div>
+      <div role="button" tabIndex="0" onClick="{{openCOTSheet}}" aria-label="View Coterra" style="cursor: pointer;">
+        <div style="position: relative; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transform-origin: 50% 0%;" class="kbA" src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra Devil’s Bridge poster styled above a bench">
+          <span style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 13px;">View</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px;">
+          <span style="font-size: 20px; letter-spacing: -0.02em; color: #17181B;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66; margin-right: 8px;">04</span>Coterra</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #6D6A66;">Naming · Identity · Product · Styling</span>
+        </div>
+      </div>
+      <div role="button" tabIndex="0" onClick="{{openEARSheet}}" aria-label="View Earlier chapters" style="cursor: pointer;">
+        <div style="position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/warehouse-bc03b6.jpg" alt="Bikes and sneaker boxes on a warehouse floor at SneakerCon Chicago" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+          <span style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 13px;">View</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px;">
+          <span style="font-size: 20px; letter-spacing: -0.02em; color: #17181B;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66; margin-right: 8px;">05</span>Earlier chapters</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #6D6A66;">Partnerships · Events · Channel marketing</span>
+        </div>
+      </div>
+  </section>
+
+    <footer style="position: relative; background: {{panel}}; color: #F3F1EC; text-align: center; padding: 84px 20px 120px; border-radius: 28px 28px 0 0; margin-top: -28px;">
+      <div style="position: relative;">
+        <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="display: block; width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; object-fit: cover;">
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;">Every brand needs</p>
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
+      </div>
+      <p style="margin: 40px 0 8px; font-size: 14px; color: {{panelMuted2}};">Say hello:</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <a href="mailto:heidimdains@gmail.com" style="font-size: 21px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
+        <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: 18px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+      <div style="margin-top: 44px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: {{panelMuted2}};">
+        <span>Pittsburgh-raised, Charleston-based</span>
+        <span>© 2026 Heidi Dains</span>
+      </div>
+    </footer>
+  <sc-if value="{{openSMS}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Strategic Maintenance Solutions" style="position: fixed; inset: 0; z-index: 180; animation: hdFade .35s ease both;">
+    <div onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <button type="button" class="m-sclose" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
+    <div class="m-sheet" style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
+      <div class="m-srow" style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
+        <div class="m-sleft" style="position: relative; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">SMS · 2024 – now</span>
+            <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Strategic Maintenance Solutions</h2>
+            <span style="font-size: 15px; line-height: 1.5; color: #6D6A66;">Brand strategy · Web · Content &amp; social · Marketing operations</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The problem</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">SMS had outgrown a single-brand, Wix-era presence as its portfolio grew to six brands.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The approach</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">One marketing function and one brand system, a distinct voice for each brand, and enterprise tech explained so buyers actually get it.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Result</span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">6</span> brands, one marketing function</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">IBM Platinum Partner</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Platinum puts SMS in IBM’s top partner tier, and holds every campaign, event and asset to IBM’s brand and partner standards. I run the marketing side of that relationship: IBM co-marketing and MDF-funded programs, co-branded campaigns, and our presence at MaximoWorld and IBM TechXchange.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Marketing became something the whole company runs on, not something it waits on.</span>
+          </div>
+        </div>
+        <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 720 / 457; border-radius: 18px; overflow: hidden; background: #141A2B;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/sms-globe-6c70b8.mp4" poster="assets/sms-globe-poster-69ca08.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The interactive globe on the SMS website"></video></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 170 / 340; border-radius: 14px; overflow: hidden; background: #111111;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/sms-brands-780d80.mp4" poster="assets/sms-brands-poster-8e4f35.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The SMS website on a phone, scrolling through PDM, DIME, YouBIM and 3D asset lifecycle management"></video></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 440 / 308; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/brand-guide-62c0e8.jpg" alt="SMS brand guidelines pages"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 440 / 248; border-radius: 14px; overflow: hidden; background: #EEEEEE;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/sms-desktop-mockup-125b91.jpg" alt="The new SMS homepage on a desktop"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 420 / 236; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/collateral-suite-dc218f.jpg" alt="SMS sales collateral pages"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 300 / 225; border-radius: 14px; overflow: hidden; background: #F7F4EF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/social-suite-clean-bad1af.jpg" alt="A grid of SMS social posts"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 480 / 270; border-radius: 14px; overflow: hidden; background: #DDDDDD;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/sms-phone-mockup-ad9923.jpg" alt="The SMS website on a phone, in hand"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 16 / 8.4; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA hd-zoom" src="assets/sms-maximo-mobile-6ac2ad.jpg" alt="A Maximo Mobile ad from SMS with phone and tablet screens" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 16 / 8.9; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/sms-matterport-building-e24313.jpg" alt="A 3D digital twin of a building from a Matterport scan" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 928 / 1152; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/sms-ai-1-b66cc3.jpg" alt="A technician with a tablet in a plant, AI-generated campaign image" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            </div>
+            <div style="margin-top: 26px; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The brand family</span>
+            <span style="font-size: 15px; color: #4A4A48;">What I do for each: positioning, tone of voice, social, and its place on the SMS site.</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));" class="m-grid3" data-x=" gap: 14px;">
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/sms-logo-white-0e0754.png" alt="Strategic Maintenance Solutions logo" style="display: block; max-width: 150px; max-height: 40px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">SMS</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">The parent brand: enterprise asset management and IBM Maximo consulting.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: clean, professional, trustworthy</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/rsa-logo-white-3b3cc2.png" alt="PDM and RSA logo" style="display: block; max-width: 150px; max-height: 34px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">PDM · RSA</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">Predictive maintenance services, including Robotic Signature Analysis.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: witty, engineer to engineer, a little profane</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/dime-white-c8c228.png" alt="DIME logo" style="display: block; max-width: 150px; max-height: 60px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">DIME</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">Data In Motion Enterprise: data integration and monitoring.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: the SMS standard</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/youbim-white-02da83.png" alt="YouBIM logo" style="display: block; max-width: 150px; max-height: 44px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">YouBIM</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">BIM for facilities management: 3D asset lifecycle management.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: the SMS standard</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/ebiz-white-793dd3.png" alt="eBusiness Strategies logo" style="display: block; max-width: 150px; max-height: 40px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">EBiz</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">Enterprise workplace consulting, brought into the family through a new partnership.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: the SMS standard</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; min-height: 250px; padding: 24px 20px; border-radius: 16px; background: {{panel}}; color: #F3F1EC;">
+              <div style="height: 64px; display: flex; align-items: center;"><img src="assets/3dcs-white-3e681c.png" alt="3D Capture Services logo" style="display: block; max-width: 150px; max-height: 32px; width: auto; height: auto; object-fit: contain;"></div>
+              <span style="font-size: 19px; letter-spacing: -0.02em;">3DCS</span>
+              <span style="font-size: 14px; line-height: 1.45; color: {{panelMuted}};">Matterport scans and digital twins of entire facilities. An SMS initiative.</span>
+              <span style="margin-top: auto; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Voice: the SMS standard</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{openMW}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="MaximoWorld 2026, Nashville" style="position: fixed; inset: 0; z-index: 180; animation: hdFade .35s ease both;">
+    <div onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <button type="button" class="m-sclose" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
+    <div class="m-sheet" style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
+      <div class="m-srow" style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
+        <div class="m-sleft" style="position: sticky; top: 0; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">SMS · Nashville, 2026</span>
+            <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">MaximoWorld 2026, Nashville</h2>
+            <span style="font-size: 15px; line-height: 1.5; color: #6D6A66;">Event strategy · Sponsorship · IBM co-marketing · Demand gen · Hospitality</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The problem</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">IBM’s biggest asset-management conference, and the year before produced a handful of booth leads.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The approach</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Run it as one integrated program, not a booth: sponsorship, demand gen, sales alignment, hospitality and follow-up around a single Nashville idea.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Result</span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;"><span style="font-size: 56px; line-height: 1; letter-spacing: -0.05em; color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">10.8×</span> more booth leads than the year before</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Events now run from a playbook instead of a blank page.</span>
+          </div>
+        </div>
+        <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 640 / 480; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/mw-booth-crowd-4484d4.jpg" alt="A crowd at the SMS booth, booth #424"></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 170 / 302; border-radius: 14px; overflow: hidden; background: #111111;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/expo-tv-0018d9.mp4" poster="assets/expo-tv-poster-6ffb56.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Animated expo screen from the SMS booth"></video></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 280 / 373; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/second-chances-poster-12b741.jpg" alt="Second Chances sponsorship poster"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 280 / 210; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/mw-whiskers-2404c7.jpg" alt="A booth sign reading Some sponsorships have whiskers"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 280 / 210; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/mw-banner-bb6aa9.jpg" alt="Booth graphic over the Nashville skyline"></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 200 / 267; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/mw-bandana-66db5b.jpg" alt="A Nashville 2026 bandana"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 200 / 267; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/mw-cowboy-hat-6c836f.jpg" alt="An SMS-branded Stetson"></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 300 / 237; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbC" src="assets/team-8cf36f.jpg" alt="The SMS team at booth #424"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 280 / 373; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/puppy-687029.jpg" alt="A guest holding an adoptable puppy in the booth"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 260 / 337; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/mw-recap-clean-47bebd.jpg" alt="The MaximoWorld recap email"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 560 / 420; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/tgb-heidi-bf3295.jpg" alt="Heidi with T. Graham Brown at the hospitality night"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/sms-poster-aed7cc.jpg" alt="The SMS Hospitality Event poster on an easel"></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/balloons-e6388f.jpg" alt="SMS balloons over the venue"></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/mw-postcards-b2d294.jpg" alt="Upstairs Tonight invitations and a signed T. Graham Brown CD"></div>
+              
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/mw-session-fa039c.jpg" alt="A packed room for an SMS session on the MaximoWorld main stage" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/mw-coaster-65799c.jpg" alt="An SMS-branded coaster"></div>
+              
+            </figure>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{openRSA}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="RSA" style="position: fixed; inset: 0; z-index: 180; animation: hdFade .35s ease both;">
+    <div onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <button type="button" class="m-sclose" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
+    <div class="m-sheet" style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
+      <div class="m-srow" style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
+        <div class="m-sleft" style="position: sticky; top: 0; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">SMS · PDM · Robotic Signature Analysis</span>
+            <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">RSA</h2>
+            <span style="font-size: 15px; line-height: 1.5; color: #6D6A66;">Positioning · Identity · Web · Sales enablement</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The problem</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Proven technology and big-name customers, but no brand of its own to sell with.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">The approach</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">Story first, in a gritty, engineer-led voice. Then a website and a sales kit to carry it.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Trusted by</span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;">Honda · Stellantis · Cliffs · IBM · Siemens</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What changed</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #2A2A2A;">RSA went from a capability inside SMS to a brand that opens its own doors.</span>
+          </div>
+        </div>
+        <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 720 / 555; border-radius: 18px; overflow: hidden; background: #111111;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/rsa-site-3d50ad.mp4" poster="assets/rsa-site-poster-7b4017.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Scrolling through the RSA website"></video></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 520 / 293; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/brand-deck-f1a13a.jpg" alt="RSA brand deck spreads"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 520 / 220; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB hd-zoom" src="assets/rsa-cards-2-0a3fbd.jpg" alt="RSA business cards on concrete steps"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 460 / 319; border-radius: 14px; overflow: hidden; background: #111111;"><img class="hd-zoom" style="display: block; width: 185%; height: 185%; max-width: none; object-fit: cover; object-position: 0 0;" src="assets/rsa-site-d14f0b.jpg" alt="The RSA website homepage, zoomed in on the headline"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 390 / 213; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/rsa-pipes-ca25b3.jpg" alt="A long industrial pipe corridor" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 540 / 332; border-radius: 14px; overflow: hidden; background: #E8E5E0;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA hd-zoom" src="assets/rsa-social-kit-c49145.jpg" alt="RSA YouTube and LinkedIn headers and profile images"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/rsa-robot-3dc28d.jpg" alt="A robotic arm on a factory line" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: #E9E9E9;"><img style="display: block; width: 100%; height: 100%; object-fit: contain;" class="hd-zoom" src="assets/rsa-testimonials-crop-ea3c64.jpg" alt="RSA customer testimonials from Honda, Cliffs and Stellantis"></div>
+            </figure>
+            </div>
+            <figure style="margin: 4px 0 22px;">
+              <div style="aspect-ratio: 700 / 172; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/rsa-colorways-d12f8b.jpg" alt="The RSA logo on dark, orange and white"></div>
+            </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{openCOT}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Coterra" style="position: fixed; inset: 0; z-index: 180; animation: hdFade .35s ease both;">
+    <div onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <button type="button" class="m-sclose" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
+    <div class="m-sheet" style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
+      <div class="m-srow" style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
+        <div class="m-sleft" style="position: relative; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Passion project · my own brand · 2026</span>
+            <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Coterra</h2>
+            <span style="font-size: 15px; line-height: 1.5; color: #6D6A66;">Naming · Identity · Product design · Styling · E-commerce</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What it is</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">Trail art for people who&rsquo;d rather be outside. Posters of the hikes that stick with you, from Sedona&rsquo;s red rock to the national parks, each finished with a seal that carries the date you hiked it.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Why I started it</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">I&rsquo;ve spent my career building other people&rsquo;s brands. Coterra is the one where I&rsquo;m the client, the designer and the entire approval chain. The meetings are very short.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What I&rsquo;m building</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;"><span style="display: flex; flex-direction: column; gap: 8px;">
+              <span><strong style="font-weight: 500;">The brand.</strong> The name, the identity and the hike-date seal.</span>
+              <span><strong style="font-weight: 500;">The Trail Series.</strong> The big view, one trail per poster.</span>
+              <span><strong style="font-weight: 500;">The Companion Collection.</strong> Close-up terrain studies designed to hang beside them.</span>
+              <span><strong style="font-weight: 500;">The shop.</strong> Every room mockup styled, every listing written, every product page built by me.</span>
+            </span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Where it&rsquo;s going</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">More trails, more parks, and more ways to make it yours. A shop of its own after that. The rest is on the horizon, and I&rsquo;m walking toward it.</span>
+          </div>
+        </div>
+        <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: #E9E6E1;"><video style="display: block; width: 100%; height: 100%; object-fit: cover;" src="assets/coterra-b43-792851.mp4" poster="assets/coterra-b43-poster-524dcd.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The Coterra Devil’s Bridge poster leaning against a sunlit wall as the light moves"></video></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 330 / 330; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/cotera-seal-1ccf6c.jpg" alt="The Coterra hike-date seal"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 350 / 350; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/cotera-pair-c17963.jpg" alt="A Coterra poster and companion print leaning in soft light"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 330 / 330; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/cotera-poster-b16568.jpg" alt="The Coterra Devil’s Bridge poster with its hike-date seal"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 350 / 350; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/cotera-credenza-5c91f4.jpg" alt="A Coterra poster and companion above a credenza"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 250 / 250; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbC" src="assets/cotera-plants-0f2a4b.jpg" alt="A Coterra print among plants"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 250 / 250; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/cotera-framed-67b58c.jpg" alt="A framed Coterra succulent print"></div>
+            </figure>
+            </div>
+                        <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 16 / 11; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%;" class="kbA" src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra Devil’s Bridge poster styled above a bench"></div>
+            </figure>
+            <div style="margin-top: 20px;">
+              <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{hiSmall}};">The Companion Collection · close-up terrain studies</span>
+              <div class="marquee-wrap" style="margin-top: 14px; height: 240px; overflow: hidden; border-radius: 14px;">
+          <div class="marquee" style="display: flex; gap: 14px; width: max-content;"><img src="assets/cotera-cactus-d16632.jpg" alt="Cactus close-up" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp3-0c4230.jpg" alt="Red rock" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp4-691798.jpg" alt="Succulent in red rock" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp5-ee62b7.jpg" alt="Desert floor" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp7-d5129d.jpg" alt="Branches in red sand" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-texture1-807373.jpg" alt="Slot canyon texture" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-texture2-e7abbd.jpg" alt="Canyon waves" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="Pair above a bed" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-cactus-d16632.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp3-0c4230.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp4-691798.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp5-ee62b7.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-comp7-d5129d.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-texture1-807373.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-texture2-e7abbd.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="" style="display: block; flex-shrink: 0; width: 250px; height: 250px; border-radius: 12px; object-fit: cover;"></div></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{openEAR}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Earlier chapters" style="position: fixed; inset: 0; z-index: 180; animation: hdFade .35s ease both;">
+    <div onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <button type="button" class="m-sclose" onClick="{{closeSheet}}" aria-label="Close" style="position: absolute; top: 34px; left: 50%; margin-left: -30px; width: 60px; height: 60px; border: none; border-radius: 16px; background: {{sandBg}}; color: #17181B; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2;">✕</button>
+    <div class="m-sheet" style="position: absolute; left: 16px; right: 16px; top: 118px; bottom: 0; border-radius: 30px 30px 0 0; background: #F7F4EF; overflow-y: auto; animation: hdSheet .6s cubic-bezier(.2,.75,.1,1) both;">
+      <div class="m-srow" style="display: flex; align-items: flex-start; gap: 44px; padding: 0 28px 0 64px;">
+        <div class="m-sleft" style="position: relative; width: 470px; flex-shrink: 0; box-sizing: border-box; padding: 56px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">American Eagle · Ansys (now Synopsys) · 2019 – 2024</span>
+            <h2 style="margin: 0; font-size: 46px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Earlier chapters</h2>
+            <span style="font-size: 15px; line-height: 1.5; color: #6D6A66;">Partnerships · Events · Channel marketing · Global launches</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">American Eagle · 2019 – 2022</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">I ran a $1M+ partnership with Urban Necessities, the culture-driven sneaker brand. That meant representing American Eagle at national sneaker events like SneakerCon, and negotiating for the kind of product people camp out overnight for. Sneakerheads can smell a brand faking it, so we didn&rsquo;t. After that, I moved into international operations and led the brand&rsquo;s operational relaunch in Japan.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Ansys (now Synopsys) · 2022 – 2024</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">I started as a coordinator and was promoted within the channel marketing team. I built co-branded campaigns with global partners and shaped partner engagement at international summits and CES in Las Vegas. The job at CES: make simulation software the room everyone wanted into.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">What carried over</span>
+            <span style="font-size: 16px; line-height: 1.55; color: #2A2A2A;">The industries changed. The job of making people remember a brand didn&rsquo;t.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="padding-bottom: 10px; border-bottom: 1px solid #D9D4CB; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Range</span>
+            <span style="font-size: 18px; line-height: 1.5; color: #2A2A2A;">Consumer + enterprise<br>Creative + technical<br>Physical + digital</span>
+          </div>
+        </div>
+        <div class="m-sright" style="flex: 1; min-width: 0; padding: 28px 0 90px;">
+            <div style="display: flex; align-items: baseline; gap: 14px; margin: 18px 0 18px; padding-bottom: 10px; border-bottom: 1px solid #D9D4CB;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">American Eagle × Urban Necessities</span></div>
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 2000 / 734; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/sc-trading-pit-6d55dd.jpg" alt="A packed SneakerCon convention floor under the Trading Pit banner" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/aeo-campus-764724.jpg" alt="A group in front of the American Eagle corporate campus in Pittsburgh"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: #FFFFFF; padding: 18px; box-sizing: border-box;"><img style="display: block; width: 100%; height: 100%; object-fit: contain;" class="kbC" src="assets/sc-logo-3fa500.jpg" alt="The SneakerCon logo"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/warehouse-bc03b6.jpg" alt="Bikes and sneaker boxes on a warehouse floor at SneakerCon Chicago"></div>
+            </figure>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px; margin: 18px 0 18px; padding-bottom: 10px; border-bottom: 1px solid #D9D4CB;"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">Ansys · CES</span></div>
+            <figure style="margin: 0 0 22px;">
+              <div style="aspect-ratio: 1024 / 444; border-radius: 18px; overflow: hidden; background: #DDDAD4;"><img class="kbA" src="assets/ces-booth-c66f48.jpg" alt="The Ansys team gathered in front of the Ansys booth at CES" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+            </figure>
+            <div class="m-cols" style="columns: 2; column-gap: 22px;">
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 955 / 500; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/ces-car-4e46bd.jpg" alt="A car wrapped in colorful airflow simulation lines, from Ansys at CES 2024"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 600 / 386; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/ansys-duo-f73440.jpg" alt="Heidi and a colleague in an Ansys Instagram post"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 290 / 186; border-radius: 14px; overflow: hidden; background: #FFFFFF;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbA" src="assets/crowd-1b48c3.jpg" alt="A full room at an Ansys hospitality event during CES"></div>
+            </figure>
+            <figure style="margin: 0 0 22px; break-inside: avoid;">
+              <div style="aspect-ratio: 290 / 232; border-radius: 14px; overflow: hidden; background: #DDDAD4;"><img style="display: block; width: 100%; height: 100%; object-fit: cover;" class="kbB" src="assets/band-2edaeb.jpg" alt="A jazz trio on stage at the Ansys event"></div>
+            </figure>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- CONTACT POP-UP -->
+  <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="hd-contact-title" style="position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; animation: hdFade .35s ease both;">
+    <div onClick="{{closeContact}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <div class="m-modal" style="position: relative; width: 1000px; max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); overflow: auto; box-sizing: border-box; padding: 72px 76px 76px; border-radius: 32px; background: {{panel}}; color: #F3F1EC; box-shadow: 0 50px 120px rgba(0,0,0,0.35); animation: hdPop .5s cubic-bezier(.2,.75,.1,1) both;">
+      <button type="button" onClick="{{closeContact}}" aria-label="Close" style="position: absolute; top: 28px; right: 28px; width: 52px; height: 52px; border: none; border-radius: 14px; background: rgba(255,255,255,0.07); color: #F3F1EC; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Let’s build <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">what’s next.</span></h2>
+      <div class="m-modal-row" style="margin-top: 56px; display: flex; gap: 56px;">
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
+            <label for="hd-c-email" style="font-size: 17px;">Your email</label>
+            <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
+            <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
+            <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+          </sc-if>
+        </div>
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Contact details</span>
+            <div style="display: flex; align-items: center; gap: 12px;"><a href="mailto:heidimdains@gmail.com" style="font-size: 18px; color: #F3F1EC;">heidimdains@gmail.com</a>
+            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Receipts</span>
+            <div style="display: flex; gap: 10px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Based in</span>
+            <span style="font-size: 18px; color: #F3F1EC;">Charleston, SC · open to remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</template>
 <script>
 class Component extends DCLogic {
   componentDidMount() {
@@ -741,7 +1334,14 @@ class Component extends DCLogic {
     };
   }
 }
-dcMount(Component, {"palette": "Desert Sunset"});
+(function () {
+  var mq = window.matchMedia('(max-width: 760px)');
+  var useM = mq.matches && document.getElementById('dc-tpl-m');
+  if (useM) document.documentElement.classList.add('is-mobile');
+  dcMount(Component, {"palette": "Desert Sunset"}, useM ? 'dc-tpl-m' : 'dc-tpl');
+  var start = mq.matches;
+  mq.addEventListener('change', function (e) { if (e.matches !== start) location.reload(); });
+})();
 </script>
 </body>
 </html>

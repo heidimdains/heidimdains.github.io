@@ -272,6 +272,191 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
   </sc-if>
 </div>
 </template>
+<template id="dc-tpl-m"><style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
+html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
+body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{opacity:.72}
+#hd-pill:hover{opacity:1;border-radius:104px !important}
+a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
+@keyframes hdRise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+@keyframes hdUp{from{transform:translateY(120px);opacity:0}to{transform:none;opacity:1}}
+.hd-rise{animation:hdRise 1.2s cubic-bezier(.2,.75,.1,1) both}
+.hd-d1{animation-delay:.12s}.hd-d2{animation-delay:.24s}.hd-d3{animation-delay:.5s}
+.hd-up{animation:hdUp 1.4s cubic-bezier(.2,.75,.1,1) .2s both}
+@keyframes kbA{from{transform:scale(1.03) translate(0,0)}to{transform:scale(1.16) translate(-3%,-2%)}}
+@keyframes kbB{from{transform:scale(1.15) translate(3%,2%)}to{transform:scale(1.03) translate(-1%,-1%)}}
+@keyframes kbC{from{transform:scale(1.06) translate(-2%,2%)}to{transform:scale(1.18) translate(2%,-2%)}}
+@keyframes shotScroll{0%,10%{object-position:50% 0%}90%,100%{object-position:50% 100%}}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-14px)}}
+.kbA{animation:kbA 11s ease-in-out infinite alternate}
+.kbB{animation:kbB 13s ease-in-out infinite alternate}
+.kbC{animation:kbC 9s ease-in-out infinite alternate}
+.shot{animation:shotScroll 9s ease-in-out infinite alternate}
+.bob1{animation:bob 5s ease-in-out infinite alternate}
+.bob2{animation:bob 6.5s ease-in-out -2s infinite alternate}
+.bob3{animation:bob 5.8s ease-in-out -4s infinite alternate}
+@media (prefers-reduced-motion: reduce){.hd-rise,.hd-up,.kbA,.kbB,.kbC,.shot,.bob1,.bob2,.bob3{animation:none}}
+@keyframes hdFade{from{opacity:0}to{opacity:1}}
+@keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+
+html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
+.m-root{width:100%;max-width:760px;margin:0 auto;overflow-x:clip}
+.m-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.m-scroll::-webkit-scrollbar{display:none}
+.m-scroll>*{scroll-snap-align:start;flex-shrink:0}
+.m-modal{width:auto!important;max-width:none!important;max-height:calc(100dvh - 24px)!important;padding:64px 22px 26px!important;border-radius:24px!important;margin:0 12px}
+.m-modal h2{font-size:36px!important}
+.m-modal-row{flex-direction:column!important;gap:28px!important;margin-top:26px!important}
+.m-modal-row>div{width:auto!important}
+.m-modal button[aria-label="Close"]{top:14px!important;right:14px!important;width:44px!important;height:44px!important}
+.hd-soc{transition:background .25s ease}
+</style>
+<div class="m-root">
+  <div style="position: fixed; left: 0; right: 0; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60; display: flex; justify-content: center; pointer-events: none;">
+    <nav aria-label="Main" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 5px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.16); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;"><a href="index.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B; background: {{sandBg}};">Home</a><a href="work.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Work</a><a href="about.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">About</a></nav>
+  </div>
+  <div id="hd-top" style="position: relative; overflow: hidden;">
+    
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0;">
+      <span style="font-size: 19px; letter-spacing: -0.02em;">Heidi Dains</span>
+      <button type="button" onClick="{{openContact}}" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 8px 0 16px; border-radius: 999px; background: {{sandBg}}; font-family: inherit; font-size: 14px; font-weight: 500; color: #17181B; border: none;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 13px;">→</span></button>
+    </header>
+    <section style="position: relative; padding: 0 20px; height: 640px;">
+      <h1 class="hd-rise" style="position: relative; z-index: 1; margin: 46px 0 0; font-size: 72px; line-height: 0.92; font-weight: 400; letter-spacing: -0.058em;">Off-Road</h1>
+      <div class="hd-up" style="position: absolute; left: 50%; top: 126px; width: 320px; margin-left: -150px; z-index: 2;">
+        <img src="assets/portrait-cutout-0e315a.webp" alt="Heidi Dains, smiling, in a black and white portrait" style="display: block; width: 320px; height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 94%), linear-gradient(to right, #000 84%, transparent 99%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 70%, transparent 94%), linear-gradient(to right, #000 84%, transparent 99%); mask-composite: intersect;">
+      </div>
+      <h1 class="hd-rise hd-d1" style="position: relative; z-index: 3; margin: 0; text-align: right; font-size: 72px; line-height: 0.92; font-weight: 400; letter-spacing: -0.058em;">Marketer</h1>
+      <p class="hd-rise hd-d3" style="position: absolute; z-index: 3; left: 20px; right: 20px; bottom: 26px; margin: 0; padding: 16px 18px; border-radius: 16px; background: rgba(236,231,223,0.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-size: 15px; line-height: 1.45; color: #3A3A3A;">A full-stack B2B marketer. I run it end to end, from strategy, brand and web to events, MarTech and AI, and build the systems that make it repeatable.</p>
+    </section>
+  </div>
+
+  <section style="position: relative; z-index: 4; background: {{panel}}; color: #F3F1EC; text-align: center; padding: 64px 20px 56px; border-radius: 28px 28px 0 0;">
+    <p style="margin: 0; font-size: 13px; color: {{panelMuted}};">Strategist · Builder · Operator · <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">Creative</span></p>
+    <p style="margin: 14px 0 0; font-size: 32px; line-height: 1.08; letter-spacing: -0.04em;">I build brands people <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">remember.</span><br>No templates, no autopilot.</p>
+    <a href="about.html" style="position: relative; display: block; margin: 34px auto 0; width: 100%; max-width: 360px; aspect-ratio: 912 / 360; border-radius: 999px; overflow: hidden; background: #1A1A1A;">
+      <video src="assets/life-reel-5445eb.mp4" poster="assets/life-reel-poster-7566c9.jpg" aria-label="A highlight reel of Heidi’s life: climbing red rock, her dog on a boat, a supercross start at Gillette Stadium, Devil’s Bridge and back roads in Sedona, a Pitt game, a sailboat at sunset, a beach club, a snowy mountain drive, an ocean sunset, and a walk across White Sands National Park" autoplay="" muted="" loop="" playsinline="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></video>
+      <span aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(20,16,14,0.42) 0%, rgba(20,16,14,0) 100%);"></span>
+      <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 36px; letter-spacing: -0.05em; color: #FFFFFF; text-shadow: 0 2px 20px rgba(23,24,27,0.45);">Detours welcome.</span>
+    </a>
+    <p style="margin: 56px 0 0; font-size: 26px; line-height: 1.12; letter-spacing: -0.035em;">Big idea first. Then the part where everyone asks <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">how the hell we’re going to pull it off.</span></p>
+    <p style="margin: 16px 0 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: {{panelMuted2}};">(That’s my favorite part.)</p>
+  </section>
+
+  <section style="background: {{ground}}; padding: 64px 0 20px;">
+    <div style="padding: 0 20px;">
+      <h2 style="margin: 0; font-size: 46px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Selected work</h2>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.45; color: #6D6A66;">The numbers live on my résumé. Three client stories and one of my own. Swipe each row.</p>
+    </div>
+      <div class="m-scroll" style="margin-top: 14px;"><a href="work.html" style="position: relative; z-index: 2; flex-shrink: 0; margin: 0; width: 220px; height: 300px; box-sizing: border-box; padding: 20px; border-radius: 16px; background: #1E1E20; color: #F3F1EC; display: flex; flex-direction: column; justify-content: space-between; ">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted}};">01 · Client work</span>
+            <span style="display: flex; flex-direction: column; gap: 12px;"><img src="assets/sms-logo-white-511a9e.png" alt="Strategic Maintenance Solutions" style="display: block; width: 165px; height: auto;"><span style="font-size: 14px; line-height: 1.4; color: {{panelMuted}};">Six brands, one marketing function.</span></span>
+            <span style="font-size: 13px; color: #F3F1EC;">See the case study →</span>
+          </a><div style="width: 472px; height: 300px; border-radius: 16px; overflow: hidden; background: #141A2B; "><video src="assets/sms-globe-6c70b8.mp4" poster="assets/sms-globe-poster-69ca08.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The interactive globe on the SMS website" style="display: block; width: 100%; height: 100%; object-fit: cover;"></video></div><div style="width: 150px; height: 300px; border-radius: 16px; overflow: hidden; background: #111; "><video src="assets/sms-mobile-43ce80.mp4" poster="assets/sms-mobile-poster-284ccf.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The SMS website on a phone" style="display: block; width: 100%; height: 100%; object-fit: cover;"></video></div><div style="width: 533px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbB" src="assets/sms-phone-mockup-ad9923.jpg" alt="The SMS website on a phone, in hand" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><span style="width: 10px;"></span></div>
+      <div class="m-scroll" style="margin-top: 14px;"><a href="work.html" style="position: relative; z-index: 2; flex-shrink: 0; margin: 0; width: 220px; height: 300px; box-sizing: border-box; padding: 20px; border-radius: 16px; background: #1E1E20; color: #F3F1EC; display: flex; flex-direction: column; justify-content: space-between; ">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted}};">02 · Client work</span>
+            <span style="display: flex; flex-direction: column; gap: 12px;"><span style="font-size: 28px; line-height: 1; letter-spacing: -0.04em;">MaximoWorld 2026</span><span style="font-size: 14px; line-height: 1.4; color: {{panelMuted}};">One conference, run as an integrated program.</span></span>
+            <span style="font-size: 13px; color: #F3F1EC;">See the case study →</span>
+          </a><div style="width: 400px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbA" src="assets/mw-booth-crowd-4484d4.jpg" alt="A full crowd at the SMS booth" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><div style="width: 169px; height: 300px; border-radius: 16px; overflow: hidden; background: #111; "><video src="assets/expo-tv-0018d9.mp4" poster="assets/expo-tv-poster-6ffb56.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Animated expo screen from the SMS booth" style="display: block; width: 100%; height: 100%; object-fit: cover;"></video></div><div style="width: 225px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbB" src="assets/second-chances-poster-12b741.jpg" alt="Second Chances sponsorship poster" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><div style="width: 225px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbC" src="assets/mw-bandana-66db5b.jpg" alt="A Nashville 2026 bandana" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><span style="width: 10px;"></span></div>
+      <div class="m-scroll" style="margin-top: 14px;"><a href="work.html" style="position: relative; z-index: 2; flex-shrink: 0; margin: 0; width: 220px; height: 300px; box-sizing: border-box; padding: 20px; border-radius: 16px; background: #1E1E20; color: #F3F1EC; display: flex; flex-direction: column; justify-content: space-between; ">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{panelMuted}};">03 · Client work</span>
+            <span style="display: flex; flex-direction: column; gap: 12px;"><img src="assets/rsa-logo-white-7d4c03.png" alt="Robotic Signature Analysis" style="display: block; width: 155px; height: auto;"><span style="font-size: 14px; line-height: 1.4; color: {{panelMuted}};">A brand and its sales engine, from zero.</span></span>
+            <span style="font-size: 13px; color: #F3F1EC;">See the case study →</span>
+          </a><div style="width: 390px; height: 300px; border-radius: 16px; overflow: hidden; background: #111; "><video src="assets/rsa-site-3d50ad.mp4" poster="assets/rsa-site-poster-7b4017.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Scrolling through the RSA website" style="display: block; width: 100%; height: 100%; object-fit: cover;"></video></div><div style="width: 533px; height: 300px; border-radius: 16px; overflow: hidden; background: #FFFFFF; "><img class="kbA" src="assets/brand-deck-f1a13a.jpg" alt="RSA brand deck spreads" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><div style="width: 400px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbB" src="assets/rsa-cards-2-0a3fbd.jpg" alt="RSA business cards on concrete steps" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><span style="width: 10px;"></span></div>
+      <div class="m-scroll" style="margin-top: 14px;"><a href="work.html" style="position: relative; z-index: 2; flex-shrink: 0; margin: 0; width: 220px; height: 300px; box-sizing: border-box; padding: 20px; border-radius: 16px; overflow: hidden; background: {{panel}}; color: #F6EBDD; display: flex; flex-direction: column; justify-content: space-between; ">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #D9C9BC;">04 · Passion project</span>
+            <span style="display: flex; flex-direction: column; gap: 14px;"><img src="assets/coterra-logo-cream-19a532.png" alt="Coterra" style="display: block; width: 140px; height: auto; align-self: center; margin: 4px 0 6px;"><span style="font-size: 14px; line-height: 1.4; color: #D9C9BC;">A well-traveled brand I’m building from scratch. More on the horizon.</span></span>
+            <span style="font-size: 13px; color: #F6EBDD;">See the case study →</span>
+          </a><div style="width: 300px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><video src="assets/coterra-b43-792851.mp4" poster="assets/coterra-b43-poster-524dcd.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="The Coterra Devil’s Bridge poster in moving light" style="display: block; width: 100%; height: 100%; object-fit: cover;"></video></div><div style="width: 300px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbC" src="assets/cotera-framed-67b58c.jpg" alt="A framed Coterra companion print of succulents in red rock" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><div style="width: 300px; height: 300px; border-radius: 16px; overflow: hidden; background: #DDD; "><img class="kbB" src="assets/cot-maroon-bells-b8dc3d.jpg" alt="The Coterra Maroon Bells poster on a dark wall" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div><span style="width: 10px;"></span></div>
+    <div style="padding: 22px 20px 0;"><a href="work.html" style="display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 999px; border: 1px solid #C9C3BA; font-size: 15px;">See all the work →</a></div>
+  </section>
+
+  <section style="background: {{ground}}; padding: 64px 20px 92px;">
+    <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6D6A66;">About</span>
+    <p style="margin: 18px 0 0; font-size: 31px; line-height: 1.12; letter-spacing: -0.04em;">Raised in Pittsburgh around motocross <img src="assets/moto-finish-wide-bw-949d5a.jpg" alt="Heidi with arms raised on a Supercross track, under the finish line at Gillette Stadium" style="display: inline-block; width: 92px; height: 52px; border-radius: 999px; object-fit: cover; object-position: 50% 60%; vertical-align: -10px;">, so playing it safe <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">never quite took.</span> Now I run marketing from Charleston for a six-brand portfolio.</p>
+    <div style="margin-top: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: {{hiSmall}};">2024 — now</span>
+          <span style="font-size: 18px; font-weight: 500; letter-spacing: -0.01em;">Strategic Maintenance Solutions</span>
+          <span style="font-size: 15px; line-height: 1.5; color: #4A4A48;">Marketing Manager and department lead. Brand, experiential, digital, partnerships, and now an acquisition to fold in.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66;">2022 — 2024</span>
+          <span style="font-size: 18px; font-weight: 500; letter-spacing: -0.01em;">Ansys (now Synopsys)</span>
+          <span style="font-size: 15px; line-height: 1.5; color: #4A4A48;">Co-branded programs with global partners, from CES to APAC summits, with results that shaped where leadership invested.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; color: #6D6A66;">2019 — 2022</span>
+          <span style="font-size: 18px; font-weight: 500; letter-spacing: -0.01em;">American Eagle Outfitters</span>
+          <span style="font-size: 15px; line-height: 1.5; color: #4A4A48;">The Urban Necessities sneaker partnership, then international operations, including the brand’s relaunch in Japan.</span>
+        </div>
+    </div>
+  </section>
+
+    <footer style="position: relative; background: {{panel}}; color: #F3F1EC; text-align: center; padding: 84px 20px 120px; border-radius: 28px 28px 0 0; margin-top: -28px;">
+      <div style="position: relative;">
+        <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="display: block; width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; object-fit: cover;">
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;">Every brand needs</p>
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
+      </div>
+      <p style="margin: 40px 0 8px; font-size: 14px; color: {{panelMuted2}};">Say hello:</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <a href="mailto:heidimdains@gmail.com" style="font-size: 21px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
+        <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: 18px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+      <div style="margin-top: 44px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: {{panelMuted2}};">
+        <span>Pittsburgh-raised, Charleston-based</span>
+        <span>© 2026 Heidi Dains</span>
+      </div>
+    </footer>
+  <!-- CONTACT POP-UP -->
+  <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="hd-contact-title" style="position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; animation: hdFade .35s ease both;">
+    <div onClick="{{closeContact}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <div class="m-modal" style="position: relative; width: 1000px; max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); overflow: auto; box-sizing: border-box; padding: 72px 76px 76px; border-radius: 32px; background: {{panel}}; color: #F3F1EC; box-shadow: 0 50px 120px rgba(0,0,0,0.35); animation: hdPop .5s cubic-bezier(.2,.75,.1,1) both;">
+      <button type="button" onClick="{{closeContact}}" aria-label="Close" style="position: absolute; top: 28px; right: 28px; width: 52px; height: 52px; border: none; border-radius: 14px; background: rgba(255,255,255,0.07); color: #F3F1EC; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Let’s build <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">what’s next.</span></h2>
+      <div class="m-modal-row" style="margin-top: 56px; display: flex; gap: 56px;">
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
+            <label for="hd-c-email" style="font-size: 17px;">Your email</label>
+            <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
+            <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
+            <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+          </sc-if>
+        </div>
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Contact details</span>
+            <div style="display: flex; align-items: center; gap: 12px;"><a href="mailto:heidimdains@gmail.com" style="font-size: 18px; color: #F3F1EC;">heidimdains@gmail.com</a>
+            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Receipts</span>
+            <div style="display: flex; gap: 10px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Based in</span>
+            <span style="font-size: 18px; color: #F3F1EC;">Charleston, SC · open to remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</template>
 <script>
 class Component extends DCLogic {
   componentDidMount() {
@@ -407,7 +592,14 @@ class Component extends DCLogic {
     };
   }
 }
-dcMount(Component, {"palette": "Desert Sunset"});
+(function () {
+  var mq = window.matchMedia('(max-width: 760px)');
+  var useM = mq.matches && document.getElementById('dc-tpl-m');
+  if (useM) document.documentElement.classList.add('is-mobile');
+  dcMount(Component, {"palette": "Desert Sunset"}, useM ? 'dc-tpl-m' : 'dc-tpl');
+  var start = mq.matches;
+  mq.addEventListener('change', function (e) { if (e.matches !== start) location.reload(); });
+})();
 </script>
 </body>
 </html>
