@@ -240,8 +240,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -249,7 +249,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -462,8 +464,8 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -471,7 +473,9 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -1050,8 +1054,8 @@ img.hd-zoom{cursor:pointer}
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -1059,7 +1063,9 @@ img.hd-zoom{cursor:pointer}
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -1687,8 +1693,8 @@ img.hd-zoom{cursor:pointer}
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -1696,7 +1702,9 @@ img.hd-zoom{cursor:pointer}
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -1967,8 +1975,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -1976,7 +1984,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -2223,8 +2233,8 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
         <div style="flex: 1; display: flex; flex-direction: column;">
           <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
             <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
-              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Your email app should be opening now.</p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">If nothing opened, your computer’s having a day. My address is right there; I’ll get back to you quickly.</p>
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
             </div>
           </sc-if>
           <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
@@ -2232,7 +2242,9 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
             <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
             <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
             <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
-            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">Send it <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
           </sc-if>
         </div>
         <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
@@ -2369,16 +2381,25 @@ class Component extends DCLogic {
       stmtMuted: sT < 0.45 ? pal.panelMuted2 : '#6D6A66',
       contactOpen: !!s.contactOpen,
       contactSent: !!s.contactSent,
+      contactErr: !!s.contactErr,
+      contactInvalid: !!s.contactInvalid,
+      sendLabel: s.contactSending ? 'Sending…' : "Send it ",
       contactForm: !s.contactSent,
-      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false }); },
+      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false, contactErr: false, contactInvalid: false, contactSending: false }); },
       closeContact: () => this.setState({ contactOpen: false }),
       setContactEmail: (e) => { this._cEmail = e.target.value; },
       setContactMsg: (e) => { this._cMsg = e.target.value; },
       sendContact: () => {
-        const body = (this._cMsg || '') + (this._cEmail ? '\n\nReply to: ' + this._cEmail : '');
-        const url = 'mailto:heidimdains@gmail.com?subject=' + encodeURIComponent('Hello from your portfolio') + '&body=' + encodeURIComponent(body);
-        try { window.location.href = url; } catch (err) {}
-        this.setState({ contactSent: true });
+        const email = (this._cEmail || '').trim(), msg = (this._cMsg || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !msg) { this.setState({ contactInvalid: true, contactErr: false }); return; }
+        if (this.state && this.state.contactSending) return;
+        this.setState({ contactSending: true, contactInvalid: false, contactErr: false });
+        fetch('https://formspree.io/f/maenzkyg', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, message: msg, _subject: 'Hello from your portfolio', page: location.href })
+        }).then(r => { if (!r.ok) throw new Error('send failed'); this.setState({ contactSending: false, contactSent: true }); })
+          .catch(() => this.setState({ contactSending: false, contactErr: true }));
       },
       zoom: s.zoom ?? 1,
       trackX: 1296,
@@ -2583,16 +2604,25 @@ class Component extends DCLogic {
       hideView: () => { const el = document.getElementById('hd-view'); if (el) el.style.opacity = '0'; },
       contactOpen: !!s.contactOpen,
       contactSent: !!s.contactSent,
+      contactErr: !!s.contactErr,
+      contactInvalid: !!s.contactInvalid,
+      sendLabel: s.contactSending ? 'Sending…' : "Send it ",
       contactForm: !s.contactSent,
-      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false }); },
+      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false, contactErr: false, contactInvalid: false, contactSending: false }); },
       closeContact: () => this.setState({ contactOpen: false }),
       setContactEmail: (e) => { this._cEmail = e.target.value; },
       setContactMsg: (e) => { this._cMsg = e.target.value; },
       sendContact: () => {
-        const body = (this._cMsg || '') + (this._cEmail ? '\n\nReply to: ' + this._cEmail : '');
-        const url = 'mailto:heidimdains@gmail.com?subject=' + encodeURIComponent('Hello from your portfolio') + '&body=' + encodeURIComponent(body);
-        try { window.location.href = url; } catch (err) {}
-        this.setState({ contactSent: true });
+        const email = (this._cEmail || '').trim(), msg = (this._cMsg || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !msg) { this.setState({ contactInvalid: true, contactErr: false }); return; }
+        if (this.state && this.state.contactSending) return;
+        this.setState({ contactSending: true, contactInvalid: false, contactErr: false });
+        fetch('https://formspree.io/f/maenzkyg', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, message: msg, _subject: 'Hello from your portfolio', page: location.href })
+        }).then(r => { if (!r.ok) throw new Error('send failed'); this.setState({ contactSending: false, contactSent: true }); })
+          .catch(() => this.setState({ contactSending: false, contactErr: true }));
       },
       zoom: s.zoom ?? 1,
       titleFade: s.titleFade ?? 1,
@@ -2697,16 +2727,25 @@ class Component extends DCLogic {
       op6: s.op === 6, opCol6: s.op === 6 ? '#17181B' : '#C4BDB3', toggleOp6: () => this.goOp(6),
       contactOpen: !!s.contactOpen,
       contactSent: !!s.contactSent,
+      contactErr: !!s.contactErr,
+      contactInvalid: !!s.contactInvalid,
+      sendLabel: s.contactSending ? 'Sending…' : "Send it ",
       contactForm: !s.contactSent,
-      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false }); },
+      openContact: (e) => { if (e && e.preventDefault) e.preventDefault(); this._cEmail = ''; this._cMsg = ''; this.setState({ contactOpen: true, contactSent: false, contactErr: false, contactInvalid: false, contactSending: false }); },
       closeContact: () => this.setState({ contactOpen: false }),
       setContactEmail: (e) => { this._cEmail = e.target.value; },
       setContactMsg: (e) => { this._cMsg = e.target.value; },
       sendContact: () => {
-        const body = (this._cMsg || '') + (this._cEmail ? '\n\nReply to: ' + this._cEmail : '');
-        const url = 'mailto:heidimdains@gmail.com?subject=' + encodeURIComponent('Hello from your portfolio') + '&body=' + encodeURIComponent(body);
-        try { window.location.href = url; } catch (err) {}
-        this.setState({ contactSent: true });
+        const email = (this._cEmail || '').trim(), msg = (this._cMsg || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !msg) { this.setState({ contactInvalid: true, contactErr: false }); return; }
+        if (this.state && this.state.contactSending) return;
+        this.setState({ contactSending: true, contactInvalid: false, contactErr: false });
+        fetch('https://formspree.io/f/maenzkyg', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, message: msg, _subject: 'Hello from your portfolio', page: location.href })
+        }).then(r => { if (!r.ok) throw new Error('send failed'); this.setState({ contactSending: false, contactSent: true }); })
+          .catch(() => this.setState({ contactSending: false, contactErr: true }));
       },
       zoom: s.zoom ?? 1,
       opProg: s.opProg,
