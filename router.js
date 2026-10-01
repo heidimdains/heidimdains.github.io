@@ -111,17 +111,23 @@
       { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
     ], { duration: 620, delay: 560, easing: 'cubic-bezier(.22,.8,.2,1)', fill: 'forwards' });
 
-    inA.onfinish = function () {
-      a.remove();
+    var finished = false;
+    function done() {
+      if (finished) return; finished = true;
+      // Always hand the page back to normal scrolling first.
       Object.assign(holder.style, { position: '', top: '', left: '', width: '', height: '', overflow: '', zIndex: '', transform: '', willChange: '' });
-      inA.cancel();
-      if (clone) clone.remove();
+      try { holder.getAnimations().forEach(function (x) { x.cancel(); }); } catch (e) {}
+      try { a.remove(); } catch (e) {}
+      try { if (clone) clone.remove(); } catch (e) {}
       if (nb) nb.style.visibility = '';
       document.documentElement.style.background = ''; document.body.style.background = '';
+      document.documentElement.style.overflow = ''; document.body.style.overflow = '';
+      busy = false;
       window.scrollTo(0, 0);
       window.dispatchEvent(new Event('scroll')); window.dispatchEvent(new Event('resize'));
-      busy = false;
-    };
+    }
+    try { inA.finished.then(done, done); } catch (e) {}
+    setTimeout(done, 560 + 620 + 120);   // safety net if the browser never reports the end
     return true;
   }
 
