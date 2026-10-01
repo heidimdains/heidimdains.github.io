@@ -93,13 +93,13 @@
     var clip = function (r) { return 'inset(' + y + 'px 0 ' + Math.max(0, H - y - vh) + 'px 0 round ' + r + 'px)'; };
     a.animate([
       { transform: 'translateY(0) scale(1)', clipPath: clip(0), easing: 'cubic-bezier(.3,.7,.4,1)' },
-      { offset: .6, transform: 'translateY(' + (vh * .015) + 'px) scale(.88)', clipPath: clip(30), easing: 'cubic-bezier(.6,0,.9,.5)' },
+      { offset: .58, transform: 'translateY(' + (vh * .015) + 'px) scale(.88)', clipPath: clip(30), easing: 'cubic-bezier(.55,0,.85,.35)' },
       { transform: 'translateY(' + (-vh * 1.02) + 'px) scale(.88)', clipPath: clip(30) }
-    ], { duration: 620, fill: 'forwards' });
+    ], { duration: 560, fill: 'forwards' });
 
     var inA = holder.animate([
       { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
-    ], { duration: 480, delay: 430, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'forwards' });
+    ], { duration: 560, delay: 500, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'forwards' });
 
     inA.onfinish = function () {
       a.remove();
