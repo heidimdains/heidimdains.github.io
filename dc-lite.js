@@ -86,7 +86,7 @@
     return ups;
   }
 
-  window.dcMount = function (Component, props, tplId) {
+  window.dcMount = function (Component, props, tplId, container) {
     const tplEl = document.getElementById(tplId || 'dc-tpl');
     const frag = tplEl.content.cloneNode(true);
     const comp = new Component(props || {});
@@ -98,7 +98,8 @@
     };
     scope.vals = comp.renderVals();
     ups.forEach(u => u(scope.vals));
-    document.getElementById('dc-root').appendChild(frag);
+    (container || document.getElementById('dc-root')).appendChild(frag);
     if (comp.componentDidMount) comp.componentDidMount();
+    return comp;
   };
 })();
