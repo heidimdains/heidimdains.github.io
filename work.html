@@ -1215,25 +1215,38 @@ class Component extends DCLogic {
       const onHandle = !sheet.contains(e.target);
       if (!onHandle && sheet.scrollTop > 2) return;
       sheet.style.animation = 'none';
-      this._drag = { y0: e.touches[0].clientY, dy: 0, sheet, onHandle };
+      const y = e.touches[0].clientY, t = performance.now();
+      this._drag = { y0: y, dy: 0, sheet, dlg, onHandle, live: false, ly: y, lt: t, v: 0 };
     };
     this._tMove = (e) => {
       const d = this._drag; if (!d) return;
-      d.dy = e.touches[0].clientY - d.y0;
-      if (d.dy <= 0) { if (!d.onHandle) { this._drag = null; d.sheet.style.transform = ''; } return; }
-      if (!d.onHandle && d.sheet.scrollTop > 2) { this._drag = null; return; }
+      const y = e.touches[0].clientY, t = performance.now();
+      d.dy = y - d.y0;
+      if (!d.live) {
+        if (d.dy < 0 && !d.onHandle) { this._drag = null; return; }
+        if (d.dy < 6) return;               // small dead zone so normal taps/scrolls aren't hijacked
+        if (!d.onHandle && d.sheet.scrollTop > 2) { this._drag = null; return; }
+        d.live = true; d.y0 = y; d.dy = 0;
+        d.sheet.style.transition = 'none'; d.sheet.style.willChange = 'transform';
+      }
       e.preventDefault();
-      d.sheet.style.transition = 'none';
-      d.sheet.style.transform = 'translateY(' + (d.dy * 0.9) + 'px)';
+      const dt = Math.max(1, t - d.lt); d.v = d.v * 0.6 + ((y - d.ly) / dt) * 0.4; d.ly = y; d.lt = t;
+      const off = Math.max(0, d.dy);
+      d.sheet.style.transform = 'translate3d(0,' + off + 'px,0)';
+      d.dlg.style.backgroundColor = '';
+      d.sheet.style.opacity = String(1 - Math.min(off / 900, 0.25));
     };
     this._tEnd = () => {
       const d = this._drag; if (!d) return; this._drag = null;
-      d.sheet.style.transition = 'transform .32s cubic-bezier(.2,.75,.1,1)';
-      if (d.dy > 120) {
-        d.sheet.style.transform = 'translateY(100%)';
-        setTimeout(() => this.closeSheet(), 260);
+      if (!d.live) return;
+      const h = d.sheet.offsetHeight || innerHeight;
+      if (d.dy > Math.min(110, h * 0.18) || (d.v > 0.35 && d.dy > 24)) {
+        d.sheet.style.transition = 'transform .45s cubic-bezier(.32,.72,0,1), opacity .45s ease';
+        d.sheet.style.transform = 'translate3d(0,100%,0)'; d.sheet.style.opacity = '0.6';
+        setTimeout(() => this.closeSheet(), 380);
       } else {
-        d.sheet.style.transform = '';
+        d.sheet.style.transition = 'transform .5s cubic-bezier(.32,.72,0,1), opacity .4s ease';
+        d.sheet.style.transform = ''; d.sheet.style.opacity = '';
       }
     };
     document.addEventListener('touchstart', this._tStart, { passive: true });
