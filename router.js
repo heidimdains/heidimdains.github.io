@@ -144,6 +144,24 @@ var OUT = 900, GAP = 0.86, IN = 720;
   window.addEventListener('popstate', function () { go(new URL(location.href), false); });
   mq.addEventListener('change', function () { location.reload(); });
 
+
+  // About photo strip: hovering eases it down to a slow drift instead of stopping.
+  (function () {
+    var target = 1, rate = 1, raf = 0, strip = null;
+    function anim() { var el = document.querySelector('.marquee'); return el && el.getAnimations ? el.getAnimations()[0] : null; }
+    function step() {
+      rate += (target - rate) * 0.08;
+      if (Math.abs(target - rate) < 0.005) rate = target;
+      var a = anim(); if (a) a.playbackRate = rate;
+      raf = rate === target ? 0 : requestAnimationFrame(step);
+    }
+    function set(t) { target = t; if (!raf) raf = requestAnimationFrame(step); }
+    document.addEventListener('mouseover', function (e) { var w = e.target.closest && e.target.closest('.marquee-wrap'); if (w && !strip) { strip = w; set(0.25); } });
+    document.addEventListener('mouseout', function (e) {
+      if (!strip) return; var to = e.relatedTarget;
+      if (!to || !strip.contains(to)) { strip = null; set(1); }
+    });
+  })();
   var start = keyFor(new URL(location.href)) || 'Main';
   var holder = document.createElement('div'); holder.className = 'dc-page';
   document.getElementById('dc-root').appendChild(holder);
