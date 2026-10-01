@@ -156,6 +156,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
           <figure style="position: relative; z-index: 1; flex-shrink: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;"><a href="work.html#coterra" aria-label="Open the case study" style="display: contents; color: inherit;">
             <div style="width: 480px; height: 480px; border-radius: 16px; overflow: hidden; background: #DDD; box-shadow: 0 24px 50px rgba(23,24,27,0.14);"><img class="kbB" src="assets/cot-maroon-bells-b8dc3d.jpg" alt="The Coterra Maroon Bells poster on a dark wall" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
           </a></figure>
+          <figure style="position: relative; z-index: 1; flex-shrink: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;"><a href="work.html#coterra" aria-label="Open the case study" style="display: contents; color: inherit;">
+            <div style="width: 480px; height: 480px; border-radius: 16px; overflow: hidden; background: #DDD; box-shadow: 0 24px 50px rgba(23,24,27,0.14);"><img src="assets/cotera-seal-1ccf6c.jpg" alt="Coterra’s hike-date seal: each print is stamped with the date you hiked the trail" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+          </a></figure>
         </div>
       </section>
     </div>
@@ -472,7 +475,7 @@ class Component extends DCLogic {
     const stmt = document.getElementById('hd-statement');
     let sT = 1;
     if (stmt) { const sr = stmt.getBoundingClientRect(); sT = (sr.top + 250 * z) < vh * 0.5 ? 1 : 0; }
-    const tw = (track ? track.scrollWidth : 4800) - 200;
+    const tw = (track ? track.scrollWidth : 4800) + 30;
     const k = 0.72;
     const start = vw * 0.9;
     const end = vw * 0.99 - tw * k;
