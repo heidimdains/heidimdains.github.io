@@ -41,6 +41,8 @@
     if (!raf) raf = requestAnimationFrame(tick);
   }, { passive: false });
 
+  window.__smoothStop = () => { if (raf) cancelAnimationFrame(raf); raf = 0; cur = target = window.scrollY; };
+
   // Keep in sync with keyboard, scrollbar and anchor-link scrolling.
   window.addEventListener('scroll', () => { if (!raf) { cur = target = window.scrollY; } }, { passive: true });
   window.addEventListener('resize', () => { target = Math.min(target, maxScroll()); });
