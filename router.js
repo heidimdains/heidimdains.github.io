@@ -66,45 +66,55 @@
     busy = true;
     teardown(A);
 
-    // Freeze the old page exactly where it sits on screen.
-    var a = A.el, H = a.offsetHeight;
+    // Freeze the old page as a screen-sized window onto where it was scrolled.
+    var a = A.el;
     a.querySelectorAll('[id]').forEach(function (e) { e.removeAttribute('id'); });
     a.querySelectorAll('[style*="position: fixed"]').forEach(function (e) { e.style.translate = '0 ' + y + 'px'; });
-    Object.assign(a.style, { position: 'fixed', top: (-y) + 'px', left: '0', width: '100%', zIndex: '1',
-      transformOrigin: '50% ' + y + 'px', transform: 'translateZ(0)', willChange: 'transform, clip-path' });
+    Object.assign(a.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: vh + 'px', overflow: 'hidden',
+      zIndex: '1', transformOrigin: '50% 0', willChange: 'transform', borderRadius: '0px' });
+    a.scrollTop = y;
     document.documentElement.style.background = BG; document.body.style.background = BG;
-
-    // Mount the new page below the fold.
-    Object.assign(holder.style, { position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '2',
-      transform: 'translate3d(0,' + vh + 'px,0)', willChange: 'transform' });
-    root.appendChild(holder);
     window.scrollTo(0, 0);
-    cur = mount(key, holder);
 
-    // Keep the menu steady on top while the pages move.
-    var nb = navWrap(holder), na = navWrap(a), clone = null;
-    if (nb) {
-      clone = nb.cloneNode(true); clone.style.zIndex = '50'; clone.style.pointerEvents = 'none';
-      clone.removeAttribute('id'); document.body.appendChild(clone);
-      nb.style.visibility = 'hidden';
+    var nb = null, clone = null;
+    var na = navWrap(a);
+    if (na) {   // a steady copy of the menu rides on top the whole time
+      clone = na.cloneNode(true); clone.style.zIndex = '50'; clone.style.pointerEvents = 'none'; clone.style.translate = '';
+      document.body.appendChild(clone); na.style.visibility = 'hidden';
     }
-    if (na) na.style.visibility = 'hidden';
 
-    var clip = function (r) { return 'inset(' + y + 'px 0 ' + Math.max(0, H - y - vh) + 'px 0 round ' + r + 'px)'; };
+    // Old page: settle into a card, then get flicked off the top (GPU-only transforms).
+    var EASE_IN = 'cubic-bezier(.5,0,.75,0)';
     a.animate([
-      { transform: 'translateY(0) scale(1)', clipPath: clip(0), easing: 'cubic-bezier(.3,.7,.4,1)' },
-      { offset: .58, transform: 'translateY(' + (vh * .015) + 'px) scale(.88)', clipPath: clip(30), easing: 'cubic-bezier(.55,0,.85,.35)' },
-      { transform: 'translateY(' + (-vh * 1.02) + 'px) scale(.88)', clipPath: clip(30) }
-    ], { duration: 560, fill: 'forwards' });
+      { transform: 'translate3d(0,0,0) scale(1)', easing: 'cubic-bezier(.25,.8,.3,1)' },
+      { offset: .55, transform: 'translate3d(0,' + (vh * .02) + 'px,0) scale(.9)', easing: EASE_IN },
+      { transform: 'translate3d(0,' + (-vh * 1.05) + 'px,0) scale(.9)' }
+    ], { duration: 680, fill: 'forwards' });
+    a.animate([{ borderRadius: '0px' }, { offset: .55, borderRadius: '28px' }, { borderRadius: '28px' }],
+      { duration: 680, fill: 'forwards' });
+
+    // New page: built a beat later (so the first motion stays smooth), waiting below the screen.
+    Object.assign(holder.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: vh + 'px', overflow: 'hidden',
+      zIndex: '2', transform: 'translate3d(0,' + vh + 'px,0)', willChange: 'transform' });
+    root.appendChild(holder);
+    setTimeout(function () {
+      cur = mount(key, holder);
+      nb = navWrap(holder);
+      if (nb) nb.style.visibility = 'hidden';
+      if (clone) {          // swap the copy to the new page's menu state
+        var c2 = nb ? nb.cloneNode(true) : null;
+        if (c2) { c2.style.zIndex = '50'; c2.style.pointerEvents = 'none'; c2.style.visibility = ''; document.body.appendChild(c2); clone.remove(); clone = c2; }
+      }
+    }, 60);
 
     var inA = holder.animate([
       { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
-    ], { duration: 560, delay: 500, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'forwards' });
+    ], { duration: 620, delay: 560, easing: 'cubic-bezier(.22,.8,.2,1)', fill: 'forwards' });
 
     inA.onfinish = function () {
       a.remove();
+      Object.assign(holder.style, { position: '', top: '', left: '', width: '', height: '', overflow: '', zIndex: '', transform: '', willChange: '' });
       inA.cancel();
-      Object.assign(holder.style, { position: '', top: '', left: '', width: '', zIndex: '', transform: '', willChange: '' });
       if (clone) clone.remove();
       if (nb) nb.style.visibility = '';
       document.documentElement.style.background = ''; document.body.style.background = '';
