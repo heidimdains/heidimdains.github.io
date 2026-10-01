@@ -20,8 +20,18 @@
 <link rel="icon" type="image/png" sizes="16x16" href="icon-16.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="theme-color" content="#ECE7DF">
-<style>html.hd-in,html.hd-in body{background:#3B1620!important}html.hd-in #dc-root{transform:translate3d(0,100vh,0) scale(.9);border-radius:28px;overflow:hidden;background:#ECE7DF}</style>
-<script>try{if(sessionStorage.getItem('hd-trans')){sessionStorage.removeItem('hd-trans');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('hd-in')}}catch(e){}</script>
+<style>
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+nav[aria-label="Main"] { view-transition-name: hd-nav; }
+::view-transition { background: #3B1620; }
+::view-transition-old(root), ::view-transition-new(root) { mix-blend-mode: normal; transform-origin: 50% 50%; will-change: transform; }
+::view-transition-old(root) { animation: hdOut .85s cubic-bezier(.7,0,.25,1) both; }
+::view-transition-new(root) { animation: hdIn .85s cubic-bezier(.7,0,.25,1) both; }
+::view-transition-group(hd-nav) { animation-duration: .85s; }
+@keyframes hdOut { 0% { transform: none; clip-path: inset(0 round 0); } 30% { transform: scale(.92); clip-path: inset(0 round 28px); } 100% { transform: translateY(-104%) scale(.92); clip-path: inset(0 round 28px); } }
+@keyframes hdIn { 0% { transform: translateY(104%) scale(.92); clip-path: inset(0 round 28px); } 70% { transform: translateY(0) scale(.92); clip-path: inset(0 round 28px); } 100% { transform: none; clip-path: inset(0 round 0); } }
+</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
 .hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
@@ -58,7 +68,6 @@ img.hd-zoom{cursor:pointer}
 </style>
 <script src="dc-lite.js"></script>
 <script src="smooth.js" defer></script>
-<script src="transition.js" defer></script>
 </head>
 <body>
 <div id="dc-root"></div>
