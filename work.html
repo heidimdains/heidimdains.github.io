@@ -119,7 +119,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     </section>
 
     <!-- SELECTED WORK -->
-    <div id="hd-work" style="position: relative; height: 2800px; background: {{stmtBg}}; transition: background-color .18s linear;">
+    <div id="hd-work" style="position: relative; height: 3300px; background: {{stmtBg}}; transition: background-color .18s linear;">
       <section style="position: sticky; top: 0; height: 900px; overflow: hidden;">
         <div style="position: absolute; left: 0; right: 0; top: 380px; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px;">
           <h2 style="margin: 0; font-size: 84px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Selected work</h2>
@@ -201,15 +201,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 
     <!-- spacer that reveals the footer underneath -->
   </div>
-    <div aria-hidden="true" style="height: 900px;"></div>
+    <div aria-hidden="true" data-foot-sp="1" style="height: 900px;"></div>
   </div>
 
   <!-- FOOTER (revealed) -->
-  <footer id="hd-contact" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; background: {{panel}}; color: #F3F1EC; text-align: center;">
-    <div style="position: relative; padding-top: 240px;">
+  <footer id="hd-contact" data-foot-sp="1" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; display: flex; flex-direction: column; justify-content: center; background: {{panel}}; color: #F3F1EC; text-align: center;">
+    <div style="padding-bottom: 60px;">
+    <div style="position: relative;">
       <p style="margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;">Every brand needs</p>
       <p style="position: relative; z-index: 2; margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
-      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 292px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
+      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 52px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
@@ -219,6 +220,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     <div style="display: flex; justify-content: center; gap: 12px; margin-top: 22px; font-size: 15px;">
       <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a>
+    </div>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
       <span>© 2026 Heidi Dains</span>
@@ -592,15 +594,16 @@ img.hd-zoom{cursor:pointer}
       </div>
     </div>
 
-    <div aria-hidden="true" style="height: 900px;"></div>
+    <div aria-hidden="true" data-foot-sp="1" style="height: 900px;"></div>
   </div>
 
   <div id="hd-view" aria-hidden="true" style="position: fixed; left: 0; top: 0; z-index: 150; pointer-events: none; opacity: 0; transition: opacity .2s ease; display: flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-size: 19px; box-shadow: 0 10px 30px rgba(23,24,27,0.18);">View</div>
-  <footer id="hd-contact" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; background: {{panel}}; color: #F3F1EC; text-align: center;">
-    <div style="position: relative; padding-top: 240px;">
+  <footer id="hd-contact" data-foot-sp="1" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; display: flex; flex-direction: column; justify-content: center; background: {{panel}}; color: #F3F1EC; text-align: center;">
+    <div style="padding-bottom: 60px;">
+    <div style="position: relative;">
       <p style="margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;">Every brand needs</p>
       <p style="position: relative; z-index: 2; margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
-      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 292px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
+      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 52px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
@@ -610,6 +613,7 @@ img.hd-zoom{cursor:pointer}
     <div style="display: flex; justify-content: center; gap: 12px; margin-top: 22px; font-size: 15px;">
       <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a>
+    </div>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
       <span>© 2026 Heidi Dains</span>
@@ -1788,8 +1792,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <img src="assets/head-011-aada77.jpg" alt="Heidi smiling, arms crossed" style="display: block; flex-shrink: 0; width: 187px; height: 245px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
         <img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="Corner detail of the Nashville 2026 MaximoWorld bandana: boots, banjo, guitar, SMS and IBM logos" style="display: block; flex-shrink: 0; width: 194px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
         <img src="assets/tgb-heidi-bf3295.jpg" alt="Heidi with T. Graham Brown" style="display: block; flex-shrink: 0; width: 238px; height: 180px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
-        <img src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra poster styled above a bench" style="display: block; flex-shrink: 0; width: 216px; height: 216px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
-        <img src="assets/mw-puppy-pen-heidi-79447d.jpg" alt="Heidi laughing with the rescue puppies in the SMS booth pen at MaximoWorld" style="display: block; flex-shrink: 0; width: 194px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;"><img src="assets/sassy-weeble-044b30.jpg" alt="Meet Sassy and Weeble rescue sponsorship poster" style="display: block; flex-shrink: 0; width: 180px; height: 238px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
+        <img src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra poster styled above a bench" style="display: block; flex-shrink: 0; width: 216px; height: 216px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;"><img src="assets/sassy-weeble-044b30.jpg" alt="Meet Sassy and Weeble rescue sponsorship poster" style="display: block; flex-shrink: 0; width: 180px; height: 238px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
         <img src="assets/moto-finish-81c7fa.jpg" alt="" style="display: block; flex-shrink: 0; width: 230px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 70%;">
         <img src="assets/head-1-496bc5.jpg" alt="" style="display: block; flex-shrink: 0; width: 194px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
         <img src="assets/cotera-bedroom-2d7ccf.jpg" alt="" style="display: block; flex-shrink: 0; width: 259px; height: 187px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
@@ -1799,8 +1802,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
         <img src="assets/head-011-aada77.jpg" alt="" style="display: block; flex-shrink: 0; width: 187px; height: 245px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
         <img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="" style="display: block; flex-shrink: 0; width: 194px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
         <img src="assets/tgb-heidi-bf3295.jpg" alt="" style="display: block; flex-shrink: 0; width: 238px; height: 180px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
-        <img src="assets/cotera-bench-b7d2eb.jpg" alt="" style="display: block; flex-shrink: 0; width: 216px; height: 216px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;">
-        <img src="assets/mw-puppy-pen-heidi-79447d.jpg" alt="" style="display: block; flex-shrink: 0; width: 194px; height: 259px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;"><img src="assets/sassy-weeble-044b30.jpg" alt="" style="display: block; flex-shrink: 0; width: 180px; height: 238px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
+        <img src="assets/cotera-bench-b7d2eb.jpg" alt="" style="display: block; flex-shrink: 0; width: 216px; height: 216px; border-radius: 12px; object-fit: cover; object-position: 50% 50%;"><img src="assets/sassy-weeble-044b30.jpg" alt="" style="display: block; flex-shrink: 0; width: 180px; height: 238px; border-radius: 12px; object-fit: cover; object-position: 50% 30%;">
       </div>
     </section>
 
@@ -1927,14 +1929,15 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
 
   </div>
 
-    <div aria-hidden="true" style="height: 900px; background: transparent;"></div>
+    <div aria-hidden="true" data-foot-sp="1" style="height: 900px; background: transparent;"></div>
   </div>
 
-  <footer id="hd-contact" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; background: {{panel}}; color: #F3F1EC; text-align: center;">
-    <div style="position: relative; padding-top: 240px;">
+  <footer id="hd-contact" data-foot-sp="1" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; display: flex; flex-direction: column; justify-content: center; background: {{panel}}; color: #F3F1EC; text-align: center;">
+    <div style="padding-bottom: 60px;">
+    <div style="position: relative;">
       <p style="margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;">Every brand needs</p>
       <p style="position: relative; z-index: 2; margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
-      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 292px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
+      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 52px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
     </div>
     <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
@@ -1944,6 +1947,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3p
     <div style="display: flex; justify-content: center; gap: 12px; margin-top: 22px; font-size: 15px;">
       <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
       <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a>
+    </div>
     </div>
     <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
       <span>© 2026 Heidi Dains</span>
@@ -2093,7 +2097,7 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
     <p class="hd-rise hd-d2" style="margin: 14px 0 0; font-size: 18px; letter-spacing: -0.02em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Head in the clouds, boots on the ground.</span></p>
   </section>
   <section style="margin-top: 44px; overflow: hidden;">
-    <div class="m-marq"><img src="assets/moto-finish-81c7fa.jpg" alt="Heidi at a Supercross finish line" style="display: block; flex-shrink: 0; width: 143px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/head-1-496bc5.jpg" alt="Heidi laughing" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="Coterra prints hung above a bed" style="display: block; flex-shrink: 0; width: 161px; height: 116px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-cowboy-hat-6c836f.jpg" alt="An SMS-branded cowboy hat" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-dinner-c5aa46.jpg" alt="A long dinner table set for an SMS hospitality event" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cot-succulent-crop-7e4374.jpg" alt="A Coterra close-up of succulents in red rock" style="display: block; flex-shrink: 0; width: 143px; height: 143px; border-radius: 10px; object-fit: cover;"><img src="assets/head-011-aada77.jpg" alt="Heidi smiling, arms crossed" style="display: block; flex-shrink: 0; width: 116px; height: 152px; border-radius: 10px; object-fit: cover;"><img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="Corner detail of the Nashville 2026 MaximoWorld bandana: boots, banjo, guitar, SMS and IBM logos" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/tgb-heidi-bf3295.jpg" alt="Heidi with T. Graham Brown" style="display: block; flex-shrink: 0; width: 148px; height: 112px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra poster styled above a bench" style="display: block; flex-shrink: 0; width: 134px; height: 134px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-puppy-pen-heidi-79447d.jpg" alt="Heidi laughing with the rescue puppies in the SMS booth pen at MaximoWorld" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/sassy-weeble-044b30.jpg" alt="Meet Sassy and Weeble rescue sponsorship poster" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/moto-finish-81c7fa.jpg" alt="" style="display: block; flex-shrink: 0; width: 143px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/head-1-496bc5.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="" style="display: block; flex-shrink: 0; width: 161px; height: 116px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-cowboy-hat-6c836f.jpg" alt="" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-dinner-c5aa46.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cot-succulent-crop-7e4374.jpg" alt="" style="display: block; flex-shrink: 0; width: 143px; height: 143px; border-radius: 10px; object-fit: cover;"><img src="assets/head-011-aada77.jpg" alt="" style="display: block; flex-shrink: 0; width: 116px; height: 152px; border-radius: 10px; object-fit: cover;"><img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/tgb-heidi-bf3295.jpg" alt="" style="display: block; flex-shrink: 0; width: 148px; height: 112px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bench-b7d2eb.jpg" alt="" style="display: block; flex-shrink: 0; width: 134px; height: 134px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-puppy-pen-heidi-79447d.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/sassy-weeble-044b30.jpg" alt="" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"></div>
+    <div class="m-marq"><img src="assets/moto-finish-81c7fa.jpg" alt="Heidi at a Supercross finish line" style="display: block; flex-shrink: 0; width: 143px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/head-1-496bc5.jpg" alt="Heidi laughing" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="Coterra prints hung above a bed" style="display: block; flex-shrink: 0; width: 161px; height: 116px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-cowboy-hat-6c836f.jpg" alt="An SMS-branded cowboy hat" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-dinner-c5aa46.jpg" alt="A long dinner table set for an SMS hospitality event" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cot-succulent-crop-7e4374.jpg" alt="A Coterra close-up of succulents in red rock" style="display: block; flex-shrink: 0; width: 143px; height: 143px; border-radius: 10px; object-fit: cover;"><img src="assets/head-011-aada77.jpg" alt="Heidi smiling, arms crossed" style="display: block; flex-shrink: 0; width: 116px; height: 152px; border-radius: 10px; object-fit: cover;"><img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="Corner detail of the Nashville 2026 MaximoWorld bandana: boots, banjo, guitar, SMS and IBM logos" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/tgb-heidi-bf3295.jpg" alt="Heidi with T. Graham Brown" style="display: block; flex-shrink: 0; width: 148px; height: 112px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bench-b7d2eb.jpg" alt="A Coterra poster styled above a bench" style="display: block; flex-shrink: 0; width: 134px; height: 134px; border-radius: 10px; object-fit: cover;"><img src="assets/sassy-weeble-044b30.jpg" alt="Meet Sassy and Weeble rescue sponsorship poster" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/moto-finish-81c7fa.jpg" alt="" style="display: block; flex-shrink: 0; width: 143px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/head-1-496bc5.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bedroom-2d7ccf.jpg" alt="" style="display: block; flex-shrink: 0; width: 161px; height: 116px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-cowboy-hat-6c836f.jpg" alt="" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"><img src="assets/mw-dinner-c5aa46.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/cot-succulent-crop-7e4374.jpg" alt="" style="display: block; flex-shrink: 0; width: 143px; height: 143px; border-radius: 10px; object-fit: cover;"><img src="assets/head-011-aada77.jpg" alt="" style="display: block; flex-shrink: 0; width: 116px; height: 152px; border-radius: 10px; object-fit: cover;"><img src="assets/fb470119e2e5f53242b6ef042b80d9cc-fb4701.jpg" alt="" style="display: block; flex-shrink: 0; width: 120px; height: 161px; border-radius: 10px; object-fit: cover;"><img src="assets/tgb-heidi-bf3295.jpg" alt="" style="display: block; flex-shrink: 0; width: 148px; height: 112px; border-radius: 10px; object-fit: cover;"><img src="assets/cotera-bench-b7d2eb.jpg" alt="" style="display: block; flex-shrink: 0; width: 134px; height: 134px; border-radius: 10px; object-fit: cover;"><img src="assets/sassy-weeble-044b30.jpg" alt="" style="display: block; flex-shrink: 0; width: 112px; height: 148px; border-radius: 10px; object-fit: cover;"></div>
   </section>
   <section style="padding: 56px 20px 0;">
     <p style="margin: 0; font-size: 22px; line-height: 1.3; letter-spacing: -0.025em; color: #17181B;">I bring the creative vision and the follow-through, and I care whether it <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">actually worked.</span> I’ve also built and led the team that does it.</p>
@@ -2280,7 +2284,8 @@ class Component extends DCLogic {
   }
   measure() {
     const vh = window.innerHeight;
-    const z = Math.min(1.3, Math.max(0.3, window.innerWidth / 1440));
+    const z = Math.max(0.3, window.innerWidth / 1440);
+    document.querySelectorAll('[data-foot-sp]').forEach(e => { e.style.height = Math.round(window.innerHeight / z) + 'px'; });
     if (Math.abs(z - ((this.state && this.state.zoom) || 1)) > 0.001) {
       this.setState({ zoom: z });
       setTimeout(() => this.measure(), 50);
@@ -2312,7 +2317,7 @@ class Component extends DCLogic {
     const k = isM ? 1 : 0.72;
     const start = isM ? vw * 0.86 : vw * 0.9;
     const end = isM ? vw - 20 - tw : vw * 0.99 - tw * k;
-    this._tTarget = start + (end - start) * Math.min(1, p / 0.8);
+    this._tTarget = start + (end - start) * Math.min(1, p / (isM ? 0.8 : 0.66));
     if (this._tCur == null) this._tCur = this._tTarget;
     if (!this._tRaf) {
       const step = () => {
@@ -2524,7 +2529,8 @@ class Component extends DCLogic {
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
   }
   measure() {
-    const z = Math.min(1.3, Math.max(0.3, window.innerWidth / 1440));
+    const z = Math.max(0.3, window.innerWidth / 1440);
+    document.querySelectorAll('[data-foot-sp]').forEach(e => { e.style.height = Math.round(window.innerHeight / z) + 'px'; });
     if (Math.abs(z - ((this.state && this.state.zoom) || 1)) > 0.001) {
       this.setState({ zoom: z });
       setTimeout(() => this.measure(), 50);
@@ -2624,7 +2630,8 @@ class Component extends DCLogic {
     window.removeEventListener('scroll', this._tick);
   }
   measure() {
-    const z = Math.min(1.3, Math.max(0.3, window.innerWidth / 1440));
+    const z = Math.max(0.3, window.innerWidth / 1440);
+    document.querySelectorAll('[data-foot-sp]').forEach(e => { e.style.height = Math.round(window.innerHeight / z) + 'px'; });
     if (Math.abs(z - ((this.state && this.state.zoom) || 1)) > 0.001) this.setState({ zoom: z });
     const vh = window.innerHeight, st = this.state || {}, patch = {};
     const ops = document.getElementById('hd-ops');
