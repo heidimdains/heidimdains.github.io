@@ -66,68 +66,61 @@
     busy = true;
     teardown(A);
 
-    // Freeze the old page as a screen-sized window onto where it was scrolled.
+    // Old page becomes a click-through, screen-sized overlay frozen where it was scrolled.
     var a = A.el;
     a.querySelectorAll('[id]').forEach(function (e) { e.removeAttribute('id'); });
     a.querySelectorAll('[style*="position: fixed"]').forEach(function (e) { e.style.translate = '0 ' + y + 'px'; });
     Object.assign(a.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: vh + 'px', overflow: 'hidden',
-      zIndex: '1', transformOrigin: '50% 0', willChange: 'transform', borderRadius: '0px' });
+      zIndex: '40', pointerEvents: 'none', transformOrigin: '50% 0', borderRadius: '0px' });
     a.scrollTop = y;
     document.documentElement.style.background = BG; document.body.style.background = BG;
-    window.scrollTo(0, 0);
 
-    var nb = null, clone = null;
-    var na = navWrap(a);
-    if (na) {   // a steady copy of the menu rides on top the whole time
-      clone = na.cloneNode(true); clone.style.zIndex = '50'; clone.style.pointerEvents = 'none'; clone.style.translate = '';
-      document.body.appendChild(clone); na.style.visibility = 'hidden';
+    function pin(el) {
+      if (!el) return null;
+      var c = el.cloneNode(true);
+      c.querySelectorAll('[id]').forEach(function (e) { e.removeAttribute('id'); }); c.removeAttribute('id');
+      Object.assign(c.style, { zIndex: '60', pointerEvents: 'none', translate: '', visibility: '' });
+      document.body.appendChild(c); return c;
     }
-
-    // Old page: settle into a card, then get flicked off the top (GPU-only transforms).
-    var EASE_IN = 'cubic-bezier(.5,0,.75,0)';
-    a.animate([
-      { transform: 'translate3d(0,0,0) scale(1)', easing: 'cubic-bezier(.25,.8,.3,1)' },
-      { offset: .55, transform: 'translate3d(0,' + (vh * .02) + 'px,0) scale(.9)', easing: EASE_IN },
-      { transform: 'translate3d(0,' + (-vh * 1.05) + 'px,0) scale(.9)' }
+    var pinned = pin(navWrap(a));
+    var na = navWrap(a); if (na) na.style.opacity = '0';
+    var dropPin = function () { if (pinned) { pinned.remove(); pinned = null; } };
+    var outT = a.animate([
+      { transform: 'translate3d(0,0,0) scale(1)', borderRadius: '0px', easing: 'cubic-bezier(.25,.8,.3,1)' },
+      { offset: .55, transform: 'translate3d(0,' + (vh * .02) + 'px,0) scale(.9)', borderRadius: '28px', easing: 'cubic-bezier(.5,0,.75,0)' },
+      { transform: 'translate3d(0,' + (-vh * 1.08) + 'px,0) scale(.9)', borderRadius: '28px' }
     ], { duration: 680, fill: 'forwards' });
-    a.animate([{ borderRadius: '0px' }, { offset: .55, borderRadius: '28px' }, { borderRadius: '28px' }],
-      { duration: 680, fill: 'forwards' });
 
-    // New page: built a beat later (so the first motion stays smooth), waiting below the screen.
-    Object.assign(holder.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: vh + 'px', overflow: 'hidden',
-      zIndex: '2', transform: 'translate3d(0,' + vh + 'px,0)', willChange: 'transform' });
+    // New page: an ordinary page in normal flow at the top, simply slid in from below.
     root.appendChild(holder);
-    setTimeout(function () {
-      cur = mount(key, holder);
-      nb = navWrap(holder);
-      if (nb) nb.style.visibility = 'hidden';
-      if (clone) {          // swap the copy to the new page's menu state
-        var c2 = nb ? nb.cloneNode(true) : null;
-        if (c2) { c2.style.zIndex = '50'; c2.style.pointerEvents = 'none'; c2.style.visibility = ''; document.body.appendChild(c2); clone.remove(); clone = c2; }
-      }
-    }, 60);
-
-    var inA = holder.animate([
-      { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
-    ], { duration: 620, delay: 560, easing: 'cubic-bezier(.22,.8,.2,1)', fill: 'forwards' });
-
-    var finished = false;
-    function done() {
+    window.scrollTo(0, 0);
+    holder.style.transform = 'translate3d(0,' + vh + 'px,0)';
+    var finished = false, inA = null;
+    function cleanup() {
       if (finished) return; finished = true;
-      // Always hand the page back to normal scrolling first.
-      Object.assign(holder.style, { position: '', top: '', left: '', width: '', height: '', overflow: '', zIndex: '', transform: '', willChange: '' });
-      try { holder.getAnimations().forEach(function (x) { x.cancel(); }); } catch (e) {}
+      holder.style.transform = '';
+      try { if (inA) inA.cancel(); } catch (e) {}
       try { a.remove(); } catch (e) {}
-      try { if (clone) clone.remove(); } catch (e) {}
-      if (nb) nb.style.visibility = '';
+      dropPin();
       document.documentElement.style.background = ''; document.body.style.background = '';
-      document.documentElement.style.overflow = ''; document.body.style.overflow = '';
       busy = false;
-      window.scrollTo(0, 0);
       window.dispatchEvent(new Event('scroll')); window.dispatchEvent(new Event('resize'));
     }
-    try { inA.finished.then(done, done); } catch (e) {}
-    setTimeout(done, 560 + 620 + 120);   // safety net if the browser never reports the end
+    setTimeout(function () {
+      try { cur = mount(key, holder); } catch (e) { console.error(e); }
+      var nb = navWrap(holder);
+      if (nb) {
+        var p2 = pin(nb); dropPin(); pinned = p2;
+        try { nb.animate([{ opacity: 0 }, { opacity: 0 }], { duration: 500 + 620 }); } catch (e) {}
+      }
+      window.scrollTo(0, 0);
+      inA = holder.animate([
+        { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
+      ], { duration: 620, delay: 500, easing: 'cubic-bezier(.22,.8,.2,1)', fill: 'backwards' });
+      holder.style.transform = '';          // the animation controls it from here
+      try { inA.finished.then(cleanup, cleanup); } catch (e) {}
+    }, 60);
+    setTimeout(cleanup, 60 + 500 + 620 + 150);   // safety net
     return true;
   }
 
