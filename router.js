@@ -85,11 +85,17 @@
     var pinned = pin(navWrap(a));
     var na = navWrap(a); if (na) na.style.opacity = '0';
     var dropPin = function () { if (pinned) { pinned.remove(); pinned = null; } };
+var OUT = 900, GAP = 0.86, IN = 720;
+    // One continuous glide: keeps shrinking the whole way up and out (transform only = GPU-smooth).
     var outT = a.animate([
-      { transform: 'translate3d(0,0,0) scale(1)', borderRadius: '0px', easing: 'cubic-bezier(.25,.8,.3,1)' },
-      { offset: .55, transform: 'translate3d(0,' + (vh * .02) + 'px,0) scale(.9)', borderRadius: '28px', easing: 'cubic-bezier(.5,0,.75,0)' },
-      { transform: 'translate3d(0,' + (-vh * 1.08) + 'px,0) scale(.9)', borderRadius: '28px' }
-    ], { duration: 680, fill: 'forwards' });
+      { transform: 'translate3d(0,0,0) scale(1)' },
+      { offset: .3,  transform: 'translate3d(0,' + (-vh * .03) + 'px,0) scale(.88)' },
+      { offset: .65, transform: 'translate3d(0,' + (-vh * .3) + 'px,0) scale(.76)' },
+      { transform: 'translate3d(0,' + (-vh * .86) + 'px,0) scale(.64)' }
+    ], { duration: OUT, easing: 'cubic-bezier(.45,.05,.55,.95)', fill: 'forwards' });
+    // Corners round off separately so they never slow the movement down.
+    a.animate([{ borderRadius: '0px' }, { offset: .35, borderRadius: '30px' }, { borderRadius: '36px' }],
+      { duration: OUT, fill: 'forwards' });
 
     // New page: an ordinary page in normal flow at the top, simply slid in from below.
     root.appendChild(holder);
@@ -111,16 +117,16 @@
       var nb = navWrap(holder);
       if (nb) {
         var p2 = pin(nb); dropPin(); pinned = p2;
-        try { nb.animate([{ opacity: 0 }, { opacity: 0 }], { duration: 500 + 620 }); } catch (e) {}
+        try { nb.animate([{ opacity: 0 }, { opacity: 0 }], { duration: Math.round(OUT * GAP) - 60 + IN }); } catch (e) {}
       }
       window.scrollTo(0, 0);
       inA = holder.animate([
         { transform: 'translate3d(0,' + vh + 'px,0)' }, { transform: 'translate3d(0,0,0)' }
-      ], { duration: 620, delay: 500, easing: 'cubic-bezier(.22,.8,.2,1)', fill: 'backwards' });
+      ], { duration: IN, delay: Math.round(OUT * GAP) - 60, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
       holder.style.transform = '';          // the animation controls it from here
       try { inA.finished.then(cleanup, cleanup); } catch (e) {}
     }, 60);
-    setTimeout(cleanup, 60 + 500 + 620 + 150);   // safety net
+    setTimeout(cleanup, Math.round(OUT * GAP) + IN + 200);   // safety net
     return true;
   }
 
