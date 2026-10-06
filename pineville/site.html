@@ -1,0 +1,818 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pineville MX Park</title>
+<meta name="description" content="Pineville MX Park: motocross track in Pineville, SC, about an hour from Charleston. Ride days, gate fees, rules, camping and first-timer info.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800;900&family=Archivo:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<script type="application/ld+json" id="schema-ld">{}</script>
+<style>
+/* Layout: a race-day program. Number-plate status up top, then the facts riders ask for, in the order they ask. */
+:root{
+  --bg:#ECEEEB;      /* overcast concrete */
+  --surface:#FFFFFF;
+  --ink:#1B1A17;
+  --muted:#5F625C;
+  --line:#CBCFC8;
+  --clay:#A9431F;    /* Lowcountry red clay */
+  --plate:#F2C230;   /* number-plate yellow */
+  --plate-ink:#141310;
+  --pine:#2F4A33;
+  --open:#1F7A43; --closed:#9A2F22; --tbc:#8A6A0A;
+  --tbc-bg:#FFF3C9;
+  --display:"Saira Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151412;--surface:#1F1D1A;--ink:#EEE9E1;--muted:#A9A398;--line:#38342E;
+  --clay:#E0714A;--plate:#F2C230;--plate-ink:#141310;--pine:#8DB88F;
+  --open:#5FCB8A;--closed:#F07B68;--tbc:#F2C230;--tbc-bg:#3A3015;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151412;--surface:#1F1D1A;--ink:#EEE9E1;--muted:#A9A398;--line:#38342E;
+  --clay:#E0714A;--plate:#F2C230;--plate-ink:#141310;--pine:#8DB88F;
+  --open:#5FCB8A;--closed:#F07B68;--tbc:#F2C230;--tbc-bg:#3A3015;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body);}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+a{color:var(--clay)}
+:focus-visible{outline:3px solid var(--plate);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1;margin:0}
+h2{font-size:clamp(2rem,5vw,2.9rem);font-weight:900;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:1.35rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+p{margin:0}
+.eyebrow{font:700 .74rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+.num{font-variant-numeric:tabular-nums}
+
+/* Preview ribbon */
+.ribbon{background:var(--ink);color:var(--bg);font:500 .8rem/1.4 var(--mono);padding-block:8px}
+.ribbon .wrap{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.ribbon b{color:var(--plate)}
+.legend{display:inline-flex;gap:6px;align-items:center}
+
+/* Placeholder chip */
+.tbc{background:var(--tbc-bg);color:var(--tbc);border:1px dashed currentColor;border-radius:4px;padding:0 5px;font:700 .7em/1.6 var(--mono);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:help;vertical-align:.12em}
+
+/* Nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:14px;padding-block:10px;overflow-x:auto;scrollbar-width:none}
+.logo{font:900 1.35rem/1 var(--display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;text-decoration:none;color:var(--ink);display:flex;gap:8px;align-items:center}
+.logo i{display:inline-grid;place-items:center;background:var(--plate);color:var(--plate-ink);font-style:normal;width:30px;height:30px;border-radius:5px 5px 12px 12px;font-size:1rem}
+nav.top a.l{font:600 .82rem/1 var(--body);color:var(--muted);text-decoration:none;white-space:nowrap;padding:8px 4px}
+nav.top a.l:hover{color:var(--ink)}
+nav.top .sp{flex:1}
+
+/* Hero */
+.hero{padding-block:36px 28px;position:relative;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(3.2rem,10vw,6.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.005em;line-height:.86}
+.hero h1 span{color:var(--clay)}
+.hero .lede{margin-top:16px;font-size:1.1rem;max-width:34ch;color:var(--muted)}
+.hero .lede b{color:var(--ink)}
+.facts-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pill{display:inline-flex;gap:6px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font:600 .82rem/1 var(--body)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--pine)}
+
+/* Number plate status */
+.plate{background:var(--plate);color:var(--plate-ink);border-radius:18px 18px 46px 46px;padding:22px 24px 30px;box-shadow:0 2px 0 rgba(0,0,0,.25),0 18px 40px -18px rgba(0,0,0,.45);position:relative}
+.plate::before,.plate::after{content:"";position:absolute;top:14px;width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.28)}
+.plate::before{left:16px}.plate::after{right:16px}
+.plate .q{font:700 .78rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.plate .answer{font:900 clamp(4rem,12vw,6.4rem)/.85 var(--display);text-transform:uppercase;text-align:center;margin-top:8px;letter-spacing:-.01em}
+.plate .when{text-align:center;font:800 1.35rem/1.1 var(--display);text-transform:uppercase;margin-top:6px}
+.plate .detail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;border-top:2px solid rgba(0,0,0,.18);padding-top:12px}
+.plate .detail div{text-align:center}
+.plate .detail small{display:block;font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.plate .detail strong{font:800 1.15rem/1.2 var(--display);text-transform:uppercase}
+.plate .sample{position:absolute;right:18px;bottom:-12px;background:var(--ink);color:var(--plate);font:700 .62rem/1 var(--mono);padding:5px 8px;border-radius:4px;letter-spacing:.08em;text-transform:uppercase}
+.plate.closed .answer{color:#7a1d12}
+
+section{padding-block:44px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.head p{color:var(--muted);max-width:60ch}
+
+/* Weekend strip */
+.weekends{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.wk{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-width:0;transition:transform .15s ease,border-color .15s ease}
+.wk:hover{transform:translateY(-2px)}
+.wk[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.wk .d{font:800 1.25rem/1 var(--display);text-transform:uppercase}
+.wk .t{font-size:.82rem;color:var(--muted);line-height:1.3}
+.st{display:inline-flex;align-self:flex-start;align-items:center;gap:5px;font:700 .66rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1px solid currentColor}
+.st.open{color:var(--open)}.st.closed{color:var(--closed)}.st.race{color:var(--clay)}
+.wk-detail{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline}
+.wk-detail .k{font:700 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+
+/* Owner panel */
+.owner{margin-top:18px;border:2px dashed var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.owner p{color:var(--muted);font-size:.92rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{font:700 .8rem/1 var(--body);border:0;background:none;color:var(--ink);padding:10px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* Fees */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+table.fees{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.fees td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.fees td:last-child{text-align:right;font:700 1rem/1.3 var(--mono);white-space:nowrap;padding-left:12px}
+table.fees tr:last-child td{border-bottom:0}
+table.fees small{display:block;color:var(--muted);font-size:.8rem}
+.calc label{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-weight:500}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px}
+.stepper button{width:36px;height:36px;border:0;background:none;font:700 1.1rem/1 var(--mono);color:var(--ink);cursor:pointer}
+.stepper output{min-width:28px;text-align:center;font:700 1rem/1 var(--mono)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+.total strong{font:900 3rem/1 var(--display)}
+.calc .note{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+/* Track */
+.track-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.track-svg{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.track-svg .dirt{fill:none;stroke:var(--clay);stroke-width:22;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.track-svg .edge{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 6;opacity:.35}
+.track-svg .grass{fill:var(--pine);opacity:.12}
+.track-svg .jump{cursor:pointer}
+.track-svg .jump rect{fill:var(--plate);stroke:var(--plate-ink);stroke-width:1.5}
+.track-svg .jump text{font:800 13px var(--display);fill:var(--plate-ink)}
+.track-svg .jump.on rect{fill:var(--ink)}.track-svg .jump.on text{fill:var(--plate)}
+.track-svg .lbl{font:700 11px var(--mono);fill:var(--muted);letter-spacing:.08em}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.spec div{background:var(--surface);padding:14px}
+.spec small{display:block;font:700 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.spec strong{font:800 1.5rem/1.05 var(--display);text-transform:uppercase}
+.jump-info{margin-top:12px;min-height:3.2em;color:var(--muted);font-size:.92rem}
+
+/* Checklist */
+.check{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--clay);margin-top:2px;flex:none}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 18px}
+.progress i{display:block;height:100%;background:var(--clay);width:0;transition:width .25s ease}
+
+/* Rules */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.rule .yes{color:var(--open)}.rule .no{color:var(--closed)}
+.rule b{font:800 1.15rem/1.1 var(--display);text-transform:uppercase}
+.rule p{font-size:.9rem;color:var(--muted)}
+
+/* Reviews */
+.rating{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.rating .big{font:900 5rem/.9 var(--display)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+blockquote p{font-size:1.02rem}
+blockquote cite{font:600 .75rem/1.3 var(--mono);color:var(--muted);font-style:normal}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:16px 0;font:800 1.2rem/1.2 var(--display);text-transform:uppercase;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--clay)}
+details[open] summary::after{content:"−"}
+details p{padding-bottom:16px;max-width:65ch;color:var(--muted)}
+
+/* Visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.map{aspect-ratio:4/3;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.addr{font:800 1.8rem/1.1 var(--display);text-transform:uppercase}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 .9rem/1 var(--body);padding:12px 16px;border-radius:8px;border:1px solid var(--ink);color:var(--ink);background:none;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+/* AI view */
+.ai{background:var(--ink);color:var(--bg);border-radius:14px;padding:22px}
+.ai .eyebrow{color:var(--plate)}
+.ai h2{color:var(--bg)}
+.ai p{color:color-mix(in srgb,var(--bg) 75%,transparent);max-width:62ch;margin-top:10px}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.ai pre{margin:0;background:color-mix(in srgb,var(--bg) 8%,var(--ink));border-radius:10px;padding:14px;overflow:auto;max-height:360px;font:500 .74rem/1.5 var(--mono);color:var(--bg)}
+.chat{display:flex;flex-direction:column;gap:10px}
+.bubble{border-radius:12px;padding:12px 14px;font-size:.92rem;max-width:92%}
+.bubble.u{align-self:flex-end;background:var(--plate);color:var(--plate-ink)}
+.bubble.a{background:color-mix(in srgb,var(--bg) 12%,var(--ink));color:var(--bg)}
+.bubble.a small{display:block;margin-top:6px;opacity:.6;font:500 .7rem/1.3 var(--mono)}
+
+footer{padding-block:30px 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+
+
+
+/* Latest + Keith */
+.latest{background:var(--ink);color:var(--bg);padding-block:14px}
+.latest .wrap{display:flex;gap:10px 28px;flex-wrap:wrap;align-items:baseline}
+.latest .tag{font:700 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--plate);color:var(--plate-ink);padding:5px 8px;border-radius:4px}
+.latest p{font-size:.95rem}
+.latest .cond{color:color-mix(in srgb,var(--bg) 70%,transparent);font:500 .82rem/1.4 var(--mono)}
+.keith{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center}
+.keith .ph{aspect-ratio:4/5;max-width:100%;border-radius:14px;border:2px dashed var(--line);background:repeating-linear-gradient(135deg,var(--surface) 0 14px,var(--bg) 14px 28px);display:grid;place-items:center;text-align:center;color:var(--muted);font:700 .75rem/1.4 var(--mono);padding:16px}
+.keith .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.keith p.bio{max-width:60ch;margin-top:12px;color:var(--muted)}
+@media (max-width:640px){.keith{grid-template-columns:1fr}.keith .ph{max-width:220px}}
+
+
+/* Owner phone */
+.ownerwrap{margin-top:22px;display:grid;grid-template-columns:1fr minmax(0,340px);gap:28px;align-items:center;border-top:1px dashed var(--line);padding-top:26px}
+.phone{background:var(--surface);border:2px solid var(--ink);border-radius:28px;padding:16px 18px 22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 40px -24px rgba(0,0,0,.5);min-width:0}
+.phone-bar{display:flex;justify-content:space-between;font:700 .68rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.phone fieldset{border:0;margin:0;padding:0}
+.field{display:flex;flex-direction:column;gap:6px;font:700 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field legend{margin-bottom:6px}
+.field .hint{text-transform:none;letter-spacing:0;font-weight:500}
+.field select,.field input{font:500 .95rem/1.2 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;min-width:0;width:100%}
+.phone .seg{display:flex}.phone .seg button{flex:1}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toast{font:600 .82rem/1.4 var(--body);color:var(--open)}
+/* FB feed */
+.fbmedia{aspect-ratio:4/3;max-width:100%;border-radius:8px;background:repeating-linear-gradient(135deg,var(--bg) 0 12px,var(--line) 12px 24px);display:grid;place-items:center;color:var(--muted);font:700 .72rem/1.3 var(--mono);text-align:center;position:relative}
+.fbmedia.vid::after{content:"▶";position:absolute;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:1rem}
+.dedupe{font:700 .68rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--clay)}
+
+.fb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fbpost{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.fbhead{display:flex;gap:10px;align-items:center}
+.fbav{width:34px;height:34px;border-radius:50%;background:var(--clay);color:#fff;display:grid;place-items:center;font:900 .7rem/1 var(--display);flex:none}
+.fbhead b{display:block;font-size:.9rem}.fbhead small{color:var(--muted);font-size:.75rem}
+.fbpost p{font-size:.92rem}
+.fbstats{font:500 .75rem/1 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+@media (max-width:860px){.ownerwrap{grid-template-columns:1fr}.fb{grid-template-columns:1fr}}
+
+/* Ride call */
+.rc{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+.rc-card{background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.rc-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.rc-top h3{font-size:1.7rem}
+.slots{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.slot{aspect-ratio:1;max-width:100%;border-radius:6px;border:2px dashed var(--line);display:grid;place-items:center;font:800 .8rem/1 var(--display);color:var(--muted)}
+.slot.in{background:var(--plate);border:2px solid var(--plate-ink);color:var(--plate-ink)}
+.slot.you{background:var(--clay);border-color:var(--clay);color:#fff}
+.rc-status{font:800 1.3rem/1.2 var(--display);text-transform:uppercase}
+.rc-status.go{color:var(--open)}
+.rc-btns{display:flex;gap:10px;flex-wrap:wrap}
+.vs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.vs li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.vs b{display:block;font:800 1.05rem/1.2 var(--display);text-transform:uppercase}
+.vs span.k{font:700 .7rem/1 var(--mono);color:var(--plate-ink);background:var(--plate);border-radius:4px;padding:5px 6px;margin-top:2px}
+.vs p{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.rc{grid-template-columns:1fr}}
+@media (max-width:860px){
+  .hero .wrap,.grid2,.track-wrap,.visit,.ai-grid{grid-template-columns:1fr}
+  .weekends{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rules,.quotes{grid-template-columns:1fr 1fr}
+  .owner{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .wrap{padding-inline:16px}
+  .weekends{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rules,.quotes,.check{grid-template-columns:1fr}
+  .plate .detail strong{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head><body>
+<div class="ribbon"><div class="wrap">
+  <span><b>SPEC PREVIEW</b> · Not the official Pineville MX Park site. Built from public listings by Heidi Dains to show what one could look like.</span>
+  <span class="legend"><span class="tbc" title="Couldn't confirm from public info. Owner to fill in.">TBC</span> = owner to confirm</span>
+</div></div>
+
+<nav class="top" aria-label="Sections"><div class="wrap">
+  <a class="logo" href="#top"><i>MX</i>Pineville MX Park</a>
+  <span class="sp"></span>
+  <a class="l" href="#schedule">Schedule</a>
+  <a class="l" href="#facebook">Facebook</a>
+  <a class="l" href="#ride-call">Ride call</a>
+  <a class="l" href="#fees">Fees</a>
+  <a class="l" href="#track">Track</a>
+  <a class="l" href="#first-time">First time</a>
+  <a class="l" href="#rules">Rules</a>
+  <a class="l" href="#keith">Keith</a>
+  <a class="l" href="#visit">Directions</a>
+</div></nav>
+
+<header class="hero" id="top">
+  <canvas id="dirt" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Motocross · Pineville, South Carolina</p>
+      <h1 style="margin-top:12px">The Lowcountry's <span>MX track</span></h1>
+      <p class="lede">About <b>an hour from Charleston</b>. Long, fast layout on about 50 acres, jumps from <b>15 to 115 feet</b>, a peewee track for the little rippers, and camping on site.</p>
+      <div class="facts-row">
+        <span class="pill"><span class="dot"></span>Dirt bikes &amp; quads</span>
+        <span class="pill"><span class="dot"></span>Peewee track</span>
+        <span class="pill"><span class="dot"></span>Primitive camping</span>
+        <span class="pill"><span class="dot"></span>Coaching with Keith</span>
+        <span class="pill"><span class="dot"></span>★ 4.8 · 43 Google reviews <span class="tbc" title="Reported by TrackFollower; confirm on Google Maps.">TBC</span></span>
+      </div>
+    </div>
+    <div>
+      <div class="plate" id="plate" aria-live="polite">
+        <p class="q">Is Pineville open this weekend?</p>
+        <p class="answer" id="plate-answer">Yes</p>
+        <p class="when" id="plate-when">Sat Oct 10 · Open practice</p>
+        <div class="detail">
+          <div><small>Gates</small><strong id="plate-gates">10:00 AM</strong></div>
+          <div><small>Riding</small><strong id="plate-ride">10 AM–3 PM</strong></div>
+          <div><small>Gate fee</small><strong id="plate-fee">$20</strong></div>
+        </div>
+        <span class="sample">Example · hours posted weekly</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="latest" aria-label="Latest from the track"><div class="wrap">
+  <span class="tag" id="latest-tag">Latest · Oct 4</span>
+  <p id="latest-text">Thanks to everyone who raced Saturday through the downpours. Great racing. Every rider who comes out helps keep the track open.</p>
+  <span class="cond" id="latest-cond">Track note from Keith goes here · e.g. watered and ready</span>
+</div></div>
+
+<main>
+<section id="schedule"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Ride days</p>
+    <h2>Next six weekends</h2>
+    <p>Pineville opens on select weekends, and hours change week to week (recently Saturday 10 to 3). Check here before you load the truck. Last race: <b>Saturday, Oct 3</b>, run through the rain. Tap a weekend for gate times and what's running. <span class="tbc" title="Dates and times here are examples. Owner sets the real schedule.">Sample dates</span></p>
+  </div>
+  <div class="weekends" id="weekends" role="group" aria-label="Upcoming weekends"></div>
+  <div class="wk-detail" id="wk-detail"></div>
+
+  <div class="ownerwrap">
+    <div>
+      <p class="eyebrow">For Keith: updating takes 10 seconds</p>
+      <h3 style="margin-top:8px;font-size:1.8rem">One screen on your phone</h3>
+      <p style="color:var(--muted);margin-top:10px;max-width:46ch">Pick the status, set the hours, add a line about the track, and tap Update. The number plate, this schedule, the "latest" bar and the data Google and AI assistants read all update at once (search engines pick up changes on their next visit). Keep posting on Facebook like you do now.</p>
+      <p style="color:var(--muted);margin-top:10px;font-size:.85rem">Try it on the right. Changes stay on this device only.</p>
+    </div>
+    <form class="phone" id="owner-form" aria-label="Owner update screen (demo)">
+      <div class="phone-bar"><span>Pineville MX · Update</span><span>Owner</span></div>
+      <fieldset class="field"><legend>This weekend</legend>
+        <div class="seg" role="group" aria-label="This weekend's status">
+          <button type="button" data-status="open" aria-pressed="true">Open</button>
+          <button type="button" data-status="race" aria-pressed="false">Race day</button>
+          <button type="button" data-status="closed" aria-pressed="false">Closed</button>
+        </div>
+      </fieldset>
+      <div class="row2">
+        <label class="field" for="o-from">Gates open
+          <select id="o-from"><option>8:00 AM</option><option>9:00 AM</option><option selected>10:00 AM</option><option>11:00 AM</option><option>3:00 PM</option></select></label>
+        <label class="field" for="o-to">Riding until
+          <select id="o-to"><option selected>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>8:00 PM</option></select></label>
+      </div>
+      <label class="field" for="o-note">Track note <span class="hint">optional</span>
+        <input id="o-note" type="text" maxlength="120" value="Watered and ready. See you Saturday."></label>
+      <button class="btn primary" type="submit" style="justify-content:center">Update everywhere</button>
+      <p class="toast" id="o-toast" role="status" hidden></p>
+    </form>
+  </div>
+</div></section>
+
+<section id="facebook"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">From Facebook</p>
+    <h2>Latest posts</h2>
+    <p>On the live site, this section pulls posts from the Pineville MX Park Facebook page (with Keith's one-time OK). It updates on its own when Keith posts, shows his photos and videos, and shows each post once even when he shares it several times. <span class="tbc" title="Preview shows a static copy. Facebook's embed cannot load inside this private preview.">Static copy in preview</span></p>
+  </div>
+  <div class="fb">
+    <article class="fbpost"><div class="fbhead"><span class="fbav">PMX</span><div><b>Pineville MX Park</b><small>Oct 4</small></div></div><p>Thanks to everybody who came out to the race and braved the downpours. Great racing.</p><div class="fbmedia">Race-day photo</div><p class="fbstats">55 likes · 25 comments</p></article>
+    <article class="fbpost"><div class="fbhead"><span class="fbav">PMX</span><div><b>Pineville MX Park</b><small>Sep 29</small></div></div><p>Racing October 3rd this Saturday, Pineville MX.</p><div class="fbmedia vid">Track video</div><p class="dedupe">Posted 3 times · shown once</p></article>
+    <article class="fbpost"><div class="fbhead"><span class="fbav">PMX</span><div><b>Pineville MX Park</b><small>Sep 25</small></div></div><p>Open Saturday 10:00 to 3:00 for practice before the October 3rd race. Track's been cut, cleaned up and fixed.</p><div class="fbmedia">Track prep photo</div><p class="fbstats">Riders asking in the comments: open Sunday too?</p></article>
+  </div>
+  <p style="margin-top:16px"><a class="btn" href="https://www.facebook.com/search/pages/?q=Pineville%20MX%20Park" target="_blank" rel="noopener">See all posts on Facebook</a></p>
+</div></section>
+
+<section id="ride-call"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Ride call</p>
+    <h2>Midweek practice runs when 10 riders say they're in</h2>
+    <p>Tap "I'm riding." Once 10 riders are in, practice is on, and everyone who signed up hears about it, whether or not they're on Facebook. <span class="tbc" title="Demo. Counts here are sample data.">Sample count</span></p>
+  </div>
+  <div class="rc">
+    <div class="rc-card" aria-live="polite">
+      <div class="rc-top"><h3>Wednesday practice</h3><span class="eyebrow">3:00–8:00 PM</span></div>
+      <div class="slots" id="slots"></div>
+      <p class="rc-status" id="rc-status">7 of 10 riders in</p>
+      <div class="rc-btns">
+        <button class="btn primary" type="button" id="rc-in">I'm riding</button>
+        <button class="btn" type="button" id="rc-reset">Reset demo</button>
+      </div>
+      <p style="color:var(--muted);font-size:.85rem">Riders get an email alert when practice is on or off (text alerts can be added). Keith gets one tap to confirm or call it off.</p>
+    </div>
+    <div>
+      <p class="eyebrow" style="margin-bottom:12px">For Keith: why this beats a Facebook roll call</p>
+      <ul class="vs">
+        <li><span class="k">01</span><div><b>One live count</b><p>No reading through comments to tally who's coming. The count updates as riders sign up.</p></div></li>
+        <li><span class="k">02</span><div><b>Automatic go or no-go</b><p>When 10 riders are in, it's on and everyone is told. If not, everyone gets a "closed tonight" note without a separate post.</p></div></li>
+        <li><span class="k">03</span><div><b>Reaches riders off Facebook</b><p>Parents, new riders and anyone who missed the post still find out.</p></div></li>
+        <li><span class="k">04</span><div><b>Answers "what time tomorrow?"</b><p>Hours sit next to every ride day, so Google and AI assistants can answer it too, before anyone has to ask in the comments.</p></div></li>
+      </ul>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:14px">Keep posting on Facebook. The site adds one link to each post and does the counting.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="fees"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Gate &amp; fees</p>
+    <h2>What a day costs</h2>
+    <p>Parking and spectators get in free. You pay per rider.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <table class="fees">
+        <tr><td>Practice, per rider<small>Big bikes and quads</small></td><td>$20</td></tr>
+        <tr><td>Practice, 50cc riders<small>Peewee rate</small></td><td>$15</td></tr>
+        <tr><td>Race entry, per class<small>Listings show $30 or $40</small></td><td>$30–40 <span class="tbc" title="Directories disagree. Owner to confirm.">TBC</span></td></tr>
+        <tr><td>Race day gate<small>Per person</small></td><td>$20 <span class="tbc" title="From TrackFollower. Owner to confirm.">TBC</span></td></tr>
+        <tr><td>Spectators &amp; parking</td><td>Free</td></tr>
+        <tr><td>Camping<small>Primitive, vault toilet</small></td><td>Free <span class="tbc" title="Owner to confirm cost and whether to reserve.">TBC</span></td></tr>
+        <tr><td>Payment<small>Cash, card, app?</small></td><td><span class="tbc" title="Owner to confirm.">TBC</span></td></tr>
+      </table>
+    </div>
+    <div class="card calc" aria-labelledby="calc-h">
+      <h3 id="calc-h">Gate calculator</h3>
+      <div class="seg" role="group" aria-label="Day type" style="margin:14px 0 6px">
+        <button type="button" data-day="practice" aria-pressed="true">Practice day</button>
+        <button type="button" data-day="race" aria-pressed="false">Race day</button>
+      </div>
+      <label>Riders on big bikes or quads <span class="stepper"><button type="button" data-k="big" data-d="-1" aria-label="One fewer">−</button><output id="c-big">1</output><button type="button" data-k="big" data-d="1" aria-label="One more">+</button></span></label>
+      <label>50cc riders <span class="stepper"><button type="button" data-k="small" data-d="-1" aria-label="One fewer">−</button><output id="c-small">1</output><button type="button" data-k="small" data-d="1" aria-label="One more">+</button></span></label>
+      <label id="row-classes" hidden>Race classes per rider <span class="stepper"><button type="button" data-k="classes" data-d="-1" aria-label="One fewer">−</button><output id="c-classes">1</output><button type="button" data-k="classes" data-d="1" aria-label="One more">+</button></span></label>
+      <div class="total"><span>Estimated total</span><strong class="num" id="c-total">$35</strong></div>
+      <p class="note" id="c-note">Spectators and parking are free.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="track"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">The track</p>
+    <h2>Long, fast, loose</h2>
+    <p>Riders describe it as long and fast, with lots of berms and mostly loose dirt. Tap a jump. <span class="tbc" title="Illustration only. Swap in a drone shot or real layout.">Illustration, not the real layout</span></p>
+  </div>
+  <div class="track-wrap">
+    <svg class="track-svg" viewBox="0 0 600 380" role="img" aria-label="Illustrated track map with five jumps">
+      <rect class="grass" x="0" y="0" width="600" height="380"/>
+      <path class="dirt" d="M70 300 C 40 220, 90 150, 170 150 S 260 90, 320 70 S 470 40, 520 100 S 560 210, 470 230 S 330 200, 300 260 S 230 340, 150 330 S 90 330, 70 300 Z"/>
+      <path class="edge" d="M70 300 C 40 220, 90 150, 170 150 S 260 90, 320 70 S 470 40, 520 100 S 560 210, 470 230 S 330 200, 300 260 S 230 340, 150 330 S 90 330, 70 300 Z"/>
+      <path d="M430 300 h120 v50 h-120z" fill="none" stroke="var(--muted)" stroke-dasharray="4 4"/>
+      <text class="lbl" x="440" y="330">PEEWEE TRACK</text>
+      <text class="lbl" x="40" y="40">START GATE ▸</text>
+      <g class="jump" data-j="0" tabindex="0" role="button" aria-label="Jump 1"><rect x="150" y="136" width="30" height="26" rx="5"/><text x="160" y="154">1</text></g>
+      <g class="jump" data-j="1" tabindex="0" role="button" aria-label="Jump 2"><rect x="300" y="56" width="30" height="26" rx="5"/><text x="310" y="74">2</text></g>
+      <g class="jump" data-j="2" tabindex="0" role="button" aria-label="Jump 3"><rect x="510" y="120" width="30" height="26" rx="5"/><text x="520" y="138">3</text></g>
+      <g class="jump" data-j="3" tabindex="0" role="button" aria-label="Jump 4"><rect x="318" y="226" width="30" height="26" rx="5"/><text x="328" y="244">4</text></g>
+      <g class="jump" data-j="4" tabindex="0" role="button" aria-label="Jump 5"><rect x="120" y="316" width="30" height="26" rx="5"/><text x="130" y="334">5</text></g>
+    </svg>
+    <div>
+      <div class="spec">
+        <div><small>Property</small><strong>~50 acres</strong></div>
+        <div><small>Jumps</small><strong class="num">15–115 ft</strong></div>
+        <div><small>Terrain</small><strong>Loose dirt</strong></div>
+        <div><small>Level</small><strong>Beginner–Int.</strong></div>
+        <div><small>Track length</small><strong><span class="tbc" title="Owner to confirm.">TBC</span></strong></div>
+        <div><small>Watering</small><strong><span class="tbc" title="Owner to confirm.">TBC</span></strong></div>
+      </div>
+      <p class="jump-info" id="jump-info">Pick a jump on the map to see what you're in for.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="first-time"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">First time at Pineville</p>
+    <h2>Packing list</h2>
+    <p>New to the track, or bringing a kid to their first ride day? Check things off as you load up. Your list stays on this device.</p>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <ul class="check" id="checklist">
+    <li><label><input type="checkbox" id="ck-helmet"><span>DOT or Snell helmet, goggles, boots, gloves</span></label></li>
+    <li><label><input type="checkbox" id="ck-chest"><span>Chest protector and knee braces or guards</span></label></li>
+    <li><label><input type="checkbox" id="ck-tether"><span>Quads: tether kill switch fitted (required)</span></label></li>
+    <li><label><input type="checkbox" id="ck-cash"><span>Gate fee per rider (payment methods <span class="tbc" title="Owner to confirm.">TBC</span>)</span></label></li>
+    <li><label><input type="checkbox" id="ck-fuel"><span>Fuel and mix. Gas stations are 1 to 5 miles out</span></label></li>
+    <li><label><input type="checkbox" id="ck-water"><span>Water, food, pop-up shade, chairs</span></label></li>
+    <li><label><input type="checkbox" id="ck-camp"><span>Camping gear if you're staying over (primitive sites)</span></label></li>
+    <li><label><input type="checkbox" id="ck-waiver"><span>Signed waiver, parent signs for minors <span class="tbc" title="Owner to confirm waiver process.">TBC</span></span></label></li>
+  </ul>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Track rules</p>
+    <h2>Know before you go</h2>
+  </div>
+  <div class="rules">
+    <div class="rule"><span class="st open">Allowed</span><b>Dirt bikes</b><p>All sizes, from 50cc up.</p></div>
+    <div class="rule"><span class="st open">Allowed</span><b>Quads</b><p>Tether kill switch required.</p></div>
+    <div class="rule"><span class="st closed">Not allowed</span><b>UTVs &amp; SxS</b><p>No side-by-sides, Jeeps or street vehicles on track.</p></div>
+    <div class="rule"><span class="st closed">Not allowed</span><b>Night riding</b><p>Riding is daylight only.</p></div>
+    <div class="rule"><span class="st race">Recommended</span><b>Spark arrestor</b><p>Not required, but recommended.</p></div>
+    <div class="rule"><span class="st race">Owner to set</span><b>Gear &amp; kids</b><p>Minimum gear and age rules <span class="tbc" title="Owner to confirm.">TBC</span></p></div>
+  </div>
+</div></section>
+
+<section id="keith"><div class="wrap">
+  <div class="keith">
+    <div class="ph">Photo of Keith<br>with his bike<br><br>(with his OK)</div>
+    <div>
+      <p class="eyebrow">Meet the owner</p>
+      <h2 style="margin-top:8px">Keith Nevers</h2>
+      <p class="bio">Keith runs Pineville, preps the track, and still races. He coaches riders at the track too. As one rider put it on Facebook: "10 minutes with Coach Keith changes everything."</p>
+      <div class="stats">
+        <span class="pill"><span class="dot"></span>Plus 60 state champion</span>
+        <span class="pill"><span class="dot"></span>Rider coaching</span>
+        <span class="pill"><span class="dot"></span>Track prep by the owner</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">What riders say</p>
+    <h2>Riders vouch for it</h2>
+  </div>
+  <div class="rating">
+    <span class="big num">4.8</span>
+    <div><p style="font-size:1.4rem;color:var(--plate)" aria-hidden="true">★★★★★</p><p>43 Google reviews <span class="tbc" title="Reported by TrackFollower. Confirm on Google Maps and link the listing.">TBC</span></p></div>
+  </div>
+  <div class="quotes">
+    <blockquote><p>"SC Lowcountry's premiere MX facility. Very long and fast track."</p><cite>MXParks.com listing</cite></blockquote>
+    <blockquote><p>"Another good dude owns the place."</p><cite>Rider on VitalMX forum</cite></blockquote>
+    <blockquote><p>A Google review from a rider who drove in from Charleston would go here.</p><cite><span class="tbc" title="Owner to choose, with permission.">TBC</span> Google review</cite></blockquote>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Questions riders ask</p>
+    <h2>FAQ</h2>
+  </div>
+  <details open><summary>Is Pineville MX Park open this weekend?</summary><p id="faq-open">Check the number plate at the top of this page. Pineville opens on select weekends, and every open day is posted here and on Facebook.</p></details>
+  <details><summary>How far is it from Charleston?</summary><p>About an hour. The track is at 1812 Hwy 45 in Pineville, SC 29468, in Berkeley County.</p></details>
+  <details><summary>How much does it cost to ride?</summary><p>Practice is $20 per rider and $15 for 50cc riders. Spectators and parking are free. Race-day pricing is posted with each race.</p></details>
+  <details><summary>Is there a track for kids?</summary><p>Yes. There's a separate peewee track, and 50cc riders get a lower rate.</p></details>
+  <details><summary>Is there midweek practice?</summary><p>Sometimes. Wednesday practice, usually 3:00 to 8:00 PM, runs when at least 10 riders sign up through the ride call above.</p></details>
+  <details><summary>Can I get riding coaching?</summary><p>Yes. Riders work with Coach Keith at the track. Ask about times and rates when you call. <span class="tbc" title="Owner to confirm format and pricing.">TBC</span></p></details>
+  <details><summary>Can I camp at the track?</summary><p>Yes. Camping is primitive, with a vault toilet on site.</p></details>
+  <details><summary>Can I bring a quad or a side-by-side?</summary><p>Quads are welcome with a tether kill switch. UTVs and side-by-sides are not allowed.</p></details>
+</div></section>
+
+<section id="visit"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Directions &amp; contact</p>
+    <h2>Find the track</h2>
+  </div>
+  <div class="visit">
+    <div>
+      <p class="addr">1812 Hwy 45<br>Pineville, SC 29468</p>
+      <p style="margin-top:10px;color:var(--muted)">About an hour from Charleston. Gas and convenience stores within 1 to 5 miles.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=1812+Hwy+45+Pineville+SC+29468" target="_blank" rel="noopener">Open in Google Maps</a>
+        <button class="btn" type="button" id="copy-addr">Copy address</button>
+      </div>
+      <p style="margin-top:20px"><span class="eyebrow">Email</span><br><span style="font:600 1.05rem/1.4 var(--mono)">pinevillemxpark@gmail.com</span></p>
+      <p style="margin-top:14px"><span class="eyebrow">Call or text</span><br><span style="font:800 1.6rem/1.2 var(--display)" class="num">(843) 870-4639</span></p>
+      <div class="socials">
+        <span class="pill">Facebook · 8K followers</span>
+        <span class="pill">Instagram <span class="tbc" title="Add link">link</span></span>
+        <span class="pill">TikTok <span class="tbc" title="Add link">link</span></span>
+      </div>
+    </div>
+    <div class="map" aria-label="Simplified map from Charleston to Pineville">
+      <svg viewBox="0 0 400 300" role="img" aria-label="Schematic: Charleston to Pineville, about an hour north">
+        <rect width="400" height="300" fill="var(--surface)"/>
+        <path d="M0 250 C 80 230, 120 270, 200 250 S 320 280, 400 260 V300 H0Z" fill="var(--pine)" opacity=".14"/>
+        <path d="M300 250 C 270 200, 230 160, 200 120 S 140 60, 110 50" fill="none" stroke="var(--line)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M300 250 C 270 200, 230 160, 200 120 S 140 60, 110 50" fill="none" stroke="var(--clay)" stroke-width="3" stroke-dasharray="8 8" stroke-linecap="round"/>
+        <circle cx="300" cy="250" r="8" fill="var(--ink)"/>
+        <text x="314" y="255" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="var(--ink)">CHARLESTON</text>
+        <rect x="88" y="30" width="44" height="40" rx="6" fill="var(--plate)" stroke="var(--plate-ink)"/>
+        <text x="96" y="57" font-family="Saira Condensed, sans-serif" font-size="18" font-weight="900" fill="var(--plate-ink)">MX</text>
+        <text x="140" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="var(--ink)">PINEVILLE MX</text>
+        <text x="140" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--muted)">Hwy 45 · Berkeley Co.</text>
+        <text x="215" y="160" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="var(--clay)">~1 HR</text>
+        <text x="16" y="288" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted)">SCHEMATIC · NOT TO SCALE</text>
+      </svg>
+    </div>
+  </div>
+</div></section>
+
+<section id="ai-view"><div class="wrap">
+  <div class="ai">
+    <p class="eyebrow">Behind the page · for the pitch</p>
+    <h2 style="margin-top:8px">What an AI assistant reads</h2>
+    <p>Every fact on this page is also written as structured data that ChatGPT, Google and Perplexity can read directly. When the weekend switch above changes, this changes with it. That's how "is Pineville open this weekend?" gets a real answer.</p>
+    <div class="ai-grid">
+      <div class="chat" aria-label="Example assistant answer">
+        <div class="bubble u">Is there a motocross track open near Charleston this weekend?</div>
+        <div class="bubble a" id="ai-answer">…</div>
+      </div>
+      <pre id="ld-view" aria-label="Structured data"></pre>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>Pineville MX Park · 1812 Hwy 45, Pineville, SC 29468</span>
+  <span>Spec preview by Heidi Dains · heidimdains.github.io · Placeholder art, no track photos used</span>
+</div></footer>
+
+<script>
+(function(){
+  // ---- Sample schedule (owner replaces with real dates) ----
+  const fmt = d => d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  const today = new Date();
+  const sat0 = new Date(today); sat0.setHours(12,0,0,0);
+  sat0.setDate(sat0.getDate() + ((6 - sat0.getDay() + 7) % 7));
+  const pattern = ['open','closed','race','open','closed','open'];
+  const weeks = pattern.map((s,i)=>{
+    const sat = new Date(sat0); sat.setDate(sat0.getDate()+i*7);
+    return {sat, status:s};
+  });
+  const label = {open:'Open practice', race:'Race day', closed:'Closed'};
+  let info = {
+    open:{gates:'10:00 AM', ride:'10 AM–3 PM', fee:'$20'},
+    race:{gates:'7:00 AM', ride:'Sign-up 7–9', fee:'$20 + entry'},
+    closed:{gates:'—', ride:'—', fee:'—'}
+  };
+  let sel = 0;
+  const $ = id => document.getElementById(id);
+
+  function renderWeeks(){
+    const box = $('weekends'); box.innerHTML='';
+    weeks.forEach((w,i)=>{
+      const b=document.createElement('button');
+      b.type='button'; b.className='wk'; b.setAttribute('aria-pressed', i===sel);
+      const cls = w.status;
+      b.innerHTML = `<span class="d">${fmt(w.sat)}</span><span class="st ${cls}">${label[w.status]}</span><span class="t">${i===0?'This weekend':i===1?'Next weekend':'In '+i+' weeks'}</span>`;
+      b.onclick=()=>{sel=i;renderWeeks();renderDetail();};
+      box.appendChild(b);
+    });
+  }
+  function renderDetail(){
+    const w=weeks[sel], f=info[w.status];
+    $('wk-detail').innerHTML = w.status==='closed'
+      ? `<span><span class="k">${fmt(w.sat)}</span><b>Closed.</b> No riding this weekend.</span>`
+      : `<span><span class="k">${fmt(w.sat)}</span><b>${label[w.status]}</b></span><span><span class="k">Gates</span>${f.gates}</span><span><span class="k">Riding</span>${f.ride}</span><span><span class="k">Gate fee</span>${f.fee}</span><span><span class="k">Sunday</span><span class="tbc" title="Owner to confirm if Sundays run.">TBC</span></span>`;
+  }
+  function renderPlate(){
+    const w=weeks[0], f=info[w.status];
+    $('plate').classList.toggle('closed', w.status==='closed');
+    $('plate-answer').textContent = w.status==='closed' ? 'No' : 'Yes';
+    $('plate-when').textContent = fmt(w.sat)+' · '+label[w.status];
+    $('plate-gates').textContent=f.gates; $('plate-ride').textContent=f.ride; $('plate-fee').textContent=f.fee;
+    // AI answer
+    const nxt = weeks.find(x=>x.status!=='closed');
+    $('ai-answer').innerHTML = w.status==='closed'
+      ? `Pineville MX Park (about an hour from Charleston) is <b>closed</b> on ${fmt(w.sat)}. Its next ride day is ${fmt(nxt.sat)} (${label[nxt.status].toLowerCase()}).<small>Source: Pineville MX Park official site</small>`
+      : `Yes. <b>Pineville MX Park</b> in Pineville, SC, about an hour from Charleston, has ${label[w.status].toLowerCase()} on ${fmt(w.sat)}. Gates open at ${f.gates}. ${w.status==='open'?'Practice is $20 per rider, $15 for 50cc.':'Race-day gate is $20 plus class entry.'}<small>Source: Pineville MX Park official site</small>`;
+    renderLD();
+  }
+  function iso(d){return d.toISOString().slice(0,10);}
+  function renderLD(){
+    const events = weeks.filter(w=>w.status!=='closed').map(w=>({
+      "@type": w.status==='race' ? "SportsEvent" : "Event",
+      "name": "Pineville MX Park " + label[w.status],
+      "startDate": iso(w.sat)+"T"+(w.status==='race'?"07:00":"10:00")+"-04:00",
+      "eventStatus":"https://schema.org/EventScheduled",
+      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "location":{"@id":"#track"},
+      "offers":{"@type":"Offer","price": w.status==='race'?"20":"20","priceCurrency":"USD","description": w.status==='race'?"Gate fee; class entry extra":"Practice, per rider ($15 for 50cc)"}
+    }));
+    const ld = {
+      "@context":"https://schema.org",
+      "@graph":[{
+        "@type":["SportsActivityLocation","LocalBusiness"],
+        "@id":"#track",
+        "name":"Pineville MX Park",
+        "description":"Motocross track on about 50 acres in Pineville, SC, about an hour from Charleston. Jumps from 15 to 115 ft, peewee track, primitive camping. Open select weekends.",
+        "address":{"@type":"PostalAddress","streetAddress":"1812 Hwy 45","addressLocality":"Pineville","addressRegion":"SC","postalCode":"29468","addressCountry":"US"},
+        "telephone":"+1-843-870-4639",
+        "priceRange":"$15–$40",
+        "amenityFeature":[
+          {"@type":"LocationFeatureSpecification","name":"Peewee track","value":true},
+          {"@type":"LocationFeatureSpecification","name":"Primitive camping","value":true},
+          {"@type":"LocationFeatureSpecification","name":"Spectator stands","value":true}],
+        "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"43","_note":"TBC: confirm on Google"},
+        "email":"pinevillemxpark@gmail.com",
+        "sameAs":["TBC: Facebook URL","TBC: Instagram URL","TBC: TikTok URL"]
+      }].concat(events)
+    };
+    const txt = JSON.stringify(ld,null,2);
+    $('ld-view').textContent = txt;
+    $('schema-ld').textContent = txt;
+  }
+
+  document.querySelectorAll('[data-status]').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('[data-status]').forEach(x=>x.setAttribute('aria-pressed', x===b));
+    weeks[0].status=b.dataset.status; renderWeeks(); renderDetail(); renderPlate();
+  });
+
+  // ---- Owner update (demo) ----
+  $('owner-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const st=weeks[0].status, from=$('o-from').value, to=$('o-to').value, note=$('o-note').value.trim();
+    if(st==='open'){ info.open={gates:from, ride:from.replace(':00','')+'–'+to.replace(':00',''), fee:'$20'}; }
+    renderWeeks(); renderDetail(); renderPlate();
+    const today=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    $('latest-tag').textContent='Latest · '+today;
+    $('latest-text').textContent = st==='closed' ? 'Closed this weekend. See you next time.' : (st==='race'?'Race day this Saturday. Gates open '+from+'.':'Open this Saturday, '+from+' to '+to+'.');
+    if(note) $('latest-cond').textContent='Track: '+note;
+    const t=$('o-toast'); t.hidden=false; t.textContent='Updated: number plate, schedule, latest bar and Google-readable data.';
+  });
+
+  // ---- Calculator ----
+  const c={big:1,small:1,classes:1,day:'practice'};
+  function calc(){
+    let t, note;
+    if(c.day==='practice'){ t=c.big*20+c.small*15; note='Practice: $20 per rider, $15 for 50cc. Spectators free.'; }
+    else { const riders=c.big+c.small; t=riders*20 + riders*c.classes*30; note='Race day estimate uses $20 gate + $30 per class. Real race pricing TBC.'; }
+    $('c-big').textContent=c.big; $('c-small').textContent=c.small; $('c-classes').textContent=c.classes;
+    $('c-total').textContent='$'+t; $('c-note').textContent=note;
+    $('row-classes').hidden = c.day!=='race';
+  }
+  document.querySelectorAll('.stepper button').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k, min = k==='classes'?1:0; c[k]=Math.max(min,Math.min(9,c[k]+ +b.dataset.d)); calc();
+  });
+  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('[data-day]').forEach(x=>x.setAttribute('aria-pressed',x===b)); c.day=b.dataset.day; calc();
+  });
+
+  // ---- Track jumps ----
+  const jumps=[
+    ['Jump 1 · Starter tabletop','About 15 ft. Roll it or jump it. Good warm-up for newer riders.'],
+    ['Jump 2 · Back straight double','A mid-size double after the long straight. Carry speed out of the berm.'],
+    ['Jump 3 · The big one','Up to about 115 ft. Experienced riders only. Walk it before you hit it.'],
+    ['Jump 4 · Rhythm section','A run of smaller jumps. Pick a line and stay smooth.'],
+    ['Jump 5 · Finish step-up','Step-up onto the finish straight.']
+  ];
+  document.querySelectorAll('.jump').forEach(g=>{
+    const go=()=>{document.querySelectorAll('.jump').forEach(x=>x.classList.remove('on'));g.classList.add('on');
+      const j=jumps[g.dataset.j]; $('jump-info').innerHTML='<b style="color:var(--ink)">'+j[0]+'</b><br>'+j[1]+' <span class="tbc" title="Illustrative description. Owner to describe real features.">TBC</span>';};
+    g.addEventListener('click',go); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+
+  // ---- Checklist (per-device) ----
+  const boxes=[...document.querySelectorAll('#checklist input')];
+  function prog(){ $('prog').style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%'; }
+  try{ const s=JSON.parse(localStorage.getItem('pmx-check')||'{}'); boxes.forEach(b=>b.checked=!!s[b.id]); }catch(e){}
+  boxes.forEach(b=>b.addEventListener('change',()=>{ prog(); try{ const s={}; boxes.forEach(x=>s[x.id]=x.checked); localStorage.setItem('pmx-check',JSON.stringify(s)); }catch(e){} }));
+  prog();
+
+  // ---- Copy address ----
+  $('copy-addr').onclick=()=>{
+    const t='1812 Hwy 45, Pineville, SC 29468', btn=$('copy-addr');
+    const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy address',1600);};
+    try{ navigator.clipboard.writeText(t).then(done,()=>{btn.textContent=t;}); }catch(e){ btn.textContent=t; }
+  };
+
+  // ---- Dirt texture (placeholder art) ----
+  const cv=$('dirt'), ctx=cv.getContext('2d');
+  function paint(){
+    const r=cv.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
+    cv.width=r.width*dpr; cv.height=r.height*dpr; ctx.scale(dpr,dpr);
+    const css=getComputedStyle(document.documentElement);
+    const clay=css.getPropertyValue('--clay').trim()||'#A9431F', line=css.getPropertyValue('--line').trim()||'#ccc';
+    ctx.clearRect(0,0,r.width,r.height);
+    // tire ruts
+    ctx.lineCap='round';
+    for(let k=0;k<7;k++){
+      ctx.beginPath(); const y0=r.height*(0.15+k*0.12);
+      ctx.moveTo(-20,y0);
+      for(let x=0;x<=r.width+40;x+=40){ ctx.lineTo(x, y0+Math.sin(x/120+k)*18 + Math.sin(x/37+k*2)*4); }
+      ctx.strokeStyle= k%3===0?clay:line; ctx.globalAlpha=k%3===0?.18:.6; ctx.lineWidth=k%3===0?6:2; ctx.setLineDash(k%3===0?[]:[2,7]); ctx.stroke();
+    }
+    ctx.globalAlpha=1; ctx.setLineDash([]);
+  }
+  paint(); window.addEventListener('resize',()=>{ctx.setTransform(1,0,0,1,0,0);paint();});
+
+  // ---- Ride call (demo) ----
+  const NEED=10, BASE=7; let you=false;
+  try{ you = localStorage.getItem('pmx-rc')==='1'; }catch(e){}
+  function rc(){
+    const n=BASE+(you?1:0);
+    const box=$('slots'); box.innerHTML='';
+    for(let i=0;i<NEED;i++){ const d=document.createElement('span');
+      d.className='slot'+(i<BASE?' in':'')+(you&&i===BASE?' you':''); d.textContent=i<BASE?'✓':(you&&i===BASE?'You':i+1); box.appendChild(d); }
+    const st=$('rc-status');
+    st.textContent = n>=NEED ? "It's on! Gates open 3 PM" : n+' of '+NEED+' riders in · '+(NEED-n)+' more to go';
+    st.classList.toggle('go', n>=NEED);
+    $('rc-in').textContent = you ? "You're in ✓" : "I'm riding";
+  }
+  $('rc-in').onclick=()=>{ you=true; try{localStorage.setItem('pmx-rc','1');}catch(e){} rc(); };
+  $('rc-reset').onclick=()=>{ you=false; try{localStorage.removeItem('pmx-rc');}catch(e){} rc(); };
+  rc();
+
+  renderWeeks(); renderDetail(); renderPlate(); calc();
+})();
+</script>
+
+</body></html>

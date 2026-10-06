@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pineville MX Website Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800;900&family=Archivo:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="icon" href="../favicon.ico">
+<style>
+/* Flow: a sequence of colored chapters, each numbered. Paper chapters carry the story; the website gets its own dark stage. */
+:root{
+  --paper:#F6F3EC; --paper-2:#ECE7DC; --ink:#1B1A17; --muted:#5E5A52; --line:#D6CFC1;
+  --clay:#A9431F; --plate:#F2C230; --pine:#2F4A33; --stage:#141310; --white:#FFFFFF;
+  --display:"Saira Condensed","Arial Narrow",Impact,sans-serif;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+/* Colored chapters keep their brand colors in dark mode; only the paper chapters darken. */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1E1C18;--paper-2:#26231E;--ink:#F1ECE2;--muted:#B3AC9F;--line:#3A362F;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#1E1C18;--paper-2:#26231E;--ink:#F1ECE2;--muted:#B3AC9F;--line:#3A362F;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:24px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--plate);outline-offset:2px}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+
+/* Chapter bar */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;gap:18px;align-items:center;height:48px;overflow-x:auto;scrollbar-width:none}
+.bar .wrap::-webkit-scrollbar{display:none}
+.bar b{font:900 1rem/1 var(--display);text-transform:uppercase;white-space:nowrap;margin-right:6px}
+.bar a{font:600 .74rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:var(--muted);white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent}
+.bar a.on{color:var(--ink);border-color:var(--clay)}
+.bar a span{color:var(--clay)}
+
+/* Chapters */
+.ch{padding-block:88px;position:relative}
+.ch-num{font:700 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;display:flex;gap:12px;align-items:center}
+.ch-num::after{content:"";height:1px;width:56px;background:currentColor;opacity:.5}
+.ch h2{font:900 clamp(2.6rem,7vw,5rem)/.9 var(--display);text-transform:uppercase;margin-top:18px;letter-spacing:-.005em}
+.lede{font:400 clamp(1.15rem,2.2vw,1.4rem)/1.45 var(--serif);max-width:40ch;margin-top:20px}
+.lede em{font-style:italic}
+.hand{font:700 1.45rem/1.15 var(--hand)}
+
+.paper{background:var(--paper);color:var(--ink)}
+.paper .ch-num{color:var(--clay)}
+.paper-2{background:var(--paper-2);color:var(--ink)}
+.paper-2 .ch-num{color:var(--clay)}
+.yellow{background:var(--plate);color:#141310}
+.pine{background:var(--pine);color:#F3EFE6}
+.clay{background:var(--clay);color:#FFF6EE}
+.stage{background:var(--stage);color:#F1ECE2}
+
+/* Cover */
+.cover{padding-block:72px 64px}
+.cover .meta{display:flex;flex-wrap:wrap;gap:6px 22px;font:700 .76rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.cover h1{font:900 clamp(3.6rem,13vw,9.5rem)/.82 var(--display);text-transform:uppercase;margin-top:28px;letter-spacing:-.01em}
+.cover .row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-top:36px}
+.cover .lede{margin-top:0;max-width:34ch}
+.cover .hint{margin-top:44px;display:flex;gap:10px;align-items:center;font:700 .76rem/1 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+.badge{background:#141310;color:var(--plate);border-radius:14px 14px 34px 34px;padding:16px 26px 20px;text-align:center;min-width:210px;transform:rotate(-3deg)}
+.badge small{font:700 .64rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#F1ECE2}
+.badge b{display:block;font:900 3.8rem/.9 var(--display);text-transform:uppercase;margin-block:6px}
+
+/* 01 problem */
+.findings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:48px}
+.find{border-top:4px solid var(--clay);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.find .big{font:900 3rem/1 var(--display);text-transform:uppercase}
+.find .src{font:500 .72rem/1.4 var(--mono);color:var(--muted)}
+
+/* 02 look */
+.look{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start}
+.swatches{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.sw{border-radius:12px;height:120px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;font:700 .74rem/1.35 var(--mono);border:1px solid rgba(255,255,255,.18)}
+.specimen{display:flex;flex-direction:column;gap:22px}
+.specimen div{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:18px}
+.specimen small{display:block;font:600 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:10px}
+.specimen .d{font:900 3.2rem/.9 var(--display);text-transform:uppercase}
+.specimen .b{font:400 1.05rem/1.5 var(--body)}
+.specimen .m{font:500 .95rem/1.4 var(--mono)}
+.platecard{display:inline-block;background:var(--plate);color:#141310;border-radius:10px 10px 24px 24px;padding:10px 18px 14px;text-align:center}
+.platecard b{display:block;font:900 2.2rem/.9 var(--display)}
+.platecard small{font:700 .6rem/1 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+
+/* 03 website stage */
+.stage .ch-num{color:var(--plate)}
+.stage-label{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between}
+.stage-label .lede{color:#CFC8BB}
+.desk-wrap{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:32px;align-items:start}
+.desk{background:#2A2824;border-radius:14px;padding:30px 10px 10px;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.desk::before{content:"";position:absolute;top:12px;left:14px;width:8px;height:8px;border-radius:50%;background:#e2584f;box-shadow:14px 0 0 #e5b53f,28px 0 0 #59b25b}
+.desk::after{content:"pinevillemx.com";position:absolute;top:8px;left:50%;transform:translateX(-50%);font:500 .68rem/1 var(--mono);color:#8F897D;background:#1B1A17;padding:4px 40px;border-radius:5px}
+.screen{position:relative;overflow:hidden;background:#fff}
+.desk .screen{width:100%;aspect-ratio:16/10;border-radius:6px}
+.screen iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;display:block}
+.desk iframe{width:1280px;height:800px;pointer-events:none}
+.pin{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--clay);color:#fff;font:800 .95rem/30px var(--display);text-align:center;box-shadow:0 0 0 4px rgba(169,67,31,.35);transform:translate(-50%,-50%)}
+.notes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.notes li{display:grid;grid-template-columns:30px 1fr;gap:12px}
+.notes .n{width:30px;height:30px;border-radius:50%;background:var(--clay);color:#fff;font:800 .95rem/30px var(--display);text-align:center}
+.notes .hand{color:var(--plate);display:block}
+.notes p{color:#CFC8BB;font-size:.92rem;margin-top:4px}
+.cap{font:600 .72rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:#8F897D;margin-top:14px}
+
+.phone-wrap{margin-top:96px;display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:start}
+.phone{background:#2A2824;border-radius:44px;padding:12px;width:300px;max-width:100%;box-shadow:0 30px 60px rgba(0,0,0,.45);position:sticky;top:72px}
+.phone .screen{border-radius:33px;height:610px}
+.phone iframe{width:375px}
+.tryit{display:inline-block;margin-top:14px;font:700 1.5rem/1 var(--hand);color:var(--plate)}
+.feats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+.feat{border-top:1px solid #3A362F;padding-top:16px}
+.feat .tag{font:700 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--plate)}
+.feat h3{font:800 1.6rem/1 var(--display);text-transform:uppercase;margin-top:8px}
+.feat p{color:#CFC8BB;font-size:.94rem;margin-top:8px}
+.feat .why{font:600 1.3rem/1.15 var(--hand);color:#F1ECE2;margin-top:10px}
+.full{display:inline-flex;margin-top:40px;font:700 .9rem/1 var(--body);padding:14px 18px;border-radius:8px;background:var(--plate);color:#141310;text-decoration:none}
+
+/* 04 updates */
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:48px;counter-reset:f}
+.flow > div{background:rgba(0,0,0,.16);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.flow .who{font:700 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.flow b{font:900 2rem/.95 var(--display);text-transform:uppercase}
+.flow p{font-size:.95rem;opacity:.9}
+.flow .hand{color:var(--plate)}
+
+/* 05 found */
+.ai{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start}
+.chat{background:#141310;color:#F1ECE2;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.chat .top{font:600 .7rem/1 var(--mono);color:#8F897D;text-transform:uppercase;letter-spacing:.1em}
+.bubble{border-radius:14px;padding:12px 14px;font-size:.93rem;max-width:92%}
+.bubble.u{align-self:flex-end;background:var(--plate);color:#141310}
+.bubble.a{background:#2A2824}
+.bubble small{display:block;margin-top:6px;opacity:.6;font:500 .7rem/1.3 var(--mono)}
+.compare{display:flex;flex-direction:column;gap:18px}
+.compare div{border-left:4px solid var(--line);padding-left:16px}
+.compare div.after{border-color:var(--pine)}
+.compare h3{font:800 1.4rem/1 var(--display);text-transform:uppercase}
+.compare p{color:var(--muted);margin-top:6px}
+.fine{font-size:.82rem;color:var(--muted)}
+
+/* 06 photos */
+.shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:48px}
+.shot{aspect-ratio:4/3;border-radius:12px;border:2px dashed var(--line);background:repeating-linear-gradient(135deg,var(--paper) 0 14px,var(--paper-2) 14px 28px);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:2px}
+.shot b{font:800 1.15rem/1.05 var(--display);text-transform:uppercase}
+.shot small{font:500 .72rem/1.3 var(--mono);color:var(--muted)}
+.shot.wide{grid-column:span 2;aspect-ratio:auto;min-height:100%}
+.photo-note{margin-top:24px;color:var(--clay)}
+
+/* 07 next */
+.asks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;list-style:none;padding:0;margin:48px 0 0}
+.asks li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(20,19,16,.2)}
+.asks .box{flex:none;width:22px;height:22px;border:2px solid #141310;border-radius:5px;margin-top:2px}
+.asks b{font-weight:700}
+.asks small{display:block;opacity:.75;font-size:.86rem}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:56px;counter-reset:s;border-top:2px solid #141310}
+.step{padding:18px 18px 0 0;counter-increment:s}
+.step::before{content:"0" counter(s);font:900 2.4rem/1 var(--display);display:block}
+.step h3{font:800 1.3rem/1 var(--display);text-transform:uppercase;margin-top:6px}
+.step p{font-size:.9rem;opacity:.8;margin-top:6px}
+.end{padding-block:72px}
+.end h2{color:var(--plate)}
+.end .row{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:end;margin-top:20px}
+.end p{color:#CFC8BB}
+.end small{display:block;margin-top:48px;color:#8F897D;font-size:.8rem}
+
+@media (max-width:900px){
+  .ch{padding-block:64px}
+  .cover .row,.look,.ai,.desk-wrap,.phone-wrap{grid-template-columns:1fr}
+  .findings,.flow{grid-template-columns:1fr}
+  .asks{grid-template-columns:1fr}
+  .shots,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .phone{position:static;margin-inline:auto}
+  .phone-col{text-align:center}
+  .desk-wrap{display:none}
+  .phone-wrap{margin-top:40px}
+}
+@media (max-width:560px){
+  .wrap{padding-inline:16px}
+  .feats{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr}.shot.wide{grid-column:auto;aspect-ratio:4/3}
+  .steps{grid-template-columns:1fr}
+  .badge{justify-self:start}
+}
+
+/* Note from Heidi */
+.letter{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:14px;border:2px dashed var(--line);background:repeating-linear-gradient(135deg,var(--paper) 0 14px,var(--paper-2) 14px 28px);display:flex;align-items:flex-end;padding:14px;font:500 .72rem/1.3 var(--mono);color:var(--muted)}
+.letter-body{font:400 clamp(1.1rem,2vw,1.3rem)/1.6 var(--serif);max-width:58ch;display:flex;flex-direction:column;gap:18px}
+.letter-body .hi{font:700 2.2rem/1 var(--hand);color:var(--clay)}
+.letter-body .sig{font:700 2rem/1 var(--hand);color:var(--clay)}
+.fill{background:color-mix(in srgb,var(--plate) 45%,transparent);border-radius:4px;padding:0 4px;font-family:var(--mono);font-size:.8em}
+.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.creds span{font:600 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted)}
+.portrait-fig{margin:0}.portrait-fig img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:14px;transform:rotate(-2deg);box-shadow:0 18px 40px rgba(0,0,0,.18);border:6px solid #fff}
+.portrait-fig figcaption{font:600 1.15rem/1.2 var(--hand);color:var(--muted);margin-top:14px;text-align:center}
+@media (max-width:900px){.letter{grid-template-columns:1fr}.portrait-fig{max-width:240px}}
+
+/* Tire tracks laid across section seams; reveal for chapter titles */
+html,body{overflow-x:clip}
+.ch,.cover{position:relative}
+.track{position:absolute;left:50%;width:max(1500px,130vw);height:auto;pointer-events:none;z-index:2;mix-blend-mode:multiply;opacity:.13;transform:translateX(-50%)}
+.track.t1{top:-330px}
+.track.t2{top:-300px;transform:translateX(-50%) scaleX(-1)}
+.track.t3{top:-340px;transform:translateX(-46%) rotate(4deg)}
+@media (max-width:700px){.track{width:900px;opacity:.14}.track.t1{top:-200px}.track.t2{top:-180px}.track.t3{top:-200px}}
+.rise{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Chapters"><div class="wrap">
+  <b>Pineville MX</b>
+  <a href="#why"><span>✎</span> Note</a>
+  <a href="#problem"><span>01</span> Problem</a>
+  <a href="#look"><span>02</span> Look</a>
+  <a href="#website"><span>03</span> Website</a>
+  <a href="#updates"><span>04</span> Updates</a>
+  <a href="#found"><span>05</span> Getting found</a>
+  <a href="#photos"><span>06</span> Photos</a>
+  <a href="#next"><span>07</span> Next steps</a>
+</div></nav>
+
+<header class="yellow cover" id="top"><div class="wrap">
+  <div class="meta"><span>Website proposal</span><span>Pineville MX Park</span><span>by Heidi Dains</span><span>Oct 2026</span></div>
+  <h1>Is Pineville open this weekend?</h1>
+  <div class="row">
+    <p class="lede">Riders ask it every week, and right now the answer lives in Facebook comments. Here's a simple website that answers it at a glance, for riders, for Google, and for AI tools like ChatGPT.</p>
+    <div class="badge" aria-hidden="true"><small>This Saturday</small><b>Yes</b><small>Gates 10 AM</small></div>
+  </div>
+  <p class="hint">A short note, then seven chapters ↓ The working website is chapter 03</p>
+</div></header>
+
+
+<section class="paper ch" id="why"><img class="track t1" src="tire-track.svg" alt="" aria-hidden="true"><div class="wrap">
+  <p class="ch-num">A note from Heidi</p>
+  <div class="letter" style="margin-top:32px">
+    <figure class="portrait-fig"><img src="../assets/moto-finish-81c7fa.jpg" alt="Heidi with arms raised on a Supercross track under the finish line at Gillette Stadium" width="600" height="800"></figure>
+    <div class="letter-body">
+      <span class="hi">Keith,</span>
+      <p>I grew up around dirt bikes. My dad raced professionally, got picked up by Suzuki, and won the Blackwater 100 in West Virginia more than once. My uncle wrote the scoring software for amateur races, so I spent my childhood working amateur races, local and national, and every year at Loretta Lynn's in Tennessee.</p>
+      <p>So I know how much goes into a race weekend, and how often a track owner gets asked "are you open?"</p>
+      <p>These days I do marketing for a living: brands, websites, and getting businesses to show up when people ask Google or ChatGPT where to go. Pineville is one of the closest tracks to Charleston, riders clearly love it, and right now the only way to know if it's open is to scroll Facebook. So I built the website I think it deserves.</p>
+      <p>The rest of this page walks through it.</p>
+      <span class="sig">Heidi</span>
+      <a class="port" href="https://heidimdains.github.io" target="_blank" rel="noopener">See more of my work at heidimdains.github.io ↗</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="paper-2 ch" id="problem"><div class="wrap">
+  <p class="ch-num">01 · The problem</p>
+  <h2 class="rise">Riders can't tell when you're open</h2>
+  <p class="lede">Pineville has a great reputation. The trouble is that every useful fact is in a Facebook post, a comment reply, or a directory that's out of date.</p>
+  <div class="findings">
+    <div class="find"><span class="big">No website</span><p>Search for the track and you get directories, Facebook and TikTok. One directory even lists Pineville in New Jersey.</p><span class="src">Pineville AEO check-up, Oct 2026</span></div>
+    <div class="find"><span class="big">"What time?"</span><p>Riders ask the hours in the comments, and the answers come one reply at a time. Weekend hours change week to week, and Wednesday practice hangs on a 10-rider roll call.</p><span class="src">Pineville MX Park Facebook, Aug to Oct 2026</span></div>
+    <div class="find"><span class="big">8K followers</span><p>A big audience, but most AI tools can't read Facebook. When I asked where to ride dirt bikes near Charleston, Pineville didn't come up at all.</p><span class="src">Facebook page; AEO check-up</span></div>
+  </div>
+</div></section>
+
+<section class="pine ch" id="look"><img class="track t2" src="tire-track.svg" alt="" aria-hidden="true"><div class="wrap">
+  <p class="ch-num">02 · The look</p>
+  <h2 class="rise">Built from the track itself</h2>
+  <p class="lede">Lowcountry clay, number-plate yellow and pine green. Tall, condensed type like a race program. It should feel like Pineville, not a template.</p>
+  <div class="look">
+    <div class="swatches">
+      <div class="sw" style="background:#A9431F;color:#fff">Clay<br>#A9431F</div>
+      <div class="sw" style="background:#F2C230;color:#141310">Number plate<br>#F2C230</div>
+      <div class="sw" style="background:#1F3323;color:#fff">Pine<br>#2F4A33</div>
+      <div class="sw" style="background:#ECEEEB;color:#1B1A17">Concrete<br>#ECEEEB</div>
+    </div>
+    <div class="specimen">
+      <div><small>Headlines · Saira Condensed</small><span class="d">Gates open 10 AM</span></div>
+      <div><small>Body · Archivo</small><span class="b">Plain and easy to read on a phone in the pits.</span></div>
+      <div><small>Times and fees · JetBrains Mono</small><span class="m">$20 practice · $15 50cc</span></div>
+      <div><small>The signature · a number plate</small><span class="platecard"><small>Open this weekend?</small><b>YES</b></span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="stage ch" id="website"><div class="wrap">
+  <div class="stage-label">
+    <div><p class="ch-num">03 · The website</p><h2 class="rise">What riders would see</h2></div>
+    <p class="lede">Everything above and below is the pitch. This chapter is the actual site.</p>
+  </div>
+
+  <div class="desk-wrap">
+    <div>
+      <div class="desk"><div class="screen" id="desk-screen">
+        <iframe id="desk-frame" src="site.html" title="Pineville MX Park site, desktop view" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <span class="pin" style="left:4.5%;top:2.5%">1</span>
+        <span class="pin" style="left:66%;top:11.5%">2</span>
+        <span class="pin" style="left:76%;top:34%">3</span>
+        <span class="pin" style="left:4.5%;top:92%">4</span>
+      </div></div>
+      <p class="cap">Desktop · first screen</p>
+    </div>
+    <ol class="notes">
+      <li><span class="n">1</span><div><span class="hand">"Preview" banner</span><p>Only on this concept, so no one mistakes it for the official site.</p></div></li>
+      <li><span class="n">2</span><div><span class="hand">One-tap menu</span><p>Schedule, fees, rules and directions, each a tap away.</p></div></li>
+      <li><span class="n">3</span><div><span class="hand">The answer, first</span><p>Open or not, gate time, hours and fee. Keith sets it from his phone.</p></div></li>
+      <li><span class="n">4</span><div><span class="hand">Latest from the track</span><p>Pulls in Keith's newest Facebook post on its own.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="phone-wrap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen" id="phone-screen"><iframe id="phone-frame" src="site.html" title="Pineville MX Park site, phone view" loading="lazy"></iframe></div></div>
+      <span class="tryit">↑ Scroll and tap this one, it works</span>
+    </div>
+    <div>
+      <p class="ch-num" style="color:#8F897D">Inside the site</p>
+      <h3 style="font:900 2.4rem/.95 var(--display);text-transform:uppercase;margin:14px 0 32px">Six things riders need</h3>
+      <div class="feats">
+        <div class="feat"><span class="tag">Number plate</span><h3>Open this weekend?</h3><p>Yes or no, gate time, riding hours and gate fee.</p><p class="why">Answers it before they ask.</p></div>
+        <div class="feat"><span class="tag">Ride call</span><h3>Wednesday roll call</h3><p>Riders tap "I'm riding." At 10, practice is on.</p><p class="why">No more counting comments.</p></div>
+        <div class="feat"><span class="tag">From Facebook</span><h3>Latest posts, once each</h3><p>Posts, photos and videos appear automatically. A post shared three times shows once.</p><p class="why">Facebook stays the main channel.</p></div>
+        <div class="feat"><span class="tag">Fees</span><h3>Gate calculator</h3><p>Practice and race-day pricing, with a quick family total.</p><p class="why">One official price list.</p></div>
+        <div class="feat"><span class="tag">First time</span><h3>Packing list and rules</h3><p>Gear, quad kill switch, no UTVs, camping, peewee track.</p><p class="why">What new parents ask most.</p></div>
+        <div class="feat"><span class="tag">Meet Keith</span><h3>The owner and coach</h3><p>A racer himself, preps the track and coaches riders.</p><p class="why">People pick tracks for the people.</p></div>
+      </div>
+      <a class="full" href="site.html" target="_blank" rel="noopener">Open the site full screen ↗</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="clay ch" id="updates"><div class="wrap">
+  <p class="ch-num">04 · Keeping it current</p>
+  <h2 class="rise">About ten seconds a week</h2>
+  <p class="lede">A website is only useful if it's right. This one is set up so Keith barely has to think about it.</p>
+  <div class="flow">
+    <div><span class="who">Keith, on his phone</span><b>Flip the switch</b><p>Open, race day or closed, plus hours and a one-line track note. The site updates right away, and Google picks up the change on its next visit.</p><span class="hand">Like posting, but shorter.</span></div>
+    <div><span class="who">Automatic</span><b>Facebook flows in</b><p>Posts, photos and videos show up on the site on their own, with repeats removed.</p><span class="hand">Nothing new to learn.</span></div>
+    <div><span class="who">Heidi, monthly</span><b>Track Care plan</b><p>Race dates, prices, new photos, the Google listing, and getting directories corrected. Keith sends a text and it's handled.</p><span class="hand">One text, done.</span></div>
+  </div>
+</div></section>
+
+<section class="paper ch" id="found"><div class="wrap">
+  <p class="ch-num">05 · Getting found</p>
+  <h2 class="rise">Built for Google and ChatGPT</h2>
+  <p class="lede">Behind each page is structured info that search engines and AI tools read directly: address, hours, prices, and every ride day as an event.</p>
+  <div class="ai">
+    <div class="chat">
+      <span class="top">Example AI answer, with the site live</span>
+      <div class="bubble u">Is there a motocross track open near Charleston this weekend?</div>
+      <div class="bubble a">Yes. <b>Pineville MX Park</b> in Pineville, SC, about an hour from Charleston, has open practice Saturday. Gates open at 10 AM. Practice is $20 per rider, $15 for 50cc.<small>Source: Pineville MX Park official site</small></div>
+    </div>
+    <div class="compare">
+      <div><h3>Today</h3><p>AI tools piece the answer together from directories that disagree on prices and say "call ahead."</p></div>
+      <div class="after"><h3>With the site</h3><p>The answer comes from Pineville itself, and it's current every time Keith flips the switch.</p></div>
+      <p class="fine">The example answer is illustrative. Results build over a few weeks as search engines pick up a new site.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="paper-2 ch" id="photos"><div class="wrap">
+  <p class="ch-num">06 · Photos and video</p>
+  <h2 class="rise">The shot list</h2>
+  <p class="lede">Real photos will do more for this site than anything else. These are the spots to fill. Shots riders or local photographers already have work too, <em>with their OK and a credit</em>.</p>
+  <div class="shots">
+    <div class="shot wide"><b>Drone flyover</b><small>Top of the homepage · a full lap, 30 to 60 sec</small></div>
+    <div class="shot"><b>Start gate</b><small>Race day, riders lined up</small></div>
+    <div class="shot"><b>Big jump</b><small>Mid-air</small></div>
+    <div class="shot"><b>Peewee track</b><small>Kids on 50s</small></div>
+    <div class="shot"><b>Keith</b><small>With his bike, for "Meet Keith"</small></div>
+    <div class="shot"><b>The pits</b><small>Trucks, tents, families</small></div>
+    <div class="shot"><b>Track prep</b><small>Watering, grading</small></div>
+    <div class="shot wide"><b>Camping at dusk</b><small>For the "stay the weekend" section</small></div>
+  </div>
+  <p class="hand photo-note">Until then, the drawn track art on the site holds the spot.</p>
+</div></section>
+
+<section class="yellow ch" id="next"><img class="track t3" src="tire-track.svg" alt="" aria-hidden="true"><div class="wrap">
+  <p class="ch-num">07 · Next steps</p>
+  <h2 class="rise">What I'd need from Keith</h2>
+  <p class="lede">Not much of his time, spread over a couple of weeks.</p>
+  <ul class="asks">
+    <li><span class="box"></span><div><b>Photos and any drone footage</b><small>Plus names of riders or photographers who shoot at the track</small></div></li>
+    <li><span class="box"></span><div><b>Logo files</b><small>In the best quality he has</small></div></li>
+    <li><span class="box"></span><div><b>Confirm prices and hours</b><small>Practice, 50cc, race entry, race gate, camping</small></div></li>
+    <li><span class="box"></span><div><b>Upcoming race dates</b><small>Through spring, even if rough</small></div></li>
+    <li><span class="box"></span><div><b>Facebook page approval</b><small>A one-time OK so posts can show on the site</small></div></li>
+    <li><span class="box"></span><div><b>Google Business Profile access</b><small>So hours and ride days show on Google Maps</small></div></li>
+    <li><span class="box"></span><div><b>A domain name</b><small>Registered in Keith's name, so it's always his</small></div></li>
+    <li><span class="box"></span><div><b>Rules and waiver details</b><small>Gear minimums, kids' ages, how waivers work</small></div></li>
+  </ul>
+  <div class="steps">
+    <div class="step"><h3>Walk-through</h3><p>A quick look together at the track on a ride day.</p></div>
+    <div class="step"><h3>Gather</h3><p>Photos, prices and dates from the list above.</p></div>
+    <div class="step"><h3>Build</h3><p>Finish the site with real content. Keith reviews it.</p></div>
+    <div class="step"><h3>Launch</h3><p>Go live, connect Google and Facebook, show Keith the switch.</p></div>
+  </div>
+</div></section>
+
+<footer class="stage end"><div class="wrap">
+  <h2 style="font:900 clamp(2.4rem,6vw,4rem)/.9 var(--display);text-transform:uppercase">Let's get Pineville found</h2>
+  <div class="row">
+    <p>Heidi Dains · Charleston, SC · <a href="https://heidimdains.github.io" target="_blank" rel="noopener">heidimdains.github.io</a></p>
+    <p>Investment and the monthly plan: we'll go over options together.</p>
+  </div>
+  <small>Concept prepared independently from public information and Pineville MX Park's public Facebook posts. Not affiliated with or endorsed by Pineville MX Park.</small>
+</div></footer>
+
+<script>
+(function(){
+  function fit(b,f,base){ const box=document.getElementById(b), fr=document.getElementById(f); if(!box||!fr||!box.clientWidth) return; const sc=box.clientWidth/base; fr.style.transform='scale('+sc+')'; fr.style.height=(box.clientHeight/sc)+'px'; }
+  function all(){ fit('desk-screen','desk-frame',1280); fit('phone-screen','phone-frame',375); }
+  all(); window.addEventListener('resize',all);
+  // Highlight the current chapter in the bar
+  const links=[...document.querySelectorAll('.bar a')];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)); } }),{rootMargin:'-45% 0px -50% 0px'});
+  links.forEach(a=>{ const s=document.querySelector(a.getAttribute('href')); if(s) io.observe(s); });
+})();
+
+  // Chapter titles rise as they scroll into view
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target);} }),{threshold:.2});
+  document.querySelectorAll('.rise').forEach(el=>io2.observe(el));
+</script>
+</body>
+</html>
