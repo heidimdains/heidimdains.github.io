@@ -2210,6 +2210,460 @@ html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
 
 </div>
 </template>
+<template id="tpl-Services"><style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
+html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
+body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{opacity:.8}
+a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
+@keyframes hdRise{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-rise{animation:hdRise 1.2s cubic-bezier(.2,.75,.1,1) both}
+.hd-d1{animation-delay:.15s}.hd-d2{animation-delay:.3s}
+.marquee{animation:marquee 50s linear infinite}
+
+@media (prefers-reduced-motion: reduce){.hd-rise,.marquee{animation:none}}
+@keyframes hdTools{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-tools{animation:hdTools 80s linear infinite}
+@media (prefers-reduced-motion: reduce){.hd-tools{animation:none}}
+@keyframes hdOp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hd-trow{overflow:hidden;padding:7px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.hd-tl{display:flex;gap:14px;width:max-content}
+.hd-tl-a{animation:hdToolsA 58s linear infinite}.hd-tl-b{animation:hdToolsB 68s linear infinite}
+.hd-trow:hover .hd-tl{animation-play-state:paused}
+@keyframes hdToolsA{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+@keyframes hdToolsB{from{transform:translateX(calc(-50% - 7px))}to{transform:translateX(0)}}
+.hd-tool{display:inline-flex;align-items:center;gap:12px;height:62px;padding:0 26px 0 20px;border-radius:999px;background:#F7F4EF;border:1px solid #DCD5CB;color:#2A2A2A;font-size:18px;letter-spacing:-0.01em;white-space:nowrap;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.hd-tool:hover{background:{{panel}};border-color:{{panel}};color:#F3F1EC}
+@media (prefers-reduced-motion: reduce){.hd-tl-a,.hd-tl-b{animation:none}}
+.hd-chip{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid #C9C3BA;font-size:16px;letter-spacing:-0.01em;color:#17181B;background:rgba(255,255,255,0.35);transition:background .3s ease,border-color .3s ease}
+.hd-chip:hover{background:#FFFFFF;border-color:#FFFFFF}
+@keyframes hdFade{from{opacity:0}to{opacity:1}}
+@keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+</style>
+
+<div style="zoom: {{zoom}}; position: relative; width: 1440px; font-family: 'Host Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #17181B;">
+
+  <div style="position: fixed; left: 0; right: 0; bottom: 24px; z-index: 60; display: flex; justify-content: center; pointer-events: none;">
+  <nav aria-label="Main" style="pointer-events: auto; display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.12); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase;">
+    <a href="index.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Home</a>
+    <a href="work.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Work</a>
+    <a href="about.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">About</a>
+  </nav>
+  </div>
+  <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" style="position: fixed; right: 0; top: 320px; z-index: 60; writing-mode: vertical-rl; transform: rotate(180deg); padding: 18px 12px; border-radius: 0 12px 12px 0; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.10); font-size: 13px; color: #17181B;">Résumé (the boring version) ↗</a>
+
+  <div id="hd-layer" style="position: relative; z-index: 2;">
+  <div style="border-radius: 0 0 44px 44px; overflow: clip; box-shadow: 0 30px 60px rgba(0,0,0,0.18);">
+
+    <!-- HERO -->
+    <section style="position: relative; height: 440px; background: {{ground}};">
+      <header style="position: absolute; top: 28px; left: 40px; right: 40px; display: flex; align-items: center; justify-content: space-between;">
+        <a href="index.html" style="font-size: 24px; font-weight: 400; letter-spacing: -0.02em;">Heidi Dains</a>
+        <button type="button" onClick="{{openContact}}" style="display: flex; align-items: center; gap: 10px; height: 50px; padding: 0 22px 0 26px; border-radius: 999px; background: {{sandBg}}; font-size: 16px; font-weight: 500; color: #17181B; border: none; cursor: pointer; font-family: inherit;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 13px;">→</span></button>
+      </header>
+      <div style="position: absolute; left: 0; right: 0; top: 170px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <h1 class="hd-rise" style="margin: 0; font-size: 64px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Let’s get you into<br>the answer.</h1>
+        <p class="hd-rise hd-d2" style="margin: 18px 0 0; font-size: 22px; letter-spacing: -0.02em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Websites, AEO and content, done by the person you actually talked to.</span></p>
+      </div>
+    </section>
+
+
+    <!-- INTRO -->
+    <section style="position: relative; box-sizing: border-box; padding: 0 40px 140px; background: {{ground}};">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 80px;">
+        <p style="width: 820px; margin: 0; font-size: 42px; line-height: 1.1; font-weight: 400; letter-spacing: -0.04em;">Someone just asked ChatGPT who to hire. If your name didn’t come up, <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">that’s fixable.</span></p>
+        <p style="width: 400px; margin: 0; font-size: 17px; line-height: 1.55; color: #3A3A3A;">I take on a few independent projects at a time: websites, AEO (getting cited in AI answers, not just ranked in search), blogs, social and LinkedIn. Right now that includes a financial-advisory rebrand I’m leading as an independent consultant. You work with me directly, from the first call to the last fix. No account managers, and no hand-off to a junior team.</p>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section style="position: relative; box-sizing: border-box; padding: 0 120px 140px; background: {{ground}};">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 40px; padding: 60px 0 40px; border-top: 1px solid #C9C6C0;">
+        <h2 style="margin: 0; font-size: 44px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Three ways in. <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Most start with the first.</span></h2>
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: #6D6A66;">Packages · fixed scope, no surprises</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 40px 36px 34px; border-radius: 24px; background: {{panel}}; border: 1px solid transparent; color: #F3F1EC;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{panelMuted2}};">01 · Start here</span>
+          <h3 style="margin: 18px 0 0; font-size: 36px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">AEO check-up</h3>
+          <p style="margin: 12px 0 28px; font-size: 18px; line-height: 1.4; letter-spacing: -0.015em; color: {{panelMuted}};">Find out what AI says about you. Then find out why.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid rgba(255,255,255,0.14);"><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 16px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>Real buyer questions tested in ChatGPT, Perplexity and Google’s AI answers</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 16px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>A plain-English scorecard: where you show up, and who shows up instead</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 16px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>A short, ranked fix plan you can hand to anyone (including me)</li></ul>
+          <div style="flex: 1; min-height: 30px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{panelMuted2}};">Fixed price</span>
+            <span style="font-size: 30px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 40px 36px 34px; border-radius: 24px; background: #F7F4EF; border: 1px solid #DCD5CB; color: #17181B;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">02 · Build</span>
+          <h3 style="margin: 18px 0 0; font-size: 36px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Website revamp</h3>
+          <p style="margin: 12px 0 28px; font-size: 18px; line-height: 1.4; letter-spacing: -0.015em; color: #3A3A3A;">A site that works for people and for the robots reading it.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #D5D0C8;"><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Strategy, messaging and sitemap before anyone opens a design tool</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Design and build on a platform your team can actually update</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>AEO built in: clear structure, schema, FAQs and pages worth quoting</li></ul>
+          <div style="flex: 1; min-height: 30px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">Project · from</span>
+            <span style="font-size: 30px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 40px 36px 34px; border-radius: 24px; background: #F7F4EF; border: 1px solid #DCD5CB; color: #17181B;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">03 · Keep going</span>
+          <h3 style="margin: 18px 0 0; font-size: 36px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Content retainer</h3>
+          <p style="margin: 12px 0 28px; font-size: 18px; line-height: 1.4; letter-spacing: -0.015em; color: #3A3A3A;">Keep showing up, month after month.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #D5D0C8;"><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Blog posts written to answer the questions your buyers ask</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>A LinkedIn refresh for your company page and the people behind it</li><li style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #D5D0C8; font-size: 16px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>A social plan sized for a team that has other jobs too</li></ul>
+          <div style="flex: 1; min-height: 30px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">Monthly · from</span>
+            <span style="font-size: 30px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section style="position: relative; box-sizing: border-box; padding: 0 120px 140px; background: {{ground}};">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 40px; padding: 60px 0 40px; border-top: 1px solid #C9C6C0;">
+        <h2 style="margin: 0; font-size: 44px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">How it <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">works.</span></h2>
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: #6D6A66;">Small steps · real results</span>
+      </div>
+      <div style="display: flex; gap: 60px;">
+        <div style="flex: 1;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">01</span>
+          <p style="margin: 14px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -0.035em;">Say hello</p>
+          <p style="margin: 10px 0 0; font-size: 17px; line-height: 1.5; color: #3A3A3A;">Send a note or grab twenty minutes. Tell me what you sell and who you wish knew about it.</p>
+        </div>
+        <div style="flex: 1;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">02</span>
+          <p style="margin: 14px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -0.035em;">Start with the check-up</p>
+          <p style="margin: 10px 0 0; font-size: 17px; line-height: 1.5; color: #3A3A3A;">Most projects begin here, so we fix what’s actually broken instead of what’s loudest.</p>
+        </div>
+        <div style="flex: 1;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: {{hiSmall}};">03</span>
+          <p style="margin: 14px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -0.035em;">Build what the plan says</p>
+          <p style="margin: 10px 0 0; font-size: 17px; line-height: 1.5; color: #3A3A3A;">A new site, a content rhythm, or just the fixes. You only buy the next step once the last one earned it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUDGE -->
+    <section style="position: relative; box-sizing: border-box; padding: 0 120px 160px; background: {{ground}}; text-align: center;">
+      <div style="padding-top: 100px; border-top: 1px solid #C9C6C0;">
+      <h2 style="margin: 0; font-size: 64px; line-height: 1.02; font-weight: 400; letter-spacing: -0.045em;">Not sure which one you need?</h2>
+      <p style="margin: 18px 0 40px; font-size: 22px; letter-spacing: -0.02em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">That’s what the first call is for. Bring the messy version.</span></p>
+      <button type="button" onClick="{{openContact}}" style="display: inline-flex; align-items: center; gap: 12px; height: 64px; padding: 0 14px 0 30px; border-radius: 999px; background: {{sandBg}}; font-family: inherit; font-size: 19px; font-weight: 500; color: #17181B; border: none; cursor: pointer;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+      </div>
+    </section>
+
+  </div>
+
+    <div aria-hidden="true" data-foot-sp="1" style="height: 900px; background: transparent;"></div>
+  </div>
+
+  <footer id="hd-contact" data-foot-sp="1" style="position: fixed; left: 0; right: 0; bottom: 0; height: 900px; z-index: 1; display: flex; flex-direction: column; justify-content: center; background: {{panel}}; color: #F3F1EC; text-align: center;">
+    <div style="padding-bottom: 60px;">
+    <div style="position: relative;">
+      <p style="margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;">Every brand needs</p>
+      <p style="position: relative; z-index: 2; margin: 0; font-size: 104px; line-height: 0.98; font-weight: 400; letter-spacing: -0.055em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
+      <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="position: absolute; left: 50%; top: 52px; width: 116px; height: 116px; margin-left: -58px; border-radius: 50%; object-fit: cover; border: 4px solid {{panel}};">
+    </div>
+    <p style="margin: 44px 0 8px; font-size: 15px; color: {{panelMuted2}};">Say hello:</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
+      <a href="mailto:heidimdains@gmail.com" style="font-size: 26px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
+      <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 22px; font-size: 15px;">
+      <a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+      <a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a>
+    </div>
+    </div>
+    <div style="position: absolute; left: 40px; right: 40px; bottom: 34px; display: flex; justify-content: space-between; font-size: 13px; color: {{panelMuted2}};">
+      <span>© 2026 Heidi Dains</span>
+      <span>Pittsburgh-raised, Charleston-based</span>
+    </div>
+  </footer>
+
+
+  <!-- CONTACT POP-UP -->
+  <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="hd-contact-title" style="position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; animation: hdFade .35s ease both;">
+    <div onClick="{{closeContact}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <div style="position: relative; width: 1000px; max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); overflow: auto; box-sizing: border-box; padding: 72px 76px 76px; border-radius: 32px; background: {{panel}}; color: #F3F1EC; box-shadow: 0 50px 120px rgba(0,0,0,0.35); animation: hdPop .5s cubic-bezier(.2,.75,.1,1) both;">
+      <button type="button" onClick="{{closeContact}}" aria-label="Close" style="position: absolute; top: 28px; right: 28px; width: 52px; height: 52px; border: none; border-radius: 14px; background: rgba(255,255,255,0.07); color: #F3F1EC; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Let’s build <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">what’s next.</span></h2>
+      <div style="margin-top: 56px; display: flex; gap: 56px;">
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
+            <label for="hd-c-email" style="font-size: 17px;">Your email</label>
+            <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
+            <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
+            <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
+          </sc-if>
+        </div>
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Contact details</span>
+            <div style="display: flex; align-items: center; gap: 12px;"><a href="mailto:heidimdains@gmail.com" style="font-size: 18px; color: #F3F1EC;">heidimdains@gmail.com</a>
+            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Receipts</span>
+            <div style="display: flex; gap: 10px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Based in</span>
+            <span style="font-size: 18px; color: #F3F1EC;">Charleston, SC · open to remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</template>
+<template id="tpl-Services-m"><style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
+html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
+body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{opacity:.8}
+a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
+@keyframes hdRise{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-rise{animation:hdRise 1.2s cubic-bezier(.2,.75,.1,1) both}
+.hd-d1{animation-delay:.15s}.hd-d2{animation-delay:.3s}
+.marquee{animation:marquee 50s linear infinite}
+
+@media (prefers-reduced-motion: reduce){.hd-rise,.marquee{animation:none}}
+@keyframes hdTools{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-tools{animation:hdTools 80s linear infinite}
+@media (prefers-reduced-motion: reduce){.hd-tools{animation:none}}
+@keyframes hdOp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hd-trow{overflow:hidden;padding:7px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.hd-tl{display:flex;gap:14px;width:max-content}
+.hd-tl-a{animation:hdToolsA 58s linear infinite}.hd-tl-b{animation:hdToolsB 68s linear infinite}
+.hd-trow:hover .hd-tl{animation-play-state:paused}
+@keyframes hdToolsA{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+@keyframes hdToolsB{from{transform:translateX(calc(-50% - 7px))}to{transform:translateX(0)}}
+.hd-tool{display:inline-flex;align-items:center;gap:12px;height:62px;padding:0 26px 0 20px;border-radius:999px;background:#F7F4EF;border:1px solid #DCD5CB;color:#2A2A2A;font-size:18px;letter-spacing:-0.01em;white-space:nowrap;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.hd-tool:hover{background:{{panel}};border-color:{{panel}};color:#F3F1EC}
+@media (prefers-reduced-motion: reduce){.hd-tl-a,.hd-tl-b{animation:none}}
+.hd-chip{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid #C9C3BA;font-size:16px;letter-spacing:-0.01em;color:#17181B;background:rgba(255,255,255,0.35);transition:background .3s ease,border-color .3s ease}
+.hd-chip:hover{background:#FFFFFF;border-color:#FFFFFF}
+@keyframes hdFade{from{opacity:0}to{opacity:1}}
+@keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+</style><style>
+.hd-soc{transition:background .25s ease,color .25s ease}.hd-soc:hover{opacity:1;background:rgba(255,255,255,0.16)}
+#hd-layer{pointer-events:none}#hd-layer>*{pointer-events:auto}#hd-layer>[aria-hidden="true"]{pointer-events:none}
+html,body{overscroll-behavior:none;margin:0;background:#EBE9E5;overflow-x:clip}
+body{font-family:'Host Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#17181B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{opacity:.8}
+a:focus-visible,button:focus-visible{outline:2px solid #17181B;outline-offset:3px}
+@keyframes hdRise{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-rise{animation:hdRise 1.2s cubic-bezier(.2,.75,.1,1) both}
+.hd-d1{animation-delay:.15s}.hd-d2{animation-delay:.3s}
+.marquee{animation:marquee 50s linear infinite}
+
+@media (prefers-reduced-motion: reduce){.hd-rise,.marquee{animation:none}}
+@keyframes hdTools{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hd-tools{animation:hdTools 80s linear infinite}
+@media (prefers-reduced-motion: reduce){.hd-tools{animation:none}}
+@keyframes hdOp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hd-trow{overflow:hidden;padding:7px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.hd-tl{display:flex;gap:14px;width:max-content}
+.hd-tl-a{animation:hdToolsA 58s linear infinite}.hd-tl-b{animation:hdToolsB 68s linear infinite}
+.hd-trow:hover .hd-tl{animation-play-state:paused}
+@keyframes hdToolsA{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+@keyframes hdToolsB{from{transform:translateX(calc(-50% - 7px))}to{transform:translateX(0)}}
+.hd-tool{display:inline-flex;align-items:center;gap:12px;height:62px;padding:0 26px 0 20px;border-radius:999px;background:#F7F4EF;border:1px solid #DCD5CB;color:#2A2A2A;font-size:18px;letter-spacing:-0.01em;white-space:nowrap;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.hd-tool:hover{background:{{panel}};border-color:{{panel}};color:#F3F1EC}
+@media (prefers-reduced-motion: reduce){.hd-tl-a,.hd-tl-b{animation:none}}
+.hd-chip{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid #C9C3BA;font-size:16px;letter-spacing:-0.01em;color:#17181B;background:rgba(255,255,255,0.35);transition:background .3s ease,border-color .3s ease}
+.hd-chip:hover{background:#FFFFFF;border-color:#FFFFFF}
+@keyframes hdFade{from{opacity:0}to{opacity:1}}
+@keyframes hdPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+
+html,body{overscroll-behavior:none;margin:0;background:#ECE7DF;overflow-x:clip}
+.m-root{width:100%;max-width:760px;margin:0 auto;overflow-x:clip}
+.m-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;padding:0 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.m-scroll::-webkit-scrollbar{display:none}
+.m-scroll>*{scroll-snap-align:start;flex-shrink:0}
+.m-modal{width:auto!important;max-width:none!important;max-height:calc(100dvh - 24px)!important;padding:64px 22px 26px!important;border-radius:24px!important;margin:0 12px}
+.m-modal h2{font-size:36px!important}
+.m-modal-row{flex-direction:column!important;gap:28px!important;margin-top:26px!important}
+.m-modal-row>div{width:auto!important}
+.m-modal button[aria-label="Close"]{top:14px!important;right:14px!important;width:44px!important;height:44px!important}
+.hd-soc{transition:background .25s ease}
+
+.m-tk{padding:8px 0 72px!important}
+.m-tk>div:first-child{flex-direction:column!important;align-items:flex-start!important;gap:8px!important;margin:0 20px!important;padding:40px 0 24px!important;border-top:0!important}
+.m-tk h2{font-size:36px!important}
+.m-tk .hd-tool{height:46px;padding:0 18px 0 14px;font-size:15px;gap:9px}
+.m-tk .hd-tool svg{width:18px;height:18px}
+.m-tk .hd-trow{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.m-marq{display:flex;gap:8px;width:max-content;align-items:flex-end;animation:marquee 44s linear infinite}
+</style>
+<div class="m-root">
+  <div style="position: fixed; left: 0; right: 0; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60; display: flex; justify-content: center; pointer-events: none;">
+    <nav aria-label="Main" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 5px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(23,24,27,0.16); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;"><a href="index.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Home</a><a href="work.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">Work</a><a href="about.html" style="display: flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; color: #17181B;">About</a></nav>
+  </div>
+  
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0;">
+      <a href="index.html" style="font-size: 19px; letter-spacing: -0.02em;">Heidi Dains</a>
+      <button type="button" onClick="{{openContact}}" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 8px 0 16px; border-radius: 999px; background: {{sandBg}}; font-family: inherit; font-size: 14px; font-weight: 500; color: #17181B; border: none;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 13px;">→</span></button>
+    </header>
+  <section style="padding: 54px 20px 0;">
+    <h1 class="hd-rise" style="margin: 0; font-size: 42px; line-height: 1.04; font-weight: 400; letter-spacing: -0.045em;">Let’s get you into the answer.</h1>
+    <p class="hd-rise hd-d2" style="margin: 14px 0 0; font-size: 18px; letter-spacing: -0.02em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Websites, AEO and content, done by the person you actually talked to.</span></p>
+  </section>
+  <section style="padding: 56px 20px 0;">
+    <p style="margin: 0; font-size: 26px; line-height: 1.15; letter-spacing: -0.035em; color: #17181B;">Someone just asked ChatGPT who to hire. If your name didn’t come up, <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">that’s fixable.</span></p>
+    <p style="margin: 22px 0 0; font-size: 16px; line-height: 1.55; color: #3A3A3A;">I take on a few independent projects at a time: websites, AEO (getting cited in AI answers, not just ranked in search), blogs, social and LinkedIn. Right now that includes a financial-advisory rebrand I’m leading as an independent consultant. You work with me directly, from the first call to the last fix. No account managers, and no hand-off to a junior team.</p>
+  </section>
+  <section style="padding: 40px 20px 0;">
+      <div style="padding: 40px 0 24px;">
+        <h2 style="margin: 0; font-size: 36px; line-height: 1.04; font-weight: 400; letter-spacing: -0.045em;">Three ways in. <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">Most start with the first.</span></h2>
+        <span style="display: block; margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: #6D6A66;">Packages · fixed scope, no surprises</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 30px 24px 26px; border-radius: 20px; background: {{panel}}; border: 1px solid transparent; color: #F3F1EC;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{panelMuted2}};">01 · Start here</span>
+          <h3 style="margin: 14px 0 0; font-size: 30px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">AEO check-up</h3>
+          <p style="margin: 12px 0 22px; font-size: 16px; line-height: 1.4; letter-spacing: -0.015em; color: {{panelMuted}};">Find out what AI says about you. Then find out why.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid rgba(255,255,255,0.14);"><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>Real buyer questions tested in ChatGPT, Perplexity and Google’s AI answers</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>A plain-English scorecard: where you show up, and who shows up instead</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15px; line-height: 1.45; color: #F3F1EC;"><span aria-hidden="true"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">✦</span></span>A short, ranked fix plan you can hand to anyone (including me)</li></ul>
+          <div style="flex: 1; min-height: 22px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{panelMuted2}};">Fixed price</span>
+            <span style="font-size: 26px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 30px 24px 26px; border-radius: 20px; background: #F7F4EF; border: 1px solid #DCD5CB; color: #17181B;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">02 · Build</span>
+          <h3 style="margin: 14px 0 0; font-size: 30px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Website revamp</h3>
+          <p style="margin: 12px 0 22px; font-size: 16px; line-height: 1.4; letter-spacing: -0.015em; color: #3A3A3A;">A site that works for people and for the robots reading it.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #D5D0C8;"><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Strategy, messaging and sitemap before anyone opens a design tool</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Design and build on a platform your team can actually update</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>AEO built in: clear structure, schema, FAQs and pages worth quoting</li></ul>
+          <div style="flex: 1; min-height: 22px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">Project · from</span>
+            <span style="font-size: 26px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; box-sizing: border-box; padding: 30px 24px 26px; border-radius: 20px; background: #F7F4EF; border: 1px solid #DCD5CB; color: #17181B;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">03 · Keep going</span>
+          <h3 style="margin: 14px 0 0; font-size: 30px; line-height: 1.05; font-weight: 400; letter-spacing: -0.045em;">Content retainer</h3>
+          <p style="margin: 12px 0 22px; font-size: 16px; line-height: 1.4; letter-spacing: -0.015em; color: #3A3A3A;">Keep showing up, month after month.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #D5D0C8;"><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>Blog posts written to answer the questions your buyers ask</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>A LinkedIn refresh for your company page and the people behind it</li><li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #D5D0C8; font-size: 15px; line-height: 1.45; color: #17181B;"><span aria-hidden="true"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">✦</span></span>A social plan sized for a team that has other jobs too</li></ul>
+          <div style="flex: 1; min-height: 22px;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">Monthly · from</span>
+            <span style="font-size: 26px; letter-spacing: -0.03em;">$[TBD]</span>
+          </div>
+        </article>
+      </div>
+  </section>
+  <section style="padding: 40px 20px 0;">
+      <div style="padding: 40px 0 24px;">
+        <h2 style="margin: 0; font-size: 36px; line-height: 1.04; font-weight: 400; letter-spacing: -0.045em;">How it <span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">works.</span></h2>
+        <span style="display: block; margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: #6D6A66;">Small steps · real results</span>
+      </div>
+      <div style="border-bottom: 1px solid #C9C6C0;">
+        <div style="padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">01</span>
+          <p style="margin: 8px 0 0; font-size: 24px; line-height: 1.1; letter-spacing: -0.035em;">Say hello</p>
+          <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: #3A3A3A;">Send a note or grab twenty minutes. Tell me what you sell and who you wish knew about it.</p>
+        </div>
+        <div style="padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">02</span>
+          <p style="margin: 8px 0 0; font-size: 24px; line-height: 1.1; letter-spacing: -0.035em;">Start with the check-up</p>
+          <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: #3A3A3A;">Most projects begin here, so we fix what’s actually broken instead of what’s loudest.</p>
+        </div>
+        <div style="padding: 18px 0; border-top: 1px solid #C9C6C0;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: {{hiSmall}};">03</span>
+          <p style="margin: 8px 0 0; font-size: 24px; line-height: 1.1; letter-spacing: -0.035em;">Build what the plan says</p>
+          <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: #3A3A3A;">A new site, a content rhythm, or just the fixes. You only buy the next step once the last one earned it.</p>
+        </div>
+      </div>
+  </section>
+  <section style="padding: 72px 20px 100px; text-align: center;">
+    <h2 style="margin: 0; font-size: 36px; line-height: 1.04; font-weight: 400; letter-spacing: -0.045em;">Not sure which one you need?</h2>
+    <p style="margin: 12px 0 28px; font-size: 17px; line-height: 1.4; letter-spacing: -0.015em;"><span style="color: {{hi}}; background-image: {{hiGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{hiFill}};">That’s what the first call is for. Bring the messy version.</span></p>
+    <button type="button" onClick="{{openContact}}" style="display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 10px 0 22px; border-radius: 999px; background: {{sandBg}}; font-family: inherit; font-size: 16px; font-weight: 500; color: #17181B; border: none; cursor: pointer;">Let’s talk <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+  </section>
+
+    <footer style="position: relative; background: {{panel}}; color: #F3F1EC; text-align: center; padding: 84px 20px 120px; border-radius: 28px 28px 0 0; margin-top: -28px;">
+      <div style="position: relative;">
+        <img src="assets/footer-circle-bw-8af96a.jpg" alt="Heidi Dains" style="display: block; width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 50%; object-fit: cover;">
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;">Every brand needs</p>
+        <p style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -0.05em;"><span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">a good driver.</span></p>
+      </div>
+      <p style="margin: 40px 0 8px; font-size: 14px; color: {{panelMuted2}};">Say hello:</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <a href="mailto:heidimdains@gmail.com" style="font-size: 21px; letter-spacing: -0.02em; color: #F3F1EC;">heidimdains@gmail.com</a>
+        <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: 18px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+      <div style="margin-top: 44px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: {{panelMuted2}};">
+        <span>Pittsburgh-raised, Charleston-based</span>
+        <span>© 2026 Heidi Dains</span>
+      </div>
+    </footer>
+  <!-- CONTACT POP-UP -->
+  <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="hd-contact-title" style="position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; animation: hdFade .35s ease both;">
+    <div onClick="{{closeContact}}" style="position: absolute; inset: 0; background: rgba(23,24,27,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <div class="m-modal" style="position: relative; width: 1000px; max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); overflow: auto; box-sizing: border-box; padding: 72px 76px 76px; border-radius: 32px; background: {{panel}}; color: #F3F1EC; box-shadow: 0 50px 120px rgba(0,0,0,0.35); animation: hdPop .5s cubic-bezier(.2,.75,.1,1) both;">
+      <button type="button" onClick="{{closeContact}}" aria-label="Close" style="position: absolute; top: 28px; right: 28px; width: 52px; height: 52px; border: none; border-radius: 14px; background: rgba(255,255,255,0.07); color: #F3F1EC; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      <h2 id="hd-contact-title" style="margin: 0; font-size: 62px; line-height: 1; font-weight: 400; letter-spacing: -0.05em;">Let’s build <span style="color: {{sand}}; background-image: {{sandGrad}}; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: {{sandFill}};">what’s next.</span></h2>
+      <div class="m-modal-row" style="margin-top: 56px; display: flex; gap: 56px;">
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          <sc-if value="{{contactSent}}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 36px 0; display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 30px; letter-spacing: -0.03em;">Sent. It’s in my inbox.</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{panelMuted}};">Thanks for reaching out. I’ll be in touch soon.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{contactForm}}" hint-placeholder-val="{{ true }}">
+            <label for="hd-c-email" style="font-size: 17px;">Your email</label>
+            <input id="hd-c-email" type="email" placeholder="you@company.com" onInput="{{setContactEmail}}" style="margin-top: 12px; height: 60px; box-sizing: border-box; padding: 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; outline: none;">
+            <label for="hd-c-msg" style="margin-top: 26px; font-size: 17px;">Message</label>
+            <textarea id="hd-c-msg" rows="5" placeholder="Tell me about your team and what you’re building" onInput="{{setContactMsg}}" style="margin-top: 12px; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(0,0,0,0.22); color: #F3F1EC; font-family: 'Host Grotesk', sans-serif; font-size: 17px; line-height: 1.5; resize: none; outline: none;"></textarea>
+            <button type="button" onClick="{{sendContact}}" style="margin-top: 28px; height: 72px; border: none; border-radius: 999px; background: {{sandBg}}; color: #17181B; font-family: 'Host Grotesk', sans-serif; font-size: 20px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;">{{sendLabel}}<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #17181B; color: #FFFFFF; font-size: 14px;">→</span></button>
+            <sc-if value="{{contactInvalid}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; color: {{panelMuted}};">Add your email and a quick message first.</p></sc-if>
+            <sc-if value="{{contactErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: {{panelMuted}};">That didn’t go through. Email me directly at <a href="mailto:heidimdains@gmail.com" style="color: #F3F1EC; text-decoration: underline;">heidimdains@gmail.com</a>.</p></sc-if>
+          </sc-if>
+        </div>
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 34px; padding-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Contact details</span>
+            <div style="display: flex; align-items: center; gap: 12px;"><a href="mailto:heidimdains@gmail.com" style="font-size: 18px; color: #F3F1EC;">heidimdains@gmail.com</a>
+            <button type="button" onClick="{{copyEmail}}" aria-label="Copy email address" title="Copy email" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: none; border-radius: 10px; background: {{sandBg}}; color: #17181B; cursor: pointer;"><sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></sc-if><sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if></button></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Receipts</span>
+            <div style="display: flex; gap: 10px;"><a href="https://www.linkedin.com/in/heidi-d-5056b2aa/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="assets/Heidi-Dains-Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (PDF)" title="Résumé (PDF)" class="hd-soc" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.07); color: #F3F1EC;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></a></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{panelMuted2}};">Based in</span>
+            <span style="font-size: 18px; color: #F3F1EC;">Charleston, SC · open to remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</template>
 <script>
 window.__dcPages = {};
 __dcPages["Main"] = { file: "index.html", title: "Heidi Dains \u00b7 Brand & Experiential Marketing", props: {"palette": "Desert Sunset"},
@@ -2706,6 +3160,8 @@ class Component extends DCLogic {
 }
 return Component;
 } };
+__dcPages["Services"] = { file: "work-with-me.html", title: "Work with me \u00b7 Heidi Dains", props: {"palette": "Desert Sunset"},
+  make: function () { return __dcPages["About"].make(); } };
 </script>
 <script src="router.js"></script>
 </body>
